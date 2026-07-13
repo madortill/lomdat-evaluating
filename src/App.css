@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    font-family: "Assistant", sans-serif;
+}
+
+html {
+    font-size: calc(1vh + 0.5vw);
+}
+
+.app {
+    background-color: #FFF2B4;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.backBtnDiv {
+    position: absolute;
+    right: 2vw;
+    top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 10;
+}
+
+.back-btn {
+    width: 4.2vw;
+    transition: transform 0.15s ease;
+}
+
+.back-btn-text {
+    font-family: "Assistant", sans-serif;
+    font-weight: 700;
+    color: #073799;
+    font-size: 1vw;
+}
+
+.back-btn:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+::selection {
+    background-color: #C5571C;
+    color: white;
+}
+
+.main-header-text {
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #073799;
+    font-family: "Rubik", "sans-serif";
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.next-btn {
+    position: absolute;
+    background-color: #E69907;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+    bottom: 5vh;
+    left: 3vw;
+    transition: transform 0.15s ease;
+    z-index: 10;
+}
+
+.next-btn-disabled {
+    position: absolute;
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #BFBFBF;
+    width: 5vw;
+    height: 5vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+    bottom: 5vh;
+    left: 3vw;
+}
+
+.next-btn:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.next-btn-text {
+    color: #FFF2B4;
+    font-size: 1.5vw;
+    pointer-events: none;
+    font-family: "Assistant", sans-serif;
+    font-weight: 800;
+}
+
+.next-btn-text-disabled {
+    color: #FFFFFF;
+    font-size: 1.5vw;
+    pointer-events: none;
+    font-family: "Assistant", sans-serif;
+    font-weight: 800;
+}
+
+.loading {
+    white-space: nowrap;
+    position: absolute;
+    top: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #073799;
+    font-family: "rubik-bold";
+    font-size: clamp(1.5rem, 5vw, 4rem);
+    font-style: normal;
+    line-height: normal;
+}
+
+.logos {
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+}
+
+.peer {
+    height: 5vw;
+}
+
+.madorTil {
+    height: 4.9vw;
+}
