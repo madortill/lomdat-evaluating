@@ -10,7 +10,7 @@ html {
 }
 
 .app {
-    background-color: #FFF2B4;
+    background-color: #FFFCE9;
     min-height: 100vh;
     width: 100vw;
 }
@@ -105,7 +105,7 @@ html {
 }
 
 .next-btn-text {
-    color: #FFF2B4;
+    color: #FFFCE9;
     font-size: 1.5vw;
     pointer-events: none;
     font-family: "Assistant", sans-serif;
