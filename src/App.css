@@ -1,8 +1,16 @@
+@font-face {
+    font-family: "RinatZigdon";
+    src: url("./assets/fonts/RinatZigdon.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
     direction: rtl;
-    font-family: "Assistant", sans-serif;
+    font-family: "Fredoka", sans-serif;
 }
 
 html {
@@ -13,6 +21,24 @@ html {
     background-color: #FFFCE9;
     min-height: 100vh;
     width: 100vw;
+}
+
+.logos {
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    z-index: 100;
+}
+
+.peer {
+    height: 5vw;
+}
+
+.madorTil {
+    height: 4.9vw;
 }
 
 .backBtnDiv {
@@ -33,7 +59,7 @@ html {
 }
 
 .back-btn-text {
-    font-family: "Assistant", sans-serif;
+    font-family: "Fredoka", sans-serif;
     font-weight: 700;
     color: #073799;
     font-size: 1vw;
@@ -108,7 +134,7 @@ html {
     color: #FFFCE9;
     font-size: 1.5vw;
     pointer-events: none;
-    font-family: "Assistant", sans-serif;
+    font-family: "Fredoka", sans-serif;
     font-weight: 800;
 }
 
@@ -116,7 +142,7 @@ html {
     color: #FFFFFF;
     font-size: 1.5vw;
     pointer-events: none;
-    font-family: "Assistant", sans-serif;
+    font-family: "Fredoka", sans-serif;
     font-weight: 800;
 }
 
@@ -126,26 +152,9 @@ html {
     top: 25vh;
     left: 50%;
     transform: translateX(-50%);
-    color: #073799;
-    font-family: "rubik-bold";
+    color: #88563B;
+    font-family: "Fredoka";
     font-size: clamp(1.5rem, 5vw, 4rem);
     font-style: normal;
     line-height: normal;
-}
-
-.logos {
-    position: absolute;
-    top: 1vw;
-    left: 1vw;
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 1rem;
-}
-
-.peer {
-    height: 5vw;
-}
-
-.madorTil {
-    height: 4.9vw;
 }
