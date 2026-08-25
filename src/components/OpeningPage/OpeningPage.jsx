@@ -16,6 +16,9 @@ import bgNoteThin from "../../assets/img/bgNoteThin.svg";
 import mushrooms from "../../assets/img/mushrooms.svg";
 import butterfly from "../../assets/img/butterfly.svg";
 
+import peer from "../../assets/img/logos/peer.svg";
+import madorTil from "../../assets/img/logos/till.svg";
+
 const OpeningPage = () => {
     const navigate = useNavigate();
     const [showExplanation, setShowExplanation] = useState(false);
@@ -24,6 +27,11 @@ const OpeningPage = () => {
         <div className={styles.page} dir="rtl">
             <img src={washiOrange} alt="" className={`${styles.washi} ${styles.washiLeft}`} />
             <img src={washiBordeaux} alt="" className={`${styles.washi} ${styles.washiRight}`} />
+
+            <div className="logos">
+                <img src={peer} className="peer" alt="logo" />
+                <img src={madorTil} className="madorTil" alt="logo" />
+            </div>
 
             <button className={styles.aboutBtn}>
                 אודות
@@ -89,7 +97,7 @@ const OpeningPage = () => {
 
             {showExplanation && (
                 <img
-                    className={styles.nextBtn}
+                    className="nextBtn"
                     onClick={() => navigate("/home")}
                     src={nextBtn}
                     alt="next button"
