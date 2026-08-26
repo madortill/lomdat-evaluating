@@ -42,10 +42,14 @@ export const parts = {
                 }
             },
             {
-                type: "custom",
-                pageKey: "part1Opening",
-                label: "פתיחה",
-                navId: "part1Opening"
+                type: "clock",
+                label: "סדר היום",
+                navId: "part1Clock"
+            },
+            {
+                type: "ruler",
+                label: "ציון סופי",
+                navId: "part1Ruler"
             },
             {
                 type: "text",

@@ -1,0 +1,293 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 17vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.description {
+    position: absolute;
+    top: 26vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #965A39;
+    font-size: clamp(1rem, 1.45vw, 1.45rem);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.instruction {
+    position: absolute;
+    top: 31vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #7194B4;
+    font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+}
+
+.cursorIcon {
+    width: clamp(1rem, 1.5vw, 1.5rem);
+    height: auto;
+    display: block;
+}
+
+.clockArea {
+    position: absolute;
+    top: 43vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(58rem, 78vw);
+    height: min(28rem, 42vh);
+}
+
+.clock {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(17rem, 27vw, 27rem);
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, -50%);
+}
+
+.clockImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.clockContent {
+    position: absolute;
+    inset: 24% 22%;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #88563B;
+    text-align: center;
+}
+
+.clockContent h2 {
+    margin: 0 0 0.7rem;
+    font-size: clamp(1rem, 1.5vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.clockContent p {
+    margin: 0;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    line-height: 1.35;
+}
+
+.formBtn {
+    position: relative;
+    margin-top: 0.9rem;
+    width: clamp(4.5rem, 6vw, 6.5rem);
+    min-height: clamp(2rem, 2.8vw, 2.8rem);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.16s ease, filter 0.16s ease;
+}
+
+.formBtn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+.formBtnBg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.formBtn span {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.65rem, 0.85vw, 0.9rem);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 0.4rem;
+    box-sizing: border-box;
+}
+
+.stepBtn {
+    position: absolute;
+    width: clamp(4.8rem, 8.2vw, 8rem);
+    min-height: clamp(2rem, 3vw, 2.7rem);
+    border: none;
+    border-radius: 999rem;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1.25vw, 1.25rem);
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.16s ease, filter 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.stepBtn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+.stepOne {
+    right: 3vw;
+    top: 25%;
+}
+
+.stepTwo {
+    right: 3vw;
+    bottom: 25%;
+}
+
+.stepThree {
+    left: 3vw;
+    top: 25%;
+}
+
+.stepFour {
+    left: 3vw;
+    bottom: 25%;
+}
+
+.nextStep {
+    background-color: #9A9B52;
+}
+
+.openedStep {
+    background-color: #4F8BBC;
+}
+
+.activeStep {
+    background-color: #da6c17;
+    box-shadow: inset 0 0.22rem 0.35rem rgba(0, 0, 0, 0.28);
+}
+
+.lockedStep {
+    background-color: #A7A7A7;
+    cursor: default;
+    pointer-events: none;
+}
+
+.timeline {
+    position: absolute;
+    bottom: 4vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.6rem, 1.2vw, 1.2rem);
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1.2vw, 1.2rem);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.timelineItem {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: clamp(0.6rem, 1vw, 1rem);
+}
+
+.timelineArrow {
+    width: clamp(1.3rem, 2vw, 2rem);
+    height: auto;
+    display: block;
+}
+
+.popupOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    position: relative;
+    width: min(52rem, 78vw);
+    min-height: 30rem;
+    background-color: #FFFCE9;
+    border: 0.12rem solid #C5571C;
+    border-radius: 1.4rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    text-align: center;
+}
+
+.popup h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.4rem, 2vw, 2.2rem);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #C5571C;
+    color: white;
+    font-size: 1.4rem;
+    font-family: "Fredoka", sans-serif;
+    cursor: pointer;
+}
+
+.formPlaceholder {
+    width: 100%;
+    min-height: 22rem;
+    border-radius: 1rem;
+    background-color: #FFE0C2;
+    border: 0.1rem dashed #D48824;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #88563B;
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+}

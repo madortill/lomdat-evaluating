@@ -1,7 +1,11 @@
 import CalculatorTopics from "./Part1/CalculatorTopics/CalculatorTopics";
+import Clock from "./Part1/Clock/Clock";
+import Ruler from "./Part1/Ruler/Ruler";
 
 const pageTypes = {
-    calculatorTopics: CalculatorTopics
+    calculatorTopics: CalculatorTopics,
+    clock: Clock,
+    ruler: Ruler
 };
 
 const customPages = {};

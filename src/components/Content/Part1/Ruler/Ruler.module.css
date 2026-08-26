@@ -1,0 +1,182 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 17vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.description {
+    position: absolute;
+    top: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(68rem, 80vw);
+    color: #965A39;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.95rem, 1.35vw, 1.35rem);
+    line-height: 1.65;
+    text-align: center;
+}
+
+.description p {
+    margin: 0;
+}
+
+.rulerArea {
+    position: absolute;
+    top: 53vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(70rem, 86vw);
+    height: min(27rem, 42vh);
+}
+
+.rulerWrapper {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    width: min(50rem, 62vw);
+}
+
+.rulerImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.circleBox {
+    position: absolute;
+    top: 50%;
+    width: clamp(5rem, 8vw, 7.5rem);
+    transform: translateY(-50%);
+}
+
+.circleImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.circleBox p {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    color: #965A39;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.7rem, 1.2vw, 1.3rem);
+    line-height: 1.35;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.leftCircle {
+    left: 0;
+}
+
+.rightCircle {
+    right: 0;
+}
+
+.textBox {
+    position: absolute;
+    top: -20%;
+    left: 66%;
+    transform: translateX(-50%);
+    width: min(28rem, 36vw);
+    width: 32%;
+}
+
+.textBoxImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.textBox p {
+    position: absolute;
+    inset: 0.7rem 1.2rem;
+    margin: 0;
+    color: #623319;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.65rem, 0.9vw, 1rem);
+    line-height: 1.55;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bubbleBox {
+    position: absolute;
+    top: -20%;
+    left: 36%;
+    width: min(10rem, 15vw);
+    width: 12%;
+}
+
+.textBubbleImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bubbleBox p {
+    position: absolute;
+    inset: -0.4rem 0.7rem 1.15rem;
+    margin: 0;
+    color: #623319;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.65rem, 0.9vw, 1rem);
+    line-height: 1.45;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swirlyRuler {
+    position: absolute;
+    top: 15%;
+    left: 62.5%;
+    transform: translateX(-50%);
+    width: min(26rem, 34vw);
+    height: auto;
+    display: block;
+    z-index: 2;
+    width: 25%;
+}
+
+.bottomNote {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #88563B;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.8rem, 1.3vw, 1.4rem);
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 600;
+}

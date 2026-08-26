@@ -27,17 +27,22 @@
     top: 26vh;
     left: 50%;
     transform: translateX(-50%);
-    width: min(62rem, 70vw);
+    width: min(80%, 48rem);
     font-family: "Fredoka", sans-serif;
     font-size: clamp(0.8rem, 1vw, 1.15rem);
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateX(-50%);
-    width: min(80%, 48rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.instructionTapeHidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .bgNoteThin {
@@ -63,14 +68,22 @@
 
 .mainArea {
     position: absolute;
-    top: 36vh;
+    top: 40vh;
     left: 50%;
-    transform: translateX(-50%);
     width: min(72rem, 86vw);
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
+    transform: translateX(-50%);
+    transition: gap 0.45s ease;
+}
+
+.mainAreaClosed {
+    gap: 0;
+}
+
+.mainAreaOpen {
     gap: clamp(2rem, 5vw, 5rem);
 }
 
@@ -78,6 +91,16 @@
     position: relative;
     width: clamp(16rem, 24vw, 25rem);
     transform: rotate(-11deg);
+    z-index: 3;
+    transition: translate 0.45s ease;
+}
+
+.mainAreaClosed .calculatorWrapper {
+    translate: 0 0;
+}
+
+.mainAreaOpen .calculatorWrapper {
+    translate: -1rem 0;
 }
 
 .calculatorImg {
@@ -124,8 +147,8 @@
     border: none;
     border-radius: 0.35rem;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.65rem, 1vw, 1rem);
-    font-weight: 700;
+    font-size: clamp(0.65rem, 1.3vw, 1.5rem);
+    font-weight: 500;
     color: #FFFFFF;
     cursor: pointer;
     pointer-events: auto;
@@ -133,14 +156,12 @@
 }
 
 .calcButton:hover {
-    filter: drop-shadow(0 0 0.5rem rgba(136, 86, 59, 0.35));
-    background-color: #ffa058;
+    filter: brightness(1.2);
 }
 
 .activeButton {
     background-color: #ff6f00;
     box-shadow: inset 0 0.2rem 0.35rem #c25502;
-    filter: brightness(0.95);
 }
 
 .enabledButton {
@@ -149,11 +170,12 @@
 
 .nextRequiredButton {
     background-color: #C0E39E;
+    color: #214116;
 }
 
 .lockedButton {
     background-color: #FFD0A1;
-    opacity: 0.45;
+    opacity: 0;
     cursor: default;
     pointer-events: none;
 }

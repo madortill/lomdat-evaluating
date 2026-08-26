@@ -18,13 +18,18 @@ const TopBar = ({
 
     return (
         <header className={`${styles.topBar} ${mode === "logos" ? styles.logosOnly : styles.fullTopBar}`}>
-            <div className={styles.logos}>
-                <img src={peer} className={styles.peer} alt="logo" />
-                <img src={madorTil} className={styles.madorTil} alt="logo" />
-            </div>
+
 
             {mode === "full" && (
                 <>
+                    <button className={styles.homeBtn} onClick={() => navigate("/home")} aria-label="חזרה לבית">
+                        <img src={homeBtn} alt="" />
+                    </button>
+
+                    <div className={styles.partTitle}>
+                        {partTitle}
+                    </div>
+                    
                     <div className={styles.progressWrapper}>
                         <div className={styles.progressTrack}>
                             <div className={styles.progressFill} style={{ width: `${progress}%` }}>
@@ -51,13 +56,10 @@ const TopBar = ({
                         })}
                     </nav>
 
-                    <div className={styles.partTitle}>
-                        {partTitle}
+                    <div className={styles.logos}>
+                        <img src={peer} className={styles.peer} alt="logo" />
+                        <img src={madorTil} className={styles.madorTil} alt="logo" />
                     </div>
-
-                    <button className={styles.homeBtn} onClick={() => navigate("/home")} aria-label="חזרה לבית">
-                        <img src={homeBtn} alt="" />
-                    </button>
                 </>
             )}
         </header>
