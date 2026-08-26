@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { parts } from "./ContentPages.jsx";
+import { parts } from "./ContentPages";
+import PageRenderer from "./PageRender";
+
 import TopBar from "../RecurringElements/TopBar/TopBar";
 import ButtonControls from "../RecurringElements/ButtonControls/ButtonControls";
+
 import "./Content.css";
 
 const ContentControl = () => {
@@ -25,11 +28,47 @@ const ContentControl = () => {
 
     const pages = currentPart.pages;
     const currentPage = pages[step];
-    const CurrentPage = currentPage.component;
 
     const progress = Math.round(((step + 1) / pages.length) * 100);
 
+    const navItems = pages
+        .map((page, index) => ({
+            ...page,
+            stepIndex: index
+        }))
+        .filter((page) => page.showInNav !== false);
+
+    const getGroupBounds = (stepIndex) => {
+        const groupId = pages[stepIndex]?.groupId;
+
+        if (!groupId) {
+            return null;
+        }
+
+        const groupIndexes = pages
+            .map((page, index) => (page.groupId === groupId ? index : null))
+            .filter((index) => index !== null);
+
+        return {
+            start: groupIndexes[0],
+            end: groupIndexes[groupIndexes.length - 1]
+        };
+    };
+
     const handleNext = () => {
+        const groupBounds = getGroupBounds(step);
+
+        if (groupBounds) {
+            if (groupBounds.end < pages.length - 1) {
+                setStep(groupBounds.end + 1);
+                return;
+            }
+
+            sessionStorage.setItem(`completed_${currentPartKey}`, "true");
+            navigate("/home");
+            return;
+        }
+
         if (step < pages.length - 1) {
             setStep((prev) => prev + 1);
             return;
@@ -40,6 +79,18 @@ const ContentControl = () => {
     };
 
     const handleBack = () => {
+        const groupBounds = getGroupBounds(step);
+
+        if (groupBounds) {
+            if (groupBounds.start > 0) {
+                setStep(groupBounds.start - 1);
+                return;
+            }
+
+            navigate("/home");
+            return;
+        }
+
         if (step > 0) {
             setStep((prev) => prev - 1);
             return;
@@ -52,21 +103,38 @@ const ContentControl = () => {
         setStep(targetStep);
     };
 
+    const handleNavigateToNavId = (targetNavId) => {
+        const targetIndex = pages.findIndex((page) => page.navId === targetNavId);
+
+        if (targetIndex !== -1) {
+            setStep(targetIndex);
+        }
+    };
+
+    const groupStepIds = currentPage.groupId
+        ? pages
+              .filter((page) => page.groupId === currentPage.groupId)
+              .map((page) => page.navId)
+        : [];
+
     return (
         <div className="contentContainer" dir="rtl">
             <TopBar
                 mode="full"
                 partTitle={currentPart.title}
                 progress={progress}
-                navItems={pages}
+                navItems={navItems}
                 currentStep={step}
+                currentGroupId={currentPage.groupId}
                 onNavigate={handleNavbarNavigate}
             />
 
             <main className="contentMain">
-                <CurrentPage
+                <PageRenderer
                     key={currentPage.navId}
-                    {...currentPage.props}
+                    page={currentPage}
+                    groupStepIds={groupStepIds}
+                    onNavigateToNavId={handleNavigateToNavId}
                 />
             </main>
 

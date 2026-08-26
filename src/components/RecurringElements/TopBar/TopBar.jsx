@@ -11,6 +11,7 @@ const TopBar = ({
     progress = 0,
     navItems = [],
     currentStep = 0,
+    currentGroupId = null,
     onNavigate
 }) => {
     const navigate = useNavigate();
@@ -33,15 +34,21 @@ const TopBar = ({
                     </div>
 
                     <nav className={styles.navMenu}>
-                        {navItems.map((item, index) => (
-                            <button
-                                key={item.navId || index}
-                                className={`${styles.navItem} ${index === currentStep ? styles.activeNavItem : ""}`}
-                                onClick={() => onNavigate(index)}
-                            >
-                                {item.label}
-                            </button>
-                        ))}
+                        {navItems.map((item) => {
+                            const isActive = item.groupId
+                                ? item.groupId === currentGroupId
+                                : item.stepIndex === currentStep;
+
+                            return (
+                                <button
+                                    key={item.navId}
+                                    className={`${styles.navItem} ${isActive ? styles.activeNavItem : ""}`}
+                                    onClick={() => onNavigate(item.stepIndex)}
+                                >
+                                    {item.label}
+                                </button>
+                            );
+                        })}
                     </nav>
 
                     <div className={styles.partTitle}>

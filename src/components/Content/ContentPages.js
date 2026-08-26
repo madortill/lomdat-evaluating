@@ -1,0 +1,131 @@
+export const parts = {
+    part1: {
+        title: "יום המיון",
+        pages: [
+            {
+                type: "calculatorTopics",
+                label: "דגשים ליום המיון",
+                navId: "part1Calculator1",
+                groupId: "part1Calculator",
+                props: {
+                    activeIndex: 0
+                }
+            },
+            {
+                type: "calculatorTopics",
+                label: "דגשים ליום המיון",
+                navId: "part1Calculator2",
+                groupId: "part1Calculator",
+                showInNav: false,
+                props: {
+                    activeIndex: 1
+                }
+            },
+            {
+                type: "calculatorTopics",
+                label: "דגשים ליום המיון",
+                navId: "part1Calculator3",
+                groupId: "part1Calculator",
+                showInNav: false,
+                props: {
+                    activeIndex: 2
+                }
+            },
+            {
+                type: "calculatorTopics",
+                label: "דגשים ליום המיון",
+                navId: "part1Calculator4",
+                groupId: "part1Calculator",
+                showInNav: false,
+                props: {
+                    activeIndex: 3
+                }
+            },
+            {
+                type: "custom",
+                pageKey: "part1Opening",
+                label: "פתיחה",
+                navId: "part1Opening"
+            },
+            {
+                type: "text",
+                label: "מהו יום מיון?",
+                navId: "part1Text1",
+                props: {
+                    title: "מהו יום מיון?",
+                    text: "יום המיון נועד לאפשר הערכה מסודרת ואחידה של מועמדים, בהתאם לתפקיד שאליו הם מתמיינים."
+                }
+            },
+            {
+                type: "custom",
+                pageKey: "part1Info",
+                label: "דגשים",
+                navId: "part1Info"
+            },
+            {
+                type: "question",
+                label: "שאלה 1",
+                navId: "part1Question1",
+                props: {
+                    question: "מהי אחת המטרות המרכזיות של יום המיון?",
+                    answers: [
+                        { text: "לאפשר הערכה אחידה של המועמדים", isCorrect: true },
+                        { text: "לקצר את תהליך הקבלה בלי לבדוק התאמה", isCorrect: false },
+                        { text: "לאפשר למועמדים לבחור כל תפקיד שירצו", isCorrect: false },
+                        { text: "לוותר על תיעוד מסודר", isCorrect: false }
+                    ]
+                }
+            },
+            {
+                type: "question",
+                label: "שאלה 2",
+                navId: "part1Question2",
+                props: {
+                    question: "מה חשוב לשמור לאורך יום המיון?",
+                    answers: [
+                        { text: "יחס אחיד, מקצועי והוגן", isCorrect: true },
+                        { text: "שאלות שונות לגמרי לכל מועמד", isCorrect: false },
+                        { text: "החלטה לפי תחושת בטן בלבד", isCorrect: false },
+                        { text: "חוסר סדר כדי לבדוק לחץ", isCorrect: false }
+                    ]
+                }
+            },
+            {
+                type: "custom",
+                pageKey: "part1Summary",
+                label: "סיכום",
+                navId: "part1Summary"
+            }
+        ]
+    },
+
+    part2: {
+        title: "עקרונות המיון",
+        pages: [
+            {
+                type: "text",
+                label: "פתיחה",
+                navId: "part2Opening",
+                props: {
+                    title: "עקרונות המיון",
+                    text: "בחלק זה נלמד על עקרונות מרכזיים שמסייעים לבצע מיון מקצועי, אחיד והוגן."
+                }
+            }
+        ]
+    },
+
+    part3: {
+        title: "סימולציות",
+        pages: [
+            {
+                type: "text",
+                label: "פתיחה",
+                navId: "part3Opening",
+                props: {
+                    title: "סימולציות",
+                    text: "בחלק זה נתנסה בסיטואציות המדמות החלטות והערכות מתוך יום המיון."
+                }
+            }
+        ]
+    }
+};

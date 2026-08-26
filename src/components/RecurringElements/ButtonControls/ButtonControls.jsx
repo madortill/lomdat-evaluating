@@ -16,6 +16,7 @@ const ButtonControls = ({
                     src={backBtn}
                     alt="חזור"
                     className={styles.backBtn}
+                    onClick={onBack}
                 />
             )}
 
@@ -24,6 +25,7 @@ const ButtonControls = ({
                     src={nextBtn}
                     alt="הבא"
                     className={styles.nextBtn}
+                    onClick={onNext}
                 />
             )}
         </>

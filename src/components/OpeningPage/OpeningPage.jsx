@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./OpeningPage.module.css";
+import ButtonControls from "../RecurringElements/ButtonControls/ButtonControls";
 
 import whiteboard from "../../assets/img/whiteboard.svg";
 import plant from "../../assets/img/plant.svg";
@@ -11,13 +12,13 @@ import pencil from "../../assets/img/pencilBtn.svg";
 import bunting from "../../assets/img/bannerMain.svg";
 import buntingSmall from "../../assets/img/bannerSmall.png";
 import line from "../../assets/img/line.svg";
-import nextBtn from "../../assets/img/nextBtn.svg";
 import bgNoteThin from "../../assets/img/bgNoteThin.svg";
 import mushrooms from "../../assets/img/mushrooms.svg";
 import butterfly from "../../assets/img/butterfly.svg";
 
 import peer from "../../assets/img/logos/peer.svg";
 import madorTil from "../../assets/img/logos/till.svg";
+// import nextBtn from "../../assets/img/nextBtn.svg";
 
 const OpeningPage = () => {
     const navigate = useNavigate();
@@ -96,16 +97,15 @@ const OpeningPage = () => {
             </div>
 
             {showExplanation && (
-                <img
-                    className="nextBtn"
-                    onClick={() => navigate("/home")}
-                    src={nextBtn}
-                    alt="next button"
+                <ButtonControls
+                    onNext={() => navigate("/home")}
+                    showNext={true}
+                    showBack={false}
                 />
             )}
 
-            <img src={plant} alt="" className={styles.plant} />
-            <img src={smallTable} alt="" className={styles.table} />
+            <img src={plant} alt="plant" className={styles.plant} />
+            <img src={smallTable} alt="table" className={styles.table} />
         </div>
     );
 };
