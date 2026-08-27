@@ -1,11 +1,17 @@
 import CalculatorTopics from "./Part1/CalculatorTopics/CalculatorTopics";
 import Clock from "./Part1/Clock/Clock";
 import Ruler from "./Part1/Ruler/Ruler";
+import DragQuestion from "./Questions/DragQuestion/DragQuestion";
+import Question from "./Questions/Question/Question";
+import Pencils from "./Part1/Pencils/Pencils";
 
 const pageTypes = {
     calculatorTopics: CalculatorTopics,
     clock: Clock,
-    ruler: Ruler
+    ruler: Ruler,
+    dragQuestion: DragQuestion,
+    question: Question,
+    pencils: Pencils
 };
 
 const customPages = {};

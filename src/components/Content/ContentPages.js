@@ -52,6 +52,58 @@ export const parts = {
                 navId: "part1Ruler"
             },
             {
+                type: "dragQuestion",
+                label: "תרגול חלק א",
+                navId: "part1DragQuestion1",
+                props: {
+                    question: "מהו סדר יום תקין של יום מיונים לפיקוד והדרכה?",
+                    instruction: "גררו את החלקים למקומות בסדר הנכון ולאחר מכן לחצו בדיקה",
+                    items: [
+                        { id: "bio", text: "שאלון ביוגרפי" },
+                        { id: "reception", text: "קליטה" },
+                        { id: "interview", text: "ראיון אישי" },
+                        { id: "simulation", text: "תרגילי מצב" }
+                    ],
+                    correctOrder: ["reception", "bio", "simulation", "interview"]
+                }
+            },
+            {
+                type: "question",
+                label: "תרגול חלק א",
+                navId: "part1Question2",
+                showInNav: false,
+                props: {
+                    question: "דני קיבל ציון 3.5 ביום המיון, האם הוא יכול להיות מפקד בבה״ד?",
+                    answers: [
+                        {
+                            id: "a",
+                            text: "כן, ציון המיון הינו תומך החלטה ולכן אין לו משמעות",
+                            isCorrect: false
+                        },
+                        {
+                            id: "b",
+                            text: "כן, ציון עובר הינו מעל 3",
+                            isCorrect: false
+                        },
+                        {
+                            id: "c",
+                            text: "לא, בשום אופן הציון לא עובר",
+                            isCorrect: false
+                        },
+                        {
+                            id: "d",
+                            text: "כן, במקרה של ציון שאינו עובר ניתן לקבל את המועמד לפיקוד רק לאחר דיון בוועדת ערעורים בראשות המפקד",
+                            isCorrect: true
+                        }
+                    ]
+                }
+            },
+            {
+                type: "pencils",
+                label: "מדדי הערכה",
+                navId: "part1Pencils"
+            },
+            {
                 type: "text",
                 label: "מהו יום מיון?",
                 navId: "part1Text1",
