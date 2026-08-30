@@ -4,6 +4,7 @@ import Ruler from "./Part1/Ruler/Ruler";
 import DragQuestion from "./Questions/DragQuestion/DragQuestion";
 import Question from "./Questions/Question/Question";
 import Pencils from "./Part1/Pencils/Pencils";
+import MultiDragQuestions from "./Questions/MultiDragQuestions/MultiDragQuestions";
 
 const pageTypes = {
     calculatorTopics: CalculatorTopics,
@@ -11,7 +12,8 @@ const pageTypes = {
     ruler: Ruler,
     dragQuestion: DragQuestion,
     question: Question,
-    pencils: Pencils
+    pencils: Pencils,
+    multiDragQuestions: MultiDragQuestions
 };
 
 const customPages = {};

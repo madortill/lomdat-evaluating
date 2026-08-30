@@ -7,27 +7,27 @@ const defaultTopics = [
     {
         id: "thinking",
         title: "יכולת חשיבה ותכנון",
-        text: "יכולת לנתח מצבים, להבין משימה, לתכנן דרך פעולה ולבחור פתרון מתאים."
+        text: "יכולות ניתוח, הבחנה בין עיקר לתפל, שיקול דעת"
     },
     {
         id: "interpersonal",
-        title: "יכולות בין אישיות",
-        text: "יכולת ליצור קשר, לשתף פעולה, להקשיב לאחרים ולהתנהל בצורה מותאמת מול אנשים."
+        title: "יכולות בין-אישיות",
+        text: "השתלבות בצוות, יכולת השפעה, הקשבה, אמפתיה, עמידה בלחץ"
     },
     {
         id: "values",
         title: "ערכיות",
-        text: "מידת האחריות, המחויבות, האמינות וההתנהלות הערכית של המועמד."
+        text: "מוטיבציה, דוגמה אישית, דמות"
     },
     {
         id: "instruction",
         title: "יכולות הדרכה",
-        text: "יכולת להסביר, להוביל למידה, להעביר מסר ברור ולהתאים את ההדרכה לקהל היעד."
+        text: "עמידה מול קהל, כושר ביטוי, גמישות מחשבתית/יצירתיות"
     },
     {
         id: "leadership",
         title: "פיקוד ומנהיגות",
-        text: "יכולת להוביל אחרים, לקבל החלטות, לקחת אחריות ולשמש דוגמה אישית."
+        text: "ביטחון עצמי, אסרטיביות, יכולת הנעה, יוזמה"
     }
 ];
 
@@ -61,39 +61,56 @@ const Pencils = ({
             <h1 className={styles.title}>{title}</h1>
 
             <div className={styles.notebook}>
-
                 <div className={styles.rows}>
                     {topics.map((topic, index) => {
                         const isOpen = opened.includes(index);
                         const isSeen = seen.includes(index);
 
                         return (
-                            <button
-                                key={topic.id}
-                                type="button"
-                                className={`${styles.row} ${isOpen ? styles.rowOpen : ""}`}
-                                onClick={() => toggleTopic(index)}
-                            >
-                                {isSeen && <span className={styles.check}>✓</span>}
+                            <div key={topic.id} className={styles.rowShell}>
+                                <button
+                                    type="button"
+                                    className={`${styles.row} ${isOpen ? styles.rowOpen : ""}`}
+                                    onClick={() => toggleTopic(index)}
+                                >
+                                    {isSeen && <span className={styles.check}>✓</span>}
 
-                                <div className={styles.rowText}>
-                                    <p className={`${styles.topicTitle} ${isOpen ? styles.hiddenText : ""}`}>
-                                        {topic.title}
-                                    </p>
+                                    <div className={styles.rowText}>
+                                        <p
+                                            className={`${styles.topicTitle} ${isOpen ? styles.hiddenTitle : ""
+                                                }`}
+                                        >
+                                            {topic.title}
+                                        </p>
 
-                                    <p className={`${styles.topicDescription} ${isOpen ? styles.visibleDescription : ""}`}>
-                                        {topic.text}
-                                    </p>
-                                </div>
+                                        <div className={styles.writingContent}>
+                                            <span
+                                                className={`${styles.squiggleLine} ${styles.squiggleRight} ${isOpen ? styles.squiggleOpen : ""
+                                                    }`}
+                                            ></span>
+
+                                            <p
+                                                className={`${styles.topicDescription} ${isOpen ? styles.descriptionOpen : styles.descriptionClosed
+                                                    }`}
+                                            >
+                                                {topic.text}
+                                            </p>
+
+                                            <span
+                                                className={`${styles.squiggleLine} ${styles.squiggleLeft} ${isOpen ? styles.squiggleOpen : ""
+                                                    }`}
+                                            ></span>
+                                        </div>
+                                    </div>
+                                </button>
 
                                 <img
                                     src={pencil}
                                     alt=""
-                                    className={`${styles.pencil} ${isOpen ? styles.pencilLeft : styles.pencilRight}`}
+                                    className={`${styles.pencil} ${isOpen ? styles.pencilLeft : styles.pencilRight
+                                        }`}
                                 />
-
-                                {isOpen && <span className={styles.writingLine}></span>}
-                            </button>
+                            </div>
                         );
                     })}
                 </div>

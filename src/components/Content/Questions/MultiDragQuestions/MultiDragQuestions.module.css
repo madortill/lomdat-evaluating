@@ -1,0 +1,262 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.board {
+    position: absolute;
+    top: 14vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(70rem, 82vw);
+}
+
+.boardBg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.content {
+    position: absolute;
+    inset: 20% 8.5% 9% 8.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.35rem, 2.1vw, 2.35rem);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.25;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.instruction {
+    color: #965A39;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.75rem, 1vw, 1.05rem);
+    font-weight: 600;
+    text-align: center;
+    margin: 0.45rem 0 1.55rem;
+}
+
+.categoriesArea {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.55rem, 1vw, 1rem);
+    width: min(58rem, 92%);
+    min-height: clamp(9rem, 18vw, 14rem);
+    margin-bottom: clamp(1rem, 2vh, 1.4rem);
+}
+
+.categoryCard {
+    position: relative;
+    border: 0.12rem solid #F3C5AE;
+    border-radius: 0.65rem;
+    background-color: #FFE8D8;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    cursor: pointer;
+    padding: clamp(0.7rem, 1vw, 1rem) clamp(0.45rem, 0.8vw, 0.8rem);
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: clamp(8.5rem, 16vw, 13rem);
+    max-height: clamp(8.5rem, 16vw, 13rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.15s ease, filter 0.15s ease, border-color 0.15s ease;
+}
+
+.categoryCard:hover {
+    transform: scale(1.02);
+    filter: brightness(1.02);
+    border-color: #D48824;
+}
+
+.categoryTitle {
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.75rem, 1vw, 1.05rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    margin: 0 0 0.65rem;
+    white-space: normal;
+    flex-shrink: 0;
+}
+
+.categoryItems {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.25rem, 0.55vw, 0.45rem);
+    align-items: stretch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-left: 0.15rem;
+    padding-right: 0.15rem;
+    box-sizing: border-box;
+    min-height: 0;
+}
+
+.categoryItems::-webkit-scrollbar {
+    width: 0.35rem;
+}
+
+.categoryItems::-webkit-scrollbar-track {
+    background-color: rgba(136, 86, 59, 0.12);
+    border-radius: 999rem;
+}
+
+.categoryItems::-webkit-scrollbar-thumb {
+    background-color: rgba(136, 86, 59, 0.42);
+    border-radius: 999rem;
+}
+
+.placedItem {
+    position: relative;
+    width: 100%;
+    min-height: clamp(1.45rem, 2.4vw, 2rem);
+    border-radius: 999rem;
+    background-color: #1F6F87;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.6rem, 0.82vw, 0.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.45rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.16);
+    flex-shrink: 0;
+}
+
+.correctItem {
+    background-color: #8CB369;
+}
+
+.wrongItem {
+    background-color: #D95C5C;
+}
+
+.errorMark {
+    position: absolute;
+    top: -0.45rem;
+    left: -0.4rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #ED5555;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemsArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 1.4vw, 1.25rem);
+    width: min(42rem, 76%);
+    min-height: clamp(2.5rem, 4.5vw, 3.6rem);
+    margin-bottom: clamp(1rem, 1.8vh, 1.4rem);
+}
+
+.dragItem {
+    min-width: clamp(7.5rem, 11vw, 11rem);
+    min-height: clamp(2rem, 3vw, 2.8rem);
+    border: none;
+    border-radius: 0.55rem;
+    background-color: #5FA9C8;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.75rem, 1vw, 1.05rem);
+    font-weight: 700;
+    cursor: grab;
+    box-shadow: inset 0 -0.2rem 0 rgba(0, 0, 0, 0.12);
+    padding: 0.35rem 1rem;
+    box-sizing: border-box;
+    transition: transform 0.15s ease, filter 0.15s ease, background-color 0.15s ease;
+}
+
+.dragItem:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05);
+}
+
+.dragItem:active {
+    cursor: grabbing;
+}
+
+.selectedItem {
+    background-color: #4F8BBC;
+    outline: 0.18rem solid #FFE0C2;
+}
+
+.doneText {
+    color: #88563B;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.8rem, 1.05vw, 1.1rem);
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.checkBtn {
+    min-width: clamp(7rem, 10vw, 10rem);
+    min-height: clamp(2rem, 3vw, 2.8rem);
+    border: none;
+    border-radius: 999rem;
+    background-color: #D48824;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.25vw, 1.25rem);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: inset 0 -0.18rem 0 rgba(0, 0, 0, 0.14);
+    transition: transform 0.16s ease, filter 0.16s ease;
+}
+
+.checkBtn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.06);
+}
+
+.disabledBtn {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+}
+
+.resetBtn {
+    position: absolute;
+    right: 5%;
+    bottom: 1.5%;
+    border: none;
+    background: transparent;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.7rem, 0.95vw, 0.95rem);
+    cursor: pointer;
+}
+
+.resetBtn:hover {
+    text-decoration: underline;
+}

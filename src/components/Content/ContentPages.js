@@ -104,53 +104,37 @@ export const parts = {
                 navId: "part1Pencils"
             },
             {
-                type: "text",
-                label: "מהו יום מיון?",
-                navId: "part1Text1",
+                type: "multiDragQuestions",
+                label: "שאלה",
+                navId: "part1MultiDragQuestion1",
                 props: {
-                    title: "מהו יום מיון?",
-                    text: "יום המיון נועד לאפשר הערכה מסודרת ואחידה של מועמדים, בהתאם לתפקיד שאליו הם מתמיינים."
-                }
-            },
-            {
-                type: "custom",
-                pageKey: "part1Info",
-                label: "דגשים",
-                navId: "part1Info"
-            },
-            {
-                type: "question",
-                label: "שאלה 1",
-                navId: "part1Question1",
-                props: {
-                    question: "מהי אחת המטרות המרכזיות של יום המיון?",
-                    answers: [
-                        { text: "לאפשר הערכה אחידה של המועמדים", isCorrect: true },
-                        { text: "לקצר את תהליך הקבלה בלי לבדוק התאמה", isCorrect: false },
-                        { text: "לאפשר למועמדים לבחור כל תפקיד שירצו", isCorrect: false },
-                        { text: "לוותר על תיעוד מסודר", isCorrect: false }
+                    question: "מדדי הערכה",
+                    instruction: "גררו את ההיגדים למדד המתאים",
+                    categories: [
+                        { id: "interpersonal", title: "יכולות בין־אישיות" },
+                        { id: "instruction", title: "יכולות הדרכה" },
+                        { id: "values", title: "ערכיות" },
+                        { id: "thinking", title: "יכולת חשיבה ותכנון" },
+                        { id: "leadership", title: "פיקוד ומנהיגות" }
+                    ],
+                    items: [
+                        {
+                            id: "planning",
+                            text: "יכולת תכנון",
+                            correctCategoryId: "thinking"
+                        },
+                        {
+                            id: "selfConfidence",
+                            text: "ביטחון עצמי",
+                            correctCategoryId: "leadership"
+                        },
+                        {
+                            id: "initiative",
+                            text: "יוזמה",
+                            correctCategoryId: "leadership"
+                        }
                     ]
                 }
-            },
-            {
-                type: "question",
-                label: "שאלה 2",
-                navId: "part1Question2",
-                props: {
-                    question: "מה חשוב לשמור לאורך יום המיון?",
-                    answers: [
-                        { text: "יחס אחיד, מקצועי והוגן", isCorrect: true },
-                        { text: "שאלות שונות לגמרי לכל מועמד", isCorrect: false },
-                        { text: "החלטה לפי תחושת בטן בלבד", isCorrect: false },
-                        { text: "חוסר סדר כדי לבדוק לחץ", isCorrect: false }
-                    ]
-                }
-            },
-            {
-                type: "custom",
-                pageKey: "part1Summary",
-                label: "סיכום",
-                navId: "part1Summary"
             }
         ]
     },
