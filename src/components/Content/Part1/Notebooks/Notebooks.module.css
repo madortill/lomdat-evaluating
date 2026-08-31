@@ -1,0 +1,268 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 17vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.noteBox {
+    position: absolute;
+    top: 27vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(80%, 48rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bgNoteThin {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.noteText {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    color: white;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.75rem, 1.4vw, 1.6rem);
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notebooksGrid {
+    position: absolute;
+    top: 42vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(58rem, 76vw);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1.35rem, 3vw, 3rem) clamp(1.3rem, 2vw, 2.2rem);
+}
+
+.notebookBtn {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    aspect-ratio: 210 / 120;
+    cursor: pointer;
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.notebookBtn:hover {
+    transform: scale(1.04) rotate(-1deg);
+    filter: brightness(1.04) drop-shadow(0 0 0.4rem rgba(136, 86, 59, 0.22));
+}
+
+.closedNotebook {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.notebookTitle {
+    position: absolute;
+    inset: 13% 10% 12% 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.25vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    z-index: 2;
+    white-space: pre-line;
+}
+
+.seenCheck {
+    position: absolute;
+    top: -6%;
+    right: -1%;
+    width: clamp(1.2rem, 1.9vw, 1.8rem);
+    height: clamp(1.2rem, 1.9vw, 1.8rem);
+    border-radius: 50%;
+    background-color: #B6D99B;
+    color: #4D7E38;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.8rem, 1.2vw, 1.15rem);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    box-shadow: 0 0 0.18rem rgba(98, 53, 31, 0.18);
+    pointer-events: none;
+}
+
+.popupOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    position: relative;
+    width: min(62rem, 76vw);
+    aspect-ratio: 900 / 470;
+    box-sizing: border-box;
+}
+
+.openNotebookBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.popupContent {
+    position: absolute;
+    inset: 12% 18% 9% 14%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #62351F;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.popupContent h2 {
+    margin: 0 0 clamp(1.5rem, 3vh, 2.4rem);
+    color: #FF914D;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.4rem, 2.1vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.bodyText {
+    width: min(40rem, 100%);
+    margin: 0;
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.95rem, 1.25vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.65;
+    white-space: pre-line;
+}
+
+.markerNote {
+    position: relative;
+    margin-top: clamp(1.8rem, 3.2vh, 2.6rem);
+    width: min(40rem, 100%);
+    background-color: #FFD7B9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem clamp(2rem, 2.8vw, 4rem);
+    box-sizing: border-box;
+}
+
+.markerNote p {
+    margin: 0;
+    color: #62351F;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.78rem, 1.3vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.marker {
+    position: absolute;
+    top: -1.45rem;
+    right: -2.3rem;
+    width: clamp(3rem, 3.8vw, 4.6rem);
+    height: auto;
+    transform: rotate(8deg);
+    pointer-events: none;
+    user-select: none;
+}
+
+.understoodBtn {
+    position: relative;
+    margin-top: clamp(1.5rem, 6vh, 4rem);
+    width: clamp(7rem, 10vw, 10rem);
+    aspect-ratio: 150 / 58;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.16s ease, filter 0.16s ease;
+}
+
+.understoodBtnBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.understoodBtn span {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.95rem, 1.3vw, 1.35rem);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+}
+
+.understoodBtn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.06);
+}

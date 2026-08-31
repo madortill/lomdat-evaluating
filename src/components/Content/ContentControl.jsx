@@ -16,18 +16,33 @@ const ContentControl = () => {
     });
 
     const currentPart = parts[currentPartKey];
+    const pages = currentPart.pages;
 
     const [step, setStep] = useState(() => {
         const savedStep = sessionStorage.getItem(`currentStep_${currentPartKey}`);
-        return savedStep ? parseInt(savedStep, 10) : 0;
+
+        if (!savedStep) {
+            return 0;
+        }
+
+        const parsedStep = parseInt(savedStep, 10);
+
+        if (Number.isNaN(parsedStep) || parsedStep < 0 || parsedStep >= pages.length) {
+            return 0;
+        }
+
+        return parsedStep;
     });
 
-    useEffect(() => {
-        sessionStorage.setItem(`currentStep_${currentPartKey}`, step.toString());
-    }, [currentPartKey, step]);
-
-    const pages = currentPart.pages;
     const currentPage = pages[step];
+
+    useEffect(() => {
+        if (currentPage.saveStep === false) {
+            return;
+        }
+
+        sessionStorage.setItem(`currentStep_${currentPartKey}`, step.toString());
+    }, [currentPartKey, step, currentPage]);
 
     const progress = Math.round(((step + 1) / pages.length) * 100);
 
@@ -113,8 +128,8 @@ const ContentControl = () => {
 
     const groupStepIds = currentPage.groupId
         ? pages
-              .filter((page) => page.groupId === currentPage.groupId)
-              .map((page) => page.navId)
+            .filter((page) => page.groupId === currentPage.groupId)
+            .map((page) => page.navId)
         : [];
 
     return (
@@ -125,7 +140,7 @@ const ContentControl = () => {
                 progress={progress}
                 navItems={navItems}
                 currentStep={step}
-                currentGroupId={currentPage.groupId}
+                currentGroupId={currentPage.navGroupId || currentPage.groupId || currentPage.navId}
                 onNavigate={handleNavbarNavigate}
             />
 
@@ -135,15 +150,19 @@ const ContentControl = () => {
                     page={currentPage}
                     groupStepIds={groupStepIds}
                     onNavigateToNavId={handleNavigateToNavId}
+                    onNext={handleNext}
+                    onBack={handleBack}
                 />
             </main>
 
-            <ButtonControls
-                onNext={handleNext}
-                onBack={handleBack}
-                showBack={true}
-                showNext={true}
-            />
+            {!currentPage.hideControls && (
+                <ButtonControls
+                    onNext={handleNext}
+                    onBack={handleBack}
+                    showBack={true}
+                    showNext={true}
+                />
+            )}
         </div>
     );
 };

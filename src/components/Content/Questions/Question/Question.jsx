@@ -88,13 +88,18 @@ const Question = ({
 
     const checkDisabled = selectedAnswers.length === 0 || checked;
 
+    const titleLengthClass =
+        question.length > 115
+            ? styles.longTitle
+            : "";
+
     return (
         <section className={styles.page} dir="rtl">
             <div className={styles.board}>
                 <img src={questionBg} alt="" className={styles.boardBg} />
 
                 <div className={styles.content}>
-                    <h1 className={styles.title}>{question}</h1>
+                    <h1 className={`${styles.title} ${titleLengthClass}`}>{question}</h1>
 
                     <div className={`${styles.answersArea} ${answers.length === 5 ? styles.fiveAnswers : ""}`}>
                         {answers.map((answer) => (

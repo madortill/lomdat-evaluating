@@ -37,8 +37,14 @@
     font-weight: 700;
     text-align: center;
     line-height: 1.35;
-    margin: 0 0 1.8rem;
-    max-width: 42rem;
+    margin: 0 0 clamp(1rem, 2vh, 1.8rem);
+    max-width: 44rem;
+}
+
+.longTitle {
+    font-size: clamp(1.05rem, 1.65vw, 1.8rem);
+    line-height: 1.28;
+    max-width: 48rem;
 }
 
 .answersArea {
@@ -47,6 +53,7 @@
     gap: clamp(0.85rem, 1.4vw, 1.35rem);
     width: min(42rem, 76%);
     margin-bottom: 1.8rem;
+    margin-top: 1rem;
 }
 
 .fiveAnswers {

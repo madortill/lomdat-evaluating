@@ -5,6 +5,9 @@ import DragQuestion from "./Questions/DragQuestion/DragQuestion";
 import Question from "./Questions/Question/Question";
 import Pencils from "./Part1/Pencils/Pencils";
 import MultiDragQuestions from "./Questions/MultiDragQuestions/MultiDragQuestions";
+import OpeningNote from "./Reusable/OpeningNote/OpeningNote";
+import Notebooks from "./Part1/Notebooks/Notebooks";
+import EndSubjectPopup from "./Reusable/EndSubjectPopup/EndSubjectPopup";
 
 const pageTypes = {
     calculatorTopics: CalculatorTopics,
@@ -13,12 +16,21 @@ const pageTypes = {
     dragQuestion: DragQuestion,
     question: Question,
     pencils: Pencils,
-    multiDragQuestions: MultiDragQuestions
+    multiDragQuestions: MultiDragQuestions,
+    openingNote: OpeningNote,
+    notebooks: Notebooks,
+    endSubjectPopup: EndSubjectPopup
 };
 
 const customPages = {};
 
-const PageRenderer = ({ page, groupStepIds = [], onNavigateToNavId }) => {
+const PageRenderer = ({
+    page,
+    groupStepIds = [],
+    onNavigateToNavId,
+    onNext,
+    onBack
+}) => {
     if (page.type === "custom") {
         const CustomPage = customPages[page.pageKey];
 
@@ -31,7 +43,16 @@ const PageRenderer = ({ page, groupStepIds = [], onNavigateToNavId }) => {
             );
         }
 
-        return <CustomPage {...page.props} />;
+        return (
+            <CustomPage
+                {...page.props}
+                groupId={page.groupId}
+                groupStepIds={groupStepIds}
+                onNavigateToNavId={onNavigateToNavId}
+                onNext={onNext}
+                onBack={onBack}
+            />
+        );
     }
 
     const PageComponent = pageTypes[page.type];
@@ -49,8 +70,11 @@ const PageRenderer = ({ page, groupStepIds = [], onNavigateToNavId }) => {
         <PageComponent
             {...page.props}
             groupId={page.groupId}
+            navGroupId={page.navGroupId}
             groupStepIds={groupStepIds}
             onNavigateToNavId={onNavigateToNavId}
+            onNext={onNext}
+            onBack={onBack}
         />
     );
 };
