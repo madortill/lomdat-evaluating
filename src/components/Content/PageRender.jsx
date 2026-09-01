@@ -8,6 +8,13 @@ import MultiDragQuestions from "./Questions/MultiDragQuestions/MultiDragQuestion
 import OpeningNote from "./Reusable/OpeningNote/OpeningNote";
 import Notebooks from "./Part1/Notebooks/Notebooks";
 import EndSubjectPopup from "./Reusable/EndSubjectPopup/EndSubjectPopup";
+import Stapler from "./Part2/Stapler/Stapler";
+import Tabs from "./Part2/Tabs/Tabs";
+import InterviewNotes from "./Part2/InterviewNotes/InterviewNotes";
+import Carousel from "./Part2/Carousel/Carousel";
+import Eraser from "./Part2/Eraser/Eraser";
+import FlipCards from "./Part2/FlipCards/FlipCards";
+import MultipleSelect from "./Part2/MultipleSelect/MultipleSelect";
 
 const pageTypes = {
     calculatorTopics: CalculatorTopics,
@@ -19,7 +26,14 @@ const pageTypes = {
     multiDragQuestions: MultiDragQuestions,
     openingNote: OpeningNote,
     notebooks: Notebooks,
-    endSubjectPopup: EndSubjectPopup
+    endSubjectPopup: EndSubjectPopup,
+    stapler: Stapler,
+    tabs: Tabs,
+    interviewNotes: InterviewNotes,
+    carousel: Carousel,
+    eraser: Eraser,
+    flipCards: FlipCards,
+    multipleSelect: MultipleSelect
 };
 
 const customPages = {};

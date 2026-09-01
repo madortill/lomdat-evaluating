@@ -370,12 +370,235 @@ export const parts = {
         title: "עקרונות המיון",
         pages: [
             {
-                type: "text",
-                label: "פתיחה",
-                navId: "part2Opening",
+                type: "stapler",
+                label: "דגשים כלליים",
+                navId: "part2Stapler"
+            },
+            {
+                type: "tabs",
+                label: "דגשים למיון הדרכה",
+                navId: "part2Tabs"
+            },
+            {
+                type: "question",
+                label: "תרגול דגשים",
+                navId: "part2GuidanceQuestion1",
+                navGroupId: "part2GuidancePractice",
                 props: {
-                    title: "עקרונות המיון",
-                    text: "בחלק זה נלמד על עקרונות מרכזיים שמסייעים לבצע מיון מקצועי, אחיד והוגן."
+                    question: "במה באה לידי ביטוי הסטנדרטיזציה (אחידות) במיון להדרכה?",
+                    answers: [
+                        {
+                            id: "a",
+                            text: "תמיד נקיים את ימי המיון באותה כיתה",
+                            isCorrect: false
+                        },
+                        {
+                            id: "b",
+                            text: "הטיית הראשוניות",
+                            isCorrect: false
+                        },
+                        {
+                            id: "c",
+                            text: "זימון למעריך",
+                            isCorrect: false
+                        },
+                        {
+                            id: "d",
+                            text: "הקפדה על אחידות מירבית בהעברת הוראות התרגילים אל המועמדים",
+                            isCorrect: true
+                        }
+                    ]
+                }
+            },
+            {
+                type: "question",
+                label: "תרגול דגשים",
+                navId: "part2GuidanceQuestion2",
+                navGroupId: "part2GuidancePractice",
+                showInNav: false,
+                props: {
+                    question: "ציינו את העקרונות הרלוונטיים לתצפית והערכה אפקטיביים",
+                    subtitle: "ניתן לבחור יותר מתשובה אחת",
+                    multipleCorrect: true,
+                    smallTitle: true,
+                    answers: [
+                        {
+                            id: "a",
+                            text: "לרשום כמה שיותר התנהגויות נצפות ולא רק מסקנות כוללות. למשל: ״דוד קם פעמיים ממקומו למרות שניתנה הוראה לא לקום״ במקום ״קושי בשליטה עצמית וקבלת מרות״",
+                            isCorrect: true
+                        },
+                        {
+                            id: "b",
+                            text: "על מנת לקבל הערכה רחבה כמה שניתן יש להיעזר במעריך נוסף ובתצפיות שלו",
+                            isCorrect: false
+                        },
+                        {
+                            id: "c",
+                            text: "חוות הדעת היא בלתי תלויה, כלומר כל מעריך ממלא לבד ואין להתייעץ או להחליף רשמים אלא לאחר המילוי",
+                            isCorrect: true
+                        },
+                        {
+                            id: "d",
+                            text: "המעריך ישמור על מקום קבוע ממנו הוא צופה כדי לקבל התרשמות מייצגת ואחידה על כלל המשתתפים",
+                            isCorrect: false
+                        }
+                    ]
+                }
+            },
+            {
+                type: "interviewNotes",
+                label: "דגשים לראיון",
+                navId: "part2InterviewNotes"
+            },
+            {
+                type: "carousel",
+                label: "אסור בראיון",
+                navId: "part2InterviewForbidden"
+            },
+            {
+                type: "question",
+                label: "תרגול ראיון תעסוקתי",
+                navId: "part2InterviewPracticeQuestion",
+                navGroupId: "part2InterviewPractice",
+                props: {
+                    question: "ראיון תעסוקתי - אילו דברים אסור לעשות בראיון תעסוקתי?",
+                    answers: [
+                        {
+                            id: "a",
+                            text: "לשאול על העבר של המועמד",
+                            isCorrect: false
+                        },
+                        {
+                            id: "b",
+                            text: "לתת משוב על התפקוד לאורך יום המיון",
+                            isCorrect: true
+                        },
+                        {
+                            id: "c",
+                            text: "לבקש לקבל דוגמאות ממקרים אמיתיים בעברו של המועמד",
+                            isCorrect: false
+                        },
+                        {
+                            id: "d",
+                            text: "לשאול את המועמד איך הוא חושב שהוא תפקד ביום המיון",
+                            isCorrect: false
+                        }
+                    ]
+                }
+            },
+            {
+                type: "multiDragQuestions",
+                label: "תרגול ראיון תעסוקתי",
+                navId: "part2InterviewPracticeDrag",
+                navGroupId: "part2InterviewPractice",
+                showInNav: false,
+                props: {
+                    title: "ראיון תעסוקתי",
+                    instruction: "גררו את ההיגד לסוג השאלה המתאים",
+                    largeCategoryItemsMargin: true,
+                    items: [
+                        {
+                            id: "clarificationInfo",
+                            label: "מאפשרת לקבל מידע נוסף בתחום מסוים, לוודא שהובנה כוונת המועמד",
+                            correctTargetId: "clarificationTarget"
+                        },
+                        {
+                            id: "closedSpecificInfo",
+                            label: "כדי להשיג מידע ספציפי",
+                            correctTargetId: "closedTarget"
+                        },
+                        {
+                            id: "directNoEscape",
+                            label: "כדי למנוע אפשרות של התחמקות או סטייה",
+                            correctTargetId: "directTarget"
+                        },
+                        {
+                            id: "closedFocusTopics",
+                            label: "כדי להתמקד בנושאים",
+                            correctTargetId: "closedTarget"
+                        },
+                        {
+                            id: "openOrganization",
+                            label: "מאפשרת לראות כיצד המועמד מתארגן ומה בוחר להדגיש",
+                            correctTargetId: "openTarget"
+                        },
+                        {
+                            id: "indirectSensitive",
+                            label: "כשהנושא רגיש, מוסתר, בעייתי וכו׳",
+                            correctTargetId: "indirectTarget"
+                        },
+                        {
+                            id: "closedVerifyData",
+                            label: "כדי לאמת נתונים",
+                            correctTargetId: "closedTarget"
+                        }
+                    ],
+                    targets: [
+                        {
+                            id: "clarificationTarget",
+                            title: "שאלת הבהרה",
+                            text: "מיועדת להבהיר נקודה מסוימת בדברי המרואיין."
+                        },
+                        {
+                            id: "directTarget",
+                            title: "שאלה ישירה",
+                            text: "נוגעת ישירות בנושא ומתמקדת בו."
+                        },
+                        {
+                            id: "closedTarget",
+                            title: "שאלה סגורה",
+                            text: "מובילה לתשובה ספציפית וישירה."
+                        },
+                        {
+                            id: "openTarget",
+                            title: "שאלה פתוחה",
+                            text: "מאפשרת למרואיין להתבטא בצורה רחבה."
+                        },
+                        {
+                            id: "indirectTarget",
+                            title: "שאלה עקיפה",
+                            text: "שואלת על הנושא באופן עקיף."
+                        }
+                    ]
+                }
+            },
+            {
+                type: "eraser",
+                label: "הערכה מסכמת",
+                navId: "part2Eraser",
+                props: {
+                    title: "הערכה מסכמת - הנחיות להערכה מיטבית",
+                    instruction: "מחקו את הקשקושים כדי לקרוא"
+                }
+            },
+            {
+                type: "flipCards",
+                label: "עקרונות למתן ציון",
+                navId: "part2ScorePrinciples",
+                props: {
+                    title: "הערכה מסכמת - עקרונות למתן ציון",
+                    instruction: "לחצו על הכרטיסים למטה כדי לצפות בהם"
+                }
+            },
+            {
+                type: "multipleSelect",
+                label: "תרגול עקרונות המיון",
+                navId: "part2MultipleSelect",
+                props: {
+                    title: "עקרונות תצפית והערכה",
+                    subtitle: "ציינו את העקרונות הרלוונטיים לתצפית והערכה אפקטיביים (ניתן לבחור יותר מתשובה אחת)",
+                }
+            },
+            {
+                type: "endSubjectPopup",
+                label: "סיום עקרונות המיון",
+                navId: "part2EndSubjectPopup",
+                showInNav: false,
+                saveStep: false,
+                props: {
+                    title: "כל הכבוד!",
+                    subtitle: "סיימתם את החלק השני של יום המיון",
+                    buttonText: "יאללה לפרק האחרון ←"
                 }
             }
         ]

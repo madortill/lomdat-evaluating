@@ -172,3 +172,94 @@
     margin: 0 0 clamp(1rem, 1.8vh, 1.6rem);
     white-space: nowrap;
 }
+
+.thinPage {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    background-color: transparent;
+    overflow: visible;
+}
+
+.thinNoteWrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    aspect-ratio: 900 / 255;
+}
+
+.thinNoteWrapper .noteBg {
+    display: none;
+}
+
+.thinNoteWrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: #FFE3CA;
+    clip-path: polygon(0 0,
+            96% 0,
+            94.5% 12%,
+            100% 14%,
+            100% 100%,
+            4% 100%,
+            4% 88%,
+            0 90%);
+}
+
+.thinNoteWrapper .noteContent {
+    inset: 14% 7% 8% 7%;
+    justify-content: center;
+}
+
+.thinNoteWrapper .tape {
+    width: clamp(3.5rem, 5.2vw, 5.6rem);
+}
+
+.thinNoteWrapper .tapeTop {
+    top: -9%;
+    left: -3.3%;
+    transform: rotate(-9deg);
+}
+
+.thinNoteWrapper .tapeBottom {
+    right: -3.3%;
+    bottom: -9%;
+    transform: rotate(-9deg);
+}
+
+.thinMainText {
+    width: 100%;
+    font-size: clamp(0.88rem, 1.25vw, 1.25rem);
+    line-height: 1.6;
+}
+
+.thinMainText p {
+    margin: 0 0 0.25rem;
+}
+
+.thinInnerNote {
+    margin-top: clamp(-2rem, -1.5vh, 1.15rem);
+    width: 140%;
+    max-width: none;
+    aspect-ratio: 640 / 82;
+    align-self: center;
+    transform: translateX(15%);
+}
+
+.thinInnerNote .innerNoteTextArea {
+    top: 35%;
+    right: 18%;
+    left: 16%;
+    bottom: 17%;
+}
+
+.thinInnerNote .innerNoteTextArea p {
+    font-size: clamp(0.72rem, 1.15vw, 1.4rem);
+    line-height: 1.25;
+}

@@ -1,0 +1,258 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 17vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.7rem, 2.7vw, 2.8rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.carouselArea {
+    position: absolute;
+    top: 35vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(52rem, 78vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideCard {
+    position: relative;
+    width: min(30rem, 48vw);
+    aspect-ratio: 420 / 275;
+    border-radius: 0.45rem;
+    background-color: #FFD9B2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.3rem, 2vw, 2.2rem);
+    box-sizing: border-box;
+}
+
+.textSlide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.textSlide p {
+    width: min(22rem, 92%);
+    margin: 0;
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.35vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.slideTitle {
+    margin: 0 0 clamp(0.8rem, 1.4vh, 1.2rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.45vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.dialogueSlide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialogueTitle {
+    margin: 0 0 clamp(1rem, 2vh, 1.6rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.35vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.dialogueIllustration {
+    position: relative;
+    width: min(21rem, 90%);
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: clamp(0.2rem, 0.8vh, 0.7rem);
+    box-sizing: border-box;
+}
+
+.person {
+    width: clamp(4rem, 6vw, 5.6rem);
+    height: clamp(5.2rem, 7.8vw, 7.2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.head {
+    width: clamp(1.55rem, 2.3vw, 2.2rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #8C573B;
+    margin-bottom: clamp(0.35rem, 0.6vw, 0.55rem);
+}
+
+.body {
+    width: clamp(3.7rem, 5.4vw, 5rem);
+    height: clamp(1.8rem, 2.8vw, 2.6rem);
+    background-color: #8C573B;
+    border-radius: 999rem 999rem 0 0;
+}
+
+.speechBubble {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(10rem, 100%);
+    min-height: clamp(3rem, 5vw, 4.5rem);
+    border-radius: 0.75rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.7rem;
+    box-sizing: border-box;
+}
+
+.speechBubble::after {
+    content: "";
+    position: absolute;
+    bottom: -0.65rem;
+    left: 15%;
+    width: 0;
+    height: 0;
+    border-top: 0.9rem solid white;
+    border-right: 0.65rem solid transparent;
+    border-left: 0.2rem solid transparent;
+    transform: rotate(22deg);
+}
+
+.speechBubble p {
+    margin: 0;
+    color: #62351F;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.arrowBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(2.5rem, 3.8vw, 3.5rem);
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 50%;
+    background-color: #FFD9B2;
+    color: #C7774C;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(2.1rem, 3.2vw, 3rem);
+    font-weight: 500;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: filter 0.16s ease, scale 0.16s ease;
+}
+
+.arrowBtn:hover {
+    scale: 1.08;
+    filter: brightness(1.04);
+}
+
+.prevBtn {
+    right: 0;
+}
+
+.nextBtn {
+    left: 0;
+}
+
+.arrowIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-0.08em);
+    line-height: 1;
+}
+
+.dotsWrapper {
+    position: absolute;
+    top: 80vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter {
+    margin: 0 0 clamp(0.35rem, 0.7vh, 0.5rem);
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.65rem, 0.85vw, 0.85rem);
+    font-weight: 500;
+    text-align: center;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.35rem, 0.55vw, 0.5rem);
+}
+
+.dot {
+    width: clamp(0.55rem, 0.8vw, 0.75rem);
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 50%;
+    background-color: #8C573B;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.16s ease, background-color 0.16s ease;
+}
+
+.dot:hover {
+    transform: scale(1.2);
+}
+
+.activeDot {
+    background-color: #FF914D;
+}

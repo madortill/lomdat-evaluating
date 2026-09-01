@@ -110,6 +110,10 @@
     min-height: 0;
 }
 
+.largeCategoryItemsMargin {
+    margin-top: clamp(1rem, 2vh, 1.6rem);
+}
+
 .categoryItems::-webkit-scrollbar {
     width: 0.35rem;
 }
@@ -128,7 +132,7 @@
     position: relative;
     width: 100%;
     min-height: clamp(1.45rem, 2.4vw, 2rem);
-    border-radius: 999rem;
+    border-radius: 0.5rem;
     background-color: #1F6F87;
     color: white;
     font-family: "Fredoka", sans-serif;
@@ -259,4 +263,32 @@
 
 .resetBtn:hover {
     text-decoration: underline;
+}
+
+.categoryDescription {
+    margin: clamp(0.25rem, 0.6vh, 0.45rem) 0 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.55rem, 0.8vw, 0.8rem);
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.dragItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.dragItem small {
+    display: block;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.5rem, 0.7vw, 0.72rem);
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
 }

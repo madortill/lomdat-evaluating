@@ -108,8 +108,10 @@
 }
 
 .partTitle:hover {
-    transform: scale(1.03);
+    /* transform: scale(1.03); */
     filter: brightness(1.04);
+    transform: scale(1.06);
+    /* filter: drop-shadow(0 0 0.3rem #bd813265) drop-shadow(0 0 0.6rem #d4882491); */
 }
 
 .openPartTitle {
@@ -178,7 +180,7 @@
     height: clamp(0.75rem, 1.25vw, 1.1rem);
     border-radius: 999rem;
     background-color: #FFE0C2;
-    border: 0.08rem solid #D48824;
+    border: 0.1rem solid #68432f;
     overflow: hidden;
 }
 

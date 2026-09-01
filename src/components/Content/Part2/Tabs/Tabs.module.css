@@ -1,0 +1,222 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 17vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.9rem, 3vw, 3.2rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tabsWrapper {
+    position: absolute;
+    top: 28vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(67rem, 86vw);
+}
+
+.tabsHeader {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 0.08rem solid #88563B;
+    border-bottom: none;
+    border-radius: 0.45rem 0.45rem 0 0;
+    overflow: hidden;
+}
+
+.tabBtn {
+    min-height: clamp(2.15rem, 3.3vw, 3.15rem);
+    border: none;
+    border-left: 0.08rem solid #88563B;
+    background-color: #F8E4D4;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1.15vw, 1.25rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.16s ease, color 0.16s ease, filter 0.16s ease;
+}
+
+.tabBtn:first-child {
+    border-left: none;
+}
+
+.tabBtn:hover {
+    background-color: #FFD0A1;
+    filter: brightness(1.02);
+}
+
+.activeTabBtn {
+    background-color: #88563B;
+    color: white;
+}
+
+.contentPanel {
+    position: relative;
+    width: 100%;
+    height: clamp(18rem, 42vh, 27rem);
+    background-color: #21788D;
+    border: 0.08rem solid #88563B;
+    border-radius: 0 0 0.45rem 0.45rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.organizationLayout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: clamp(1rem, 2vw, 2.2rem);
+    padding: clamp(2rem, 4vw, 4rem);
+    box-sizing: border-box;
+}
+
+.organizationCircle {
+    width: clamp(8rem, 15vw, 12.5rem);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #FBE7D8;
+    color: #88563B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.4rem, 0.8vw, 0.7rem);
+    padding: clamp(0.9rem, 1.4vw, 1.3rem);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.organizationIcon {
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.organizationCircle p {
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.72rem, 0.95vw, 1rem);
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.atmosphereLayout {
+    width: 100%;
+    height: 100%;
+    padding: clamp(1.2rem, 2.6vw, 2.2rem) clamp(2rem, 4vw, 4rem);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.introText {
+    margin: 0 0 clamp(1.3rem, 3vh, 2.2rem);
+    color: #FFFCE9;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.8rem, 1vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.atmosphereCircles {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.9rem, 1.7vw, 1.7rem);
+    align-items: center;
+    justify-items: center;
+}
+
+.atmosphereCircle {
+    width: clamp(7.3rem, 12.2vw, 10.6rem);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: #FBE7D8;
+    color: #88563B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.8rem, 1.35vw, 1.15rem);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.atmosphereCircle p {
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.68rem, 0.85vw, 0.9rem);
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.observationLayout {
+    width: 100%;
+    height: 100%;
+    padding: clamp(1.5rem, 3vw, 2.6rem);
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.1fr;
+    gap: clamp(1rem, 2vw, 2rem);
+    align-items: stretch;
+}
+
+.observationCard {
+    background-color: #FBE7D8;
+    border-radius: 0.55rem;
+    padding: clamp(1rem, 1.8vw, 1.6rem);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
+.observationCard:nth-child(2) {
+    transform: translateY(clamp(0.8rem, 2vh, 1.4rem));
+}
+
+.observationCard h2 {
+    margin: 0 0 clamp(0.5rem, 1vh, 0.8rem);
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.35vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.observationCard p {
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.76rem, 0.98vw, 1.02rem);
+    font-weight: 400;
+    line-height: 1.55;
+    text-align: right;
+}

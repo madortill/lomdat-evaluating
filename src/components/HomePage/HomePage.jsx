@@ -31,12 +31,12 @@ const HomePage = () => {
                     <p>יום המיון</p>
                 </div>
 
-                <div className={`${styles.pinkBookDiv} ${styles.bookDiv}`}>
+                <div className={`${styles.pinkBookDiv} ${styles.bookDiv}`} onClick={() => {sessionStorage.setItem("currentPart", "part2"); navigate("/content");}}>
                     <img src={pinkBook} alt="pink Book" className={styles.pinkBook} />
                     <p>עקרונות המיון</p>
                 </div>
 
-                <div className={`${styles.blueBookDiv} ${styles.bookDiv}`}>
+                <div className={`${styles.blueBookDiv} ${styles.bookDiv}`} onClick={() => {sessionStorage.setItem("currentPart", "part3"); navigate("/content");}}>
                     <img src={blueBook} alt="blue Book" className={styles.blueBook} />
                     <p>סימולציות</p>
                 </div>

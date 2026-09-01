@@ -3,7 +3,7 @@
     src: url("./assets/fonts/RinatZigdon.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 * {
@@ -72,4 +72,43 @@ html {
     font-size: clamp(1.5rem, 5vw, 4rem);
     font-style: normal;
     line-height: normal;
+}
+
+.app-loading {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+    background: #FFFCE9;
+
+    color: #65ACC7;
+
+    font-family: "PloniB";
+    font-size: 1.2rem;
+}
+
+
+.app-loading-spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    border: 0.3rem solid rgba(46, 134, 166, 0.2);
+    border-top-color: #65ACC7;
+
+    border-radius: 50%;
+
+    animation: loading-spin 0.8s linear infinite;
+}
+
+
+@keyframes loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

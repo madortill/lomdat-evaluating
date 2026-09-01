@@ -5,12 +5,14 @@ import questionBg from "../../../../assets/img/spiralQuestiongBg.svg";
 
 const Question = ({
     question = "שאלה",
+    subtitle = "",
     answers = [],
     checkText = "בדיקה",
     tryAgainText = "לניסיון נוסף",
     // successText = "לתשובתך נכון",
     resetText = "איפוס השאלה",
-    multipleCorrect = false
+    multipleCorrect = false,
+    smallTitle = false
 }) => {
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [checked, setChecked] = useState(false);
@@ -75,11 +77,19 @@ const Question = ({
             return `${styles.answerBtn} ${styles.selectedAnswer}`;
         }
 
-        if (checked && answer.isCorrect) {
+        if (!checked) {
+            return styles.answerBtn;
+        }
+
+        if (isCorrect && isSelected) {
             return `${styles.answerBtn} ${styles.correctAnswer}`;
         }
 
-        if (checked && isSelected && !answer.isCorrect) {
+        if (multipleCorrect && isSelected && answer.isCorrect) {
+            return `${styles.answerBtn} ${styles.partialAnswer}`;
+        }
+
+        if (isSelected && !answer.isCorrect) {
             return `${styles.answerBtn} ${styles.wrongAnswer}`;
         }
 
@@ -89,9 +99,11 @@ const Question = ({
     const checkDisabled = selectedAnswers.length === 0 || checked;
 
     const titleLengthClass =
-        question.length > 115
-            ? styles.longTitle
-            : "";
+        smallTitle || question.length > 170
+            ? styles.extraLongTitle
+            : question.length > 115
+                ? styles.longTitle
+                : "";
 
     return (
         <section className={styles.page} dir="rtl">
@@ -99,7 +111,13 @@ const Question = ({
                 <img src={questionBg} alt="" className={styles.boardBg} />
 
                 <div className={styles.content}>
-                    <h1 className={`${styles.title} ${titleLengthClass}`}>{question}</h1>
+                    <div className={styles.titleBlock}>
+                        <h1 className={`${styles.title} ${titleLengthClass}`}>{question}</h1>
+
+                        {subtitle && (
+                            <p className={styles.subtitle}>{subtitle}</p>
+                        )}
+                    </div>
 
                     <div className={`${styles.answersArea} ${answers.length === 5 ? styles.fiveAnswers : ""}`}>
                         {answers.map((answer) => (

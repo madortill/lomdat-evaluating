@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "./MultiDragQuestions.module.css";
 
 import questionBg from "../../../../assets/img/spiralQuestiongBg.svg";
@@ -111,7 +111,7 @@ const defaultItems = [
         id: "17",
         text: "גמישות מחשבתית / יצירתיות",
         correctCategoryId: "instruction"
-    },
+    }
 ];
 
 const createEmptyAnswers = (categories) => {
@@ -121,27 +121,61 @@ const createEmptyAnswers = (categories) => {
     }, {});
 };
 
+const normalizeCategories = ({ categories, targets }) => {
+    const sourceCategories = categories || targets || defaultCategories;
+
+    return sourceCategories.map((category) => ({
+        id: category.id,
+        title: category.title || category.label || "",
+        description: category.description || category.text || ""
+    }));
+};
+
+const normalizeItems = (items) => {
+    const sourceItems = items || defaultItems;
+
+    return sourceItems.map((item) => ({
+        id: item.id,
+        text: item.text || item.label || "",
+        description: item.description || "",
+        correctCategoryId: item.correctCategoryId || item.correctTargetId
+    }));
+};
+
 const MultiDragQuestions = ({
-    question = "מדדי הערכה",
+    question,
+    title,
     instruction = "גררו את ההיגדים למדד המתאים",
-    categories = defaultCategories,
-    items = defaultItems,
+    categories,
+    targets,
+    items,
+    largeCategoryItemsMargin = false,
     checkText = "בדיקה",
     tryAgainText = "לניסיון נוסף",
     resetText = "איפוס השאלה"
 }) => {
-    const [answers, setAnswers] = useState(() => createEmptyAnswers(categories));
+    const resolvedQuestion = question || title || "מדדי הערכה";
+
+    const normalizedCategories = useMemo(() => {
+        return normalizeCategories({ categories, targets });
+    }, [categories, targets]);
+
+    const normalizedItems = useMemo(() => {
+        return normalizeItems(items);
+    }, [items]);
+
+    const [answers, setAnswers] = useState(() => createEmptyAnswers(normalizedCategories));
     const [draggedItemId, setDraggedItemId] = useState(null);
     const [selectedItemId, setSelectedItemId] = useState(null);
     const [checked, setChecked] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
 
     const placedIds = Object.values(answers).flat();
-    const currentItem = items.find((item) => !placedIds.includes(item.id));
-    const isComplete = placedIds.length === items.length;
+    const currentItem = normalizedItems.find((item) => !placedIds.includes(item.id));
+    const isComplete = placedIds.length === normalizedItems.length;
 
     const getItemById = (itemId) => {
-        return items.find((item) => item.id === itemId);
+        return normalizedItems.find((item) => item.id === itemId);
     };
 
     const removeItemFromAllCategories = (currentAnswers, itemId) => {
@@ -217,7 +251,7 @@ const MultiDragQuestions = ({
             return;
         }
 
-        const result = items.every((item) => {
+        const result = normalizedItems.every((item) => {
             return answers[item.correctCategoryId]?.includes(item.id);
         });
 
@@ -231,7 +265,7 @@ const MultiDragQuestions = ({
     };
 
     const handleReset = () => {
-        setAnswers(createEmptyAnswers(categories));
+        setAnswers(createEmptyAnswers(normalizedCategories));
         setDraggedItemId(null);
         setSelectedItemId(null);
         setChecked(false);
@@ -258,12 +292,12 @@ const MultiDragQuestions = ({
                 <img src={questionBg} alt="" className={styles.boardBg} />
 
                 <div className={styles.content}>
-                    <h1 className={styles.title}>{question}</h1>
+                    <h1 className={styles.title}>{resolvedQuestion}</h1>
 
                     <p className={styles.instruction}>{instruction}</p>
 
                     <div className={styles.categoriesArea}>
-                        {categories.map((category) => (
+                        {normalizedCategories.map((category) => (
                             <button
                                 key={category.id}
                                 type="button"
@@ -274,7 +308,16 @@ const MultiDragQuestions = ({
                             >
                                 <h2 className={styles.categoryTitle}>{category.title}</h2>
 
-                                <div className={styles.categoryItems}>
+                                {category.description && (
+                                    <p className={styles.categoryDescription}>
+                                        {category.description}
+                                    </p>
+                                )}
+
+                                <div
+                                    className={`${styles.categoryItems} ${largeCategoryItemsMargin ? styles.largeCategoryItemsMargin : ""
+                                        }`}
+                                >
                                     {answers[category.id].map((itemId) => {
                                         const item = getItemById(itemId);
 
@@ -310,8 +353,7 @@ const MultiDragQuestions = ({
                                 key={currentItem.id}
                                 type="button"
                                 draggable
-                                className={`${styles.dragItem} ${selectedItemId === currentItem.id ? styles.selectedItem : ""
-                                    }`}
+                                className={`${styles.dragItem} ${selectedItemId === currentItem.id ? styles.selectedItem : ""}`}
                                 onDragStart={() => handleDragStart(currentItem.id)}
                                 onClick={() => handleItemClick(currentItem.id)}
                             >

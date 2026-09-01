@@ -37,7 +37,7 @@
     font-weight: 700;
     text-align: center;
     line-height: 1.35;
-    margin: 0 0 clamp(1rem, 2vh, 1.8rem);
+    margin: 0;
     max-width: 44rem;
 }
 
@@ -45,6 +45,12 @@
     font-size: clamp(1.05rem, 1.65vw, 1.8rem);
     line-height: 1.28;
     max-width: 48rem;
+}
+
+.extraLongTitle {
+    font-size: clamp(0.9rem, 1.42vw, 1.5rem);
+    line-height: 1.22;
+    max-width: 50rem;
 }
 
 .answersArea {
@@ -158,4 +164,30 @@
 
 .resetBtn:hover {
     text-decoration: underline;
+}
+
+.titleBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 clamp(1rem, 2vh, 1.8rem);
+}
+
+.titleBlock .title {
+    margin-bottom: 0;
+}
+
+.subtitle {
+    margin: clamp(0.35rem, 0.7vh, 0.55rem) 0 0;
+    color: #88563B;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1.1vw, 1.15rem);
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.partialAnswer {
+    background-color: #E8B85E;
+    color: white;
 }
