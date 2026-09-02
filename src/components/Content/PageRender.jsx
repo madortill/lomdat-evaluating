@@ -15,6 +15,8 @@ import Carousel from "./Part2/Carousel/Carousel";
 import Eraser from "./Part2/Eraser/Eraser";
 import FlipCards from "./Part2/FlipCards/FlipCards";
 import MultipleSelect from "./Part2/MultipleSelect/MultipleSelect";
+import Schedule from "./Part3/Schedule/Schedule";
+import ExerciseIntro from "./Part3/ExerciseIntro/ExerciseIntro";
 
 const pageTypes = {
     calculatorTopics: CalculatorTopics,
@@ -33,7 +35,9 @@ const pageTypes = {
     carousel: Carousel,
     eraser: Eraser,
     flipCards: FlipCards,
-    multipleSelect: MultipleSelect
+    multipleSelect: MultipleSelect,
+    schedule: Schedule,
+    exerciseIntro: ExerciseIntro
 };
 
 const customPages = {};

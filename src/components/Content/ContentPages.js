@@ -605,15 +605,35 @@ export const parts = {
     },
 
     part3: {
-        title: "סימולציות",
+        title: "תרגילי מצב",
         pages: [
             {
-                type: "text",
+                type: "openingNote",
                 label: "פתיחה",
-                navId: "part3Opening",
+                navId: "part3OpeningNote",
                 props: {
-                    title: "סימולציות",
-                    text: "בחלק זה נתנסה בסיטואציות המדמות החלטות והערכות מתוך יום המיון."
+                    title: "תרגילי מצב",
+                    paragraphs: [
+                        "בחלק הבא אתם תתנסו בלהיות מעריכים ביום מיון. תצפו בשלושה תרגילים שהמתמיינים ביצעו ולאחר מכן יהיה עליכם להעריך אותם על פי ביצועיהם בתרגיל."
+                    ],
+                    noteText: "שימו לב - בצד המסך יופיעו סימניות עם מחוונים המתאימים לכל תרגיל - העיזרו בהן."
+                }
+            },
+            {
+                type: "schedule",
+                label: "לוח זמנים",
+                navId: "part3Schedule",
+                props: {
+                    title: "לוח זמנים מומלץ ליום המיון"
+                }
+            },
+            {
+                type: "exerciseIntro",
+                label: "תרגיל 1",
+                navId: "part3Exercise1Intro",
+                props: {
+                    title: "תרגיל 1 - דיון קבוצתי",
+                    instruction: "לחצו על המספריים למטה כדי לקרוא עוד"
                 }
             }
         ]

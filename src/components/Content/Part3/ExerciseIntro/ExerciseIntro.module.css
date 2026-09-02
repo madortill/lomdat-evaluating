@@ -1,0 +1,202 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 17vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.65rem, 2.6vw, 2.85rem);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.instruction {
+    position: absolute;
+    top: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #7194B4;
+    font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+}
+
+.cursorIcon {
+    width: clamp(1rem, 1.5vw, 1.5rem);
+    height: auto;
+    display: block;
+}
+
+.cardsGrid {
+    position: absolute;
+    top: 33vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(58rem, 78vw);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.2rem, 3vw, 3rem);
+    align-items: start;
+    justify-items: center;
+}
+
+.card {
+    position: relative;
+    width: clamp(8.2rem, 12vw, 14rem);
+    min-height: clamp(12rem, 17vw, 18rem);
+    border: none;
+    border-radius: 0.45rem;
+    background-color: #BFE1E7;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.08);
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.card:hover {
+    transform: translateY(-0.12rem);
+    filter: brightness(1.03);
+}
+
+.cardTop {
+    position: relative;
+    height: clamp(11.2rem, 16vw, 17.2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.7rem, 1vw, 1rem);
+    box-sizing: border-box;
+    transition: height 0.36s ease, padding 0.36s ease;
+}
+
+.openedCard .cardTop {
+    height: clamp(6.8rem, 9vw, 9.2rem);
+    padding: clamp(0.45rem, 0.7vw, 0.7rem);
+}
+
+.cardTop h2 {
+    position: absolute;
+    bottom: clamp(0.8rem, 1.3vw, 1.35rem);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1.25vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    transition: bottom 0.36s ease, font-size 0.36s ease;
+}
+
+.openedCard .cardTop h2 {
+    bottom: clamp(0.45rem, 0.8vw, 0.8rem);
+    font-size: clamp(0.72rem, 1vw, 1.05rem);
+}
+
+.cardIcon {
+    width: clamp(4.2rem, 7vw, 8rem);
+    height: auto;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-0.8rem);
+    transition: width 0.36s ease, transform 0.36s ease;
+}
+
+.openedCard .cardIcon {
+    width: clamp(2.6rem, 4vw, 4.8rem);
+    transform: translateY(-0.45rem);
+    max-height: 9vh;
+}
+
+.cutLine {
+    position: relative;
+    height: clamp(1.15rem, 1.8vw, 1.6rem);
+    background-color: #BFE1E7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    z-index: 4;
+}
+
+.cutLine span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 0.08rem dashed #8F5A3C;
+    transform: translateY(-50%);
+}
+
+.scissors {
+    --scissors-size: clamp(1.25rem, 2vw, 1.9rem);
+    position: absolute;
+    right: 0.1rem;
+    top: 50%;
+    width: var(--scissors-size);
+    height: auto;
+    transform: translateY(-50%) rotate(180deg) scaleX(-1);
+    pointer-events: none;
+    user-select: none;
+    transition: right 0.36s ease;
+}
+
+.openedCard .scissors {
+    right: calc(100% - var(--scissors-size) - 0.1rem);
+}
+
+.cardReveal {
+    height: 0;
+    background-color: #538CA2;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 clamp(0.65rem, 1vw, 0.95rem);
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: height 0.36s ease, padding 0.36s ease;
+}
+
+.openedCard .cardReveal {
+    height: clamp(11rem, 16vw, 17rem);
+    padding: clamp(0.8rem, 1.1vw, 1.1rem);
+}
+
+.cardReveal p {
+    margin: 0;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.openedCard {
+    background-color: #BFE1E7;
+}
