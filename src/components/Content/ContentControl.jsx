@@ -70,6 +70,17 @@ const ContentControl = () => {
         };
     };
 
+    const finishPart = () => {
+        sessionStorage.setItem(`completed_${currentPartKey}`, "true");
+
+        if (currentPartKey === "part3") {
+            navigate("/end");
+            return;
+        }
+
+        navigate("/home");
+    };
+
     const handleNext = () => {
         const groupBounds = getGroupBounds(step);
 
@@ -79,8 +90,7 @@ const ContentControl = () => {
                 return;
             }
 
-            sessionStorage.setItem(`completed_${currentPartKey}`, "true");
-            navigate("/home");
+            finishPart();
             return;
         }
 
@@ -89,8 +99,7 @@ const ContentControl = () => {
             return;
         }
 
-        sessionStorage.setItem(`completed_${currentPartKey}`, "true");
-        navigate("/home");
+        finishPart();
     };
 
     const handleBack = () => {

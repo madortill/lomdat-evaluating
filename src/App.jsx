@@ -7,6 +7,7 @@ import "./App.css";
 import OpeningPage from "./components/OpeningPage/OpeningPage";
 import HomePage from "./components/HomePage/HomePage";
 import ContentControl from "./components/Content/ContentControl";
+import EndPage from "./components/EndPage/EndPage";
 
 import { preloadAssets } from "./utils/preloadAssets";
 
@@ -37,7 +38,7 @@ function App() {
         <Route path="/" element={<OpeningPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/content" element={<ContentControl />} />
-        {/* <Route path="/end"   element={<EndPage />} /> */}
+        <Route path="/end"   element={<EndPage />} />
       </Routes>
     </div>
   );

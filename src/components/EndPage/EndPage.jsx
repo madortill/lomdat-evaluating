@@ -7,7 +7,7 @@ import smallTable from "../../assets/img/smallTable.svg";
 import washiOrange from "../../assets/img/washiTapeOrange.svg";
 import washiBordeaux from "../../assets/img/washiTapeBordeaux.svg";
 import bunting from "../../assets/img/bannerMain.svg";
-import line from "../../assets/img/line.svg";
+import endPopupBgBtn from "../../assets/img/endPopupBgBtn.svg";
 
 import peer from "../../assets/img/logos/peer.svg";
 import madorTil from "../../assets/img/logos/till.svg";
@@ -38,9 +38,9 @@ const EndPage = () => {
                 className={`${styles.washi} ${styles.washiRight}`}
             />
 
-            <div className={styles.logos}>
-                <img src={peer} className={styles.peer} alt="logo" />
-                <img src={madorTil} className={styles.madorTil} alt="logo" />
+            <div className="logos">
+                <img src={peer} className="peer" alt="logo" />
+                <img src={madorTil} className="madorTil" alt="logo" />
             </div>
 
             <div className={styles.boardArea}>
@@ -55,35 +55,23 @@ const EndPage = () => {
                         </div>
 
                         <div className={styles.buttonsArea}>
-                            <div className={styles.buttonWrapper}>
-                                <img src={line} alt="" className={styles.line} />
+                            <button
+                                type="button"
+                                className={styles.endBtn}
+                                onClick={handleBackToLearn}
+                            >
+                                <img src={endPopupBgBtn} alt="" className={styles.endBtnBg} />
+                                <span className={styles.endBtnText}>→ לחזור ללמוד</span>
+                            </button>
 
-                                <button
-                                    type="button"
-                                    className={styles.endBtn}
-                                    onClick={handleRestart}
-                                >
-                                    להתחיל מחדש
-                                    <span>←</span>
-                                </button>
-
-                                <img src={line} alt="" className={styles.line} />
-                            </div>
-
-                            <div className={styles.buttonWrapper}>
-                                <img src={line} alt="" className={styles.line} />
-
-                                <button
-                                    type="button"
-                                    className={styles.endBtn}
-                                    onClick={handleBackToLearn}
-                                >
-                                    לחזור ללמוד
-                                    <span>←</span>
-                                </button>
-
-                                <img src={line} alt="" className={styles.line} />
-                            </div>
+                            <button
+                                type="button"
+                                className={styles.endBtn}
+                                onClick={handleRestart}
+                            >
+                                <img src={endPopupBgBtn} alt="" className={styles.endBtnBg} />
+                                <span>להתחיל מחדש ←</span>
+                            </button>
                         </div>
                     </div>
                 </div>
