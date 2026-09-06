@@ -84,7 +84,7 @@
 
 .clockContent {
     position: absolute;
-    inset: 24% 22%;
+    inset: 31% 22% 17% 22%;
     z-index: 4;
     display: flex;
     flex-direction: column;
@@ -191,7 +191,7 @@
 }
 
 .openedStep {
-    background-color: #4F8BBC;
+    background-color: #8ba86d;
 }
 
 .activeStep {

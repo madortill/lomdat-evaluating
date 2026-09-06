@@ -42,12 +42,20 @@
 .rowShell {
     --pencil-size: clamp(2.9rem, 4.5vw, 4.8rem);
     --side-space: clamp(2.6rem, 4.6vw, 5.2rem);
+
     --pencil-right-offset: calc(var(--side-space) - clamp(0.4rem, 0.8vw, 0.8rem));
     --pencil-left-offset: calc(var(--side-space) + clamp(0.3rem, 0.5vw, 1rem));
-    --pencil-rotate-right: 15deg;
-    --pencil-rotate-left: 13deg;
+
+    --pencil-start-x: calc(100% - var(--pencil-right-offset) - var(--pencil-size));
+    --pencil-end-x: var(--pencil-left-offset);
+
+    --pencil-rotate-closed: 15deg;
+    --pencil-rotate-open: 13deg;
     --pencil-y: -63%;
-    --write-duration: 0.5s;
+
+    --line-duration: 0.22s;
+    --text-duration: 0.42s;
+    --write-duration: 0.86s;
 
     position: relative;
     width: 100%;
@@ -67,7 +75,10 @@
     overflow: hidden;
     padding: 0 clamp(1rem, 2vw, 2rem);
     box-sizing: border-box;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
 }
 
 .row:hover {
@@ -99,12 +110,14 @@
     justify-content: center;
     text-align: center;
     opacity: 1;
-    transition: opacity 0.22s ease;
+    transition: opacity 0.16s ease;
+    transition-delay: var(--write-duration);
 }
 
-.hiddenTitle {
+.rowShellOpen .topicTitle {
     opacity: 0;
     pointer-events: none;
+    transition-delay: 0s;
 }
 
 .writingContent {
@@ -116,13 +129,14 @@
     justify-content: center;
     gap: clamp(0.8rem, 1.5vw, 1.5rem);
     pointer-events: none;
+    direction: rtl;
 }
 
 .topicDescription {
     margin: 0;
     color: #62351F;
     font-family: "RinatZigdon", "Fredoka", sans-serif;
-    font-size: clamp(0.75rem, 1.05vw, 1.1rem);
+    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
     font-weight: 600;
     line-height: 1.45;
     text-align: center;
@@ -130,23 +144,24 @@
     opacity: 0;
     transform: translateY(0.12rem);
     clip-path: inset(0 0 0 100%);
-
     transition:
-        clip-path var(--write-duration) linear,
-        opacity 0.25s ease,
-        transform 0.45s ease;
+        clip-path var(--text-duration) linear,
+        opacity 0.18s ease,
+        transform 0.28s ease;
+    transition-delay:
+        var(--line-duration),
+        var(--line-duration),
+        var(--line-duration);
 }
 
-.descriptionOpen {
+.rowShellOpen .topicDescription {
     opacity: 1;
     transform: translateY(0);
     clip-path: inset(0 0 0 0);
-}
-
-.descriptionClosed {
-    opacity: 0;
-    transform: translateY(0.12rem);
-    clip-path: inset(0 0 0 100%);
+    transition-delay:
+        var(--line-duration),
+        var(--line-duration),
+        var(--line-duration);
 }
 
 .squiggleLine {
@@ -165,42 +180,55 @@
     background-position: center;
     background-size: 3rem 1rem;
     clip-path: inset(0 0 0 100%);
-    transition: clip-path var(--write-duration) linear;
+    transition: clip-path var(--line-duration) linear;
 }
 
-.squiggleOpen::before {
+.squiggleRight::before {
+    transition-delay: calc(var(--line-duration) + var(--text-duration));
+}
+
+.squiggleLeft::before {
+    transition-delay: 0s;
+}
+
+.rowShellOpen .squiggleRight::before {
     clip-path: inset(0 0 0 0);
+    transition-delay: 0s;
+}
+
+.rowShellOpen .squiggleLeft::before {
+    clip-path: inset(0 0 0 0);
+    transition-delay: calc(var(--line-duration) + var(--text-duration));
 }
 
 .pencil {
     position: absolute;
     top: 50%;
+    left: var(--pencil-start-x);
     width: var(--pencil-size);
     height: auto;
     z-index: 8;
     pointer-events: none;
+    user-select: none;
     transition:
-        right var(--write-duration) linear,
         left var(--write-duration) linear,
         transform var(--write-duration) linear;
 }
 
-.pencilRight {
-    right: var(--pencil-right-offset);
-    left: auto;
-    transform: translateY(var(--pencil-y)) rotate(var(--pencil-rotate-right));
+.pencilClosed {
+    left: var(--pencil-start-x);
+    transform: translateY(var(--pencil-y)) rotate(var(--pencil-rotate-closed));
 }
 
-.pencilLeft {
-    left: var(--pencil-left-offset);
-    right: auto;
-    transform: translateY(var(--pencil-y)) rotate(var(--pencil-rotate-left));
+.pencilOpen {
+    left: var(--pencil-end-x);
+    transform: translateY(var(--pencil-y)) rotate(var(--pencil-rotate-open));
 }
 
 .check {
     position: absolute;
-    top: 50%;
-    left: clamp(0.7rem, 1.2vw, 1.2rem);
+    top: 30%;
+    left: clamp(0.2rem, 0.5vw, 1.2rem);
     transform: translateY(-50%);
     width: clamp(1.1rem, 1.7vw, 1.55rem);
     height: clamp(1.1rem, 1.7vw, 1.55rem);

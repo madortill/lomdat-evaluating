@@ -67,7 +67,10 @@ const Pencils = ({
                         const isSeen = seen.includes(index);
 
                         return (
-                            <div key={topic.id} className={styles.rowShell}>
+                            <div
+                                key={topic.id}
+                                className={`${styles.rowShell} ${isOpen ? styles.rowShellOpen : ""}`}
+                            >
                                 <button
                                     type="button"
                                     className={`${styles.row} ${isOpen ? styles.rowOpen : ""}`}
@@ -76,29 +79,21 @@ const Pencils = ({
                                     {isSeen && <span className={styles.check}>✓</span>}
 
                                     <div className={styles.rowText}>
-                                        <p
-                                            className={`${styles.topicTitle} ${isOpen ? styles.hiddenTitle : ""
-                                                }`}
-                                        >
+                                        <p className={styles.topicTitle}>
                                             {topic.title}
                                         </p>
 
                                         <div className={styles.writingContent}>
                                             <span
-                                                className={`${styles.squiggleLine} ${styles.squiggleRight} ${isOpen ? styles.squiggleOpen : ""
-                                                    }`}
+                                                className={`${styles.squiggleLine} ${styles.squiggleRight}`}
                                             ></span>
 
-                                            <p
-                                                className={`${styles.topicDescription} ${isOpen ? styles.descriptionOpen : styles.descriptionClosed
-                                                    }`}
-                                            >
+                                            <p className={styles.topicDescription}>
                                                 {topic.text}
                                             </p>
 
                                             <span
-                                                className={`${styles.squiggleLine} ${styles.squiggleLeft} ${isOpen ? styles.squiggleOpen : ""
-                                                    }`}
+                                                className={`${styles.squiggleLine} ${styles.squiggleLeft}`}
                                             ></span>
                                         </div>
                                     </div>
@@ -107,8 +102,8 @@ const Pencils = ({
                                 <img
                                     src={pencil}
                                     alt=""
-                                    className={`${styles.pencil} ${isOpen ? styles.pencilLeft : styles.pencilRight
-                                        }`}
+                                    className={`${styles.pencil} ${isOpen ? styles.pencilOpen : styles.pencilClosed}`}
+                                    draggable="false"
                                 />
                             </div>
                         );

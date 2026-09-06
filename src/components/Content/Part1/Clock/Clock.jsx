@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import styles from "./Clock.module.css";
 
 import clockImg from "../../../../assets/img/clock.svg";
@@ -18,7 +18,7 @@ const steps = [
     },
     {
         title: "שאלון ביוגרפי",
-        description: "שאלון ביוגרפי סגור למילויטרום ביצוע הראיון האישי וכתנאי לו.",
+        description: "שאלון ביוגרפי סגור למילוי טרום ביצוע הראיון האישי וכתנאי לו.",
         shortLabel: "שלב 2",
         formButtonText: "טופס זיהוי",
         hasForm: true,
@@ -47,14 +47,7 @@ const steps = [
 
 const Clock = () => {
     const [activeStep, setActiveStep] = useState(0);
-    const [visitedSteps, setVisitedSteps] = useState([]);
-
-    const nextRequiredIndex = useMemo(() => {
-        const nextIndex = steps.findIndex((_, index) => !visitedSteps.includes(index));
-        return nextIndex === -1 ? steps.length - 1 : nextIndex;
-    }, [visitedSteps]);
-
-    const allVisited = visitedSteps.length >= steps.length;
+    const [visitedSteps, setVisitedSteps] = useState([0]);
     const [popupStep, setPopupStep] = useState(null);
 
     const activeStepData = steps[activeStep];
@@ -70,40 +63,24 @@ const Clock = () => {
     };
 
     const handleStepClick = (index) => {
-        const isVisited = visitedSteps.includes(index);
-        const isNextRequired = index === nextRequiredIndex;
-        const isAllowed = allVisited || isVisited || isNextRequired;
-
-        if (!isAllowed) {
-            return;
-        }
-
         setActiveStep(index);
         saveVisitedStep(index);
     };
 
     const getStepButtonClassName = (index) => {
-        const isActive = visitedSteps.includes(index) && index === activeStep;
+        const isActive = index === activeStep;
         const isVisited = visitedSteps.includes(index);
-        const isNextRequired = index === nextRequiredIndex;
-        const isAllowed = allVisited || isVisited || isNextRequired;
 
         if (isActive) {
             return `${styles.stepBtn} ${styles.activeStep}`;
         }
 
-        if (isNextRequired && !allVisited) {
-            return `${styles.stepBtn} ${styles.nextStep}`;
-        }
-
-        if (isAllowed) {
+        if (isVisited) {
             return `${styles.stepBtn} ${styles.openedStep}`;
         }
 
-        return `${styles.stepBtn} ${styles.lockedStep}`;
+        return `${styles.stepBtn} ${styles.openedStep}`;
     };
-
-    const visibleSteps = steps.filter((_, index) => visitedSteps.includes(index));
 
     return (
         <section className={styles.page} dir="rtl">
@@ -158,7 +135,7 @@ const Clock = () => {
                         <h2>{activeStepData.title}</h2>
                         <p>{activeStepData.description}</p>
 
-                        {activeStepData.hasForm && visitedSteps.includes(activeStep) && (
+                        {activeStepData.hasForm && (
                             <button
                                 type="button"
                                 className={styles.formBtn}
@@ -172,19 +149,17 @@ const Clock = () => {
                 </div>
             </div>
 
-            {visibleSteps.length > 0 && (
-                <div className={styles.timeline}>
-                    {visibleSteps.map((step, index) => (
-                        <div key={step.title} className={styles.timelineItem}>
-                            <span>{step.title}</span>
+            <div className={styles.timeline}>
+                {steps.map((step, index) => (
+                    <div key={step.title} className={styles.timelineItem}>
+                        <span>{step.title}</span>
 
-                            {index < visibleSteps.length - 1 && (
-                                <img src={smallArrow} alt="" className={styles.timelineArrow} />
-                            )}
-                        </div>
-                    ))}
-                </div>
-            )}
+                        {index < steps.length - 1 && (
+                            <img src={smallArrow} alt="" className={styles.timelineArrow} />
+                        )}
+                    </div>
+                ))}
+            </div>
 
             {popupStep !== null && (
                 <div className={styles.popupOverlay}>
