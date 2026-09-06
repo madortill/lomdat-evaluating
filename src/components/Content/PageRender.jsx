@@ -17,6 +17,8 @@ import FlipCards from "./Part2/FlipCards/FlipCards";
 import MultipleSelect from "./Part2/MultipleSelect/MultipleSelect";
 import Schedule from "./Part3/Schedule/Schedule";
 import ExerciseIntro from "./Part3/ExerciseIntro/ExerciseIntro";
+import ExerciseVideoTable from "./Part3/ExerciseVideoTable/ExerciseVideoTable";
+import ExerciseQuestion from "./Part3/ExerciseQuestion/ExerciseQuestion";
 
 const pageTypes = {
     calculatorTopics: CalculatorTopics,
@@ -37,7 +39,9 @@ const pageTypes = {
     flipCards: FlipCards,
     multipleSelect: MultipleSelect,
     schedule: Schedule,
-    exerciseIntro: ExerciseIntro
+    exerciseIntro: ExerciseIntro,
+    exerciseVideoTable: ExerciseVideoTable,
+    exerciseQuestion: ExerciseQuestion
 };
 
 const customPages = {};

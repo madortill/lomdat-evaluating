@@ -53,6 +53,11 @@ const ExerciseIntro = ({
         });
     };
 
+    const cardsToRender = cards.map((card, index) => ({
+        ...(defaultCards[index] || {}),
+        ...card
+    }));
+
     return (
         <section className={styles.page} dir="rtl">
             <h1 className={styles.title}>{title}</h1>
@@ -63,7 +68,7 @@ const ExerciseIntro = ({
             </p>
 
             <div className={styles.cardsGrid}>
-                {cards.map((card) => {
+                {cardsToRender.map((card) => {
                     const isOpened = openedCards.includes(card.id);
 
                     return (

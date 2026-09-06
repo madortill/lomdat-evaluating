@@ -1,0 +1,339 @@
+.page {
+    position: absolute;
+    inset: 0;
+    background-color: #FFFCE9;
+    overflow: hidden;
+    direction: rtl;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: 16vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.55rem, 2.55vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.instruction {
+    position: absolute;
+    top: 23.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(66rem, 84vw);
+    margin: 0;
+    color: #7194B4;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1.15vw, 1.15rem);
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.mainContent {
+    position: absolute;
+    top: 32vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(78rem, 88vw);
+    height: clamp(21rem, 48vh, 31rem);
+    display: grid;
+    grid-template-columns: 1.18fr 0.92fr;
+    gap: clamp(1rem, 2vw, 1.8rem);
+    align-items: stretch;
+}
+
+.videoBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    background-color: #1D1D1D;
+    box-shadow: 0 0.1rem 0.25rem rgba(98, 53, 31, 0.15);
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background-color: #1D1D1D;
+}
+
+.videoPlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #D6EAF0, #F6D8A9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    text-align: center;
+}
+
+.playIcon {
+    width: clamp(3.5rem, 5vw, 5rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #62351F;
+    color: white;
+    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0.2rem;
+    box-sizing: border-box;
+}
+
+.videoPlaceholder p {
+    margin: 1rem 0 0;
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    font-weight: 700;
+}
+
+.tablePanel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.6rem;
+    background-color: #FFECD2;
+    padding: clamp(0.7rem, 1vw, 1rem);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.25rem, 0.45vw, 0.45rem);
+    margin-bottom: clamp(0.55rem, 1vh, 0.85rem);
+}
+
+.tabBtn {
+    min-height: clamp(2rem, 3.2vw, 2.7rem);
+    border: none;
+    border-radius: 0.35rem;
+    background-color: #5FA9C8;
+    color: white;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 0.9vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.15;
+    padding: 0.25rem 0.35rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease, filter 0.15s ease;
+}
+
+.tabBtn:hover {
+    transform: translateY(-0.05rem);
+    filter: brightness(1.04);
+}
+
+.activeTab {
+    background-color: #174D62;
+}
+
+.tableCard {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    border-radius: 0.55rem;
+    background-color: white;
+    padding: clamp(0.8rem, 1.2vw, 1.15rem);
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tableCard::-webkit-scrollbar {
+    width: 0.35rem;
+}
+
+.tableCard::-webkit-scrollbar-track {
+    background-color: #E6E6E6;
+    border-radius: 999rem;
+}
+
+.tableCard::-webkit-scrollbar-thumb {
+    background-color: #BEBEBE;
+    border-radius: 999rem;
+}
+
+.tableCard h2 {
+    margin: 0 0 clamp(0.55rem, 1vh, 0.8rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.35vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.tableContent {
+    display: flex;
+    flex-direction: column;
+    border-top: 0.1rem solid #A76542;
+    border-bottom: 0.1rem solid #A76542;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-bottom: 0.1rem solid #A76542;
+}
+
+.tableHeader h3 {
+    margin: 0;
+    padding: clamp(0.45rem, 0.8vh, 0.65rem) clamp(0.4rem, 0.7vw, 0.7rem);
+    color: #ffffff;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.15vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.highHeader {
+    background-color: rgba(55, 110, 7, 0.664);
+    border-left: 0.1rem solid #8F5A3C;
+}
+
+.lowHeader {
+    background-color: rgba(175, 36, 36, 0.712);
+}
+
+.tableRows {
+    display: flex;
+    flex-direction: column;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-bottom: 0.08rem solid #CFA086;
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.tableCell {
+    min-height: clamp(3rem, 5.5vh, 4.2rem);
+    padding: clamp(0.45rem, 0.8vh, 0.7rem) clamp(0.55rem, 0.9vw, 0.85rem);
+    color: #62351F;
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.tableCell p {
+    margin: 0;
+    /* font-family: "RinatZigdon", "Fredoka", sans-serif; */
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.4rem);
+    font-weight: 500;
+}
+
+.highCell {
+    background-color: rgba(140, 179, 105, 0.16);
+    border-left: 0.1rem solid #A76542;
+}
+
+.lowCell {
+    background-color: rgba(217, 92, 92, 0.11);
+}
+
+.tableExpandBtn {
+    position: absolute;
+    right: 0.55rem;
+    bottom: 0.55rem;
+    width: clamp(1.7rem, 2.4vw, 2.2rem);
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 0.35rem;
+    background-color: rgba(255, 255, 255, 0.72);
+    color: #8F5A3C;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.3vw, 1.3rem);
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.16s ease, filter 0.16s ease;
+}
+
+.tableExpandBtn:hover {
+    transform: scale(1.08);
+    filter: brightness(1.04);
+}
+
+.tableCollapseBtn {
+    background-color: #D48824;
+    color: white;
+}
+
+.fullscreenOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    background-color: rgba(0, 0, 0, 0.58);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    box-sizing: border-box;
+}
+
+.fullscreenTableWrapper {
+    width: min(78rem, 90vw);
+    height: min(48rem, 82vh);
+}
+
+.expandedTablePanel {
+    width: 100%;
+    height: 100%;
+    padding: clamp(1rem, 1.4vw, 1.4rem);
+}
+
+.expandedTablePanel .tabBtn {
+    font-size: clamp(0.8rem, 1vw, 1.05rem);
+    min-height: clamp(2.4rem, 3.5vw, 3.2rem);
+}
+
+.expandedTablePanel .tableCard h2 {
+    font-size: clamp(1.4rem, 1.8vw, 2rem);
+}
+
+.expandedTablePanel .tableHeader h3 {
+    font-size: clamp(1rem, 1.35vw, 1.45rem);
+}
+
+.expandedTablePanel .tableCell {
+    font-size: clamp(0.82rem, 1vw, 1.05rem);
+    min-height: clamp(4rem, 7vh, 5.5rem);
+}

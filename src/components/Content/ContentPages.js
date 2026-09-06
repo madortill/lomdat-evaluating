@@ -1,3 +1,12 @@
+import video1 from "../../assets/video/video1.mp4";
+import video2 from "../../assets/video/video2.mp4";
+import video3 from "../../assets/video/video3.mp4";
+
+import portraitMichal from "../../assets/img/portraitMichal.svg";
+import portraitAdi from "../../assets/img/portraitAdi.svg";
+import portraitLior from "../../assets/img/portraitLior.svg";
+import portraitLibi from "../../assets/img/portraitLibi.svg";
+
 export const parts = {
     part1: {
         title: "יום המיון",
@@ -630,10 +639,471 @@ export const parts = {
             {
                 type: "exerciseIntro",
                 label: "תרגיל 1",
-                navId: "part3Exercise1Intro",
+                navGroupId: "part3Exercise1",
                 props: {
                     title: "תרגיל 1 - דיון קבוצתי",
                     instruction: "לחצו על המספריים למטה כדי לקרוא עוד"
+                }
+            },
+            {
+                type: "exerciseVideoTable",
+                label: "תרגיל 1",
+                navId: "part3Exercise1VideoTable",
+                navGroupId: "part3Exercise1",
+                showInNav: false,
+                props: {
+                    exerciseId: "discussion",
+                    title: "תרגיל 1 - דיון קבוצתי",
+                    videoSrc: video1,
+                    posterSrc: ""
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגיל 1",
+                navId: "part3Exercise1QuestionLior",
+                navGroupId: "part3Exercise1",
+                showInNav: false,
+                props: {
+                    title: "העריכו את ליאור על פי מידת התאמתו",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitLior,
+                    portraitAlt: "ליאור",
+                    portraitPositionX: "0%",
+                    portraitPositionY: "19%",
+                    portraitScale: 1.45,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [4, 5]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגיל 1",
+                navId: "part3Exercise1QuestionMichal",
+                navGroupId: "part3Exercise1",
+                showInNav: false,
+                props: {
+                    title: "העריכו את מיכל על פי מידת התאמתה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitMichal,
+                    portraitAlt: "מיכל",
+                    portraitPositionX: "10%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.6,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [4, 5]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגיל 1",
+                navId: "part3Exercise1QuestionAdi",
+                navGroupId: "part3Exercise1",
+                showInNav: false,
+                props: {
+                    title: "העריכו את עדי על פי מידת התאמתה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitAdi,
+                    portraitAlt: "עדי",
+                    portraitPositionX: "5%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.5,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [1, 2, 3]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseIntro",
+                label: "תרגול 2",
+                navId: "part3Exercise2Intro",
+                navGroupId: "part3Exercise2",
+                props: {
+                    title: "תרגול 2 - הצגת נושא / סימולציית הדרכה",
+                    instruction: "לחצו על המספריים למטה כדי לקרוא עוד",
+                    cards: [
+                        {
+                            id: "goal",
+                            title: "המטרה",
+                            text: "התנסות אישית הכוללת קבלת נושא להצגה מתוך אוסף נושאים, הכנה של שיעור קצר להצגה בע״פ והעברה של נושא ספציפי מול הנבחנים האחרים והמעריכים."
+                        },
+                        {
+                            id: "rationale",
+                            title: "הרציונל",
+                            text: "התרגיל מהווה סימולציה ליכולת ההדרכה של המועמדים, להציג נושא בצורה קוהרנטית ומעניינת ולעמוד מול קהל."
+                        },
+                        {
+                            id: "equipment",
+                            title: "ציוד נדרש",
+                            text: "טקסטים, דפי טיוטא, עטים."
+                        },
+                        {
+                            id: "duration",
+                            title: "משך התרגיל",
+                            text: "שבע דקות הכנה ועוד חמש דקות כל מועמד מציג בפני הקבוצה. משכו של כלל התרגיל כשעה."
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseVideoTable",
+                label: "תרגיל 2",
+                navId: "part3Exercise2VideoTable",
+                navGroupId: "part3Exercise2",
+                showInNav: false,
+                props: {
+                    exerciseId: "presentation",
+                    title: "תרגיל 2 - הצגת נושא / סימולציית הדרכה",
+                    videoSrc: video2,
+                    posterSrc: ""
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגיל 2",
+                navId: "part3Exercise2QuestionMichal",
+                navGroupId: "part3Exercise2",
+                showInNav: false,
+                props: {
+                    title: "העריכו את מיכל על פי מידת התאמתה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitMichal,
+                    portraitAlt: "מיכל",
+                    portraitPositionX: "10%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.6,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [1, 2, 3]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגיל 2",
+                navId: "part3Exercise2QuestionAdi",
+                navGroupId: "part3Exercise2",
+                showInNav: false,
+                props: {
+                    title: "העריכו את עדי על פי מידת התאמתה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitAdi,
+                    portraitAlt: "עדי",
+                    portraitPositionX: "5%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.5,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [6, 7]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseIntro",
+                label: "תרגול 3",
+                navId: "part3Exercise3Intro",
+                navGroupId: "part3Exercise3",
+                props: {
+                    title: "תרגול 3 - ביצוע קבוצתי",
+                    instruction: "לחצו על המספריים למטה כדי לקרוא עוד",
+                    cards: [
+                        {
+                            id: "goal",
+                            title: "המטרה",
+                            text: "בחינת סגנון הביצוע, יכולות החשיבה והתכנון, וההשתלבות בצוות של המועמדים – כיצד כל אחד בוחר להתנהל במשימה, עד כמה מאפשר ונותן מקום לאחרים בקבוצה וכד׳.\n\nמשימה זו נועדה לבחון את יכולת העבודה בצוות, קבלת החלטות תחת אילוצים תקציב וזמן, ותהליכי תכנון והוצאה לפועל."
+                        },
+                        {
+                            id: "rationale",
+                            title: "הרציונל",
+                            text: "על הקבוצה מוטלת האחריות לתכנן קורס הכשרה מקצועי תוך שמירה על שיח שיתופי והסכמה רחבה.\n\nבשלב התכנון, הקבוצה נדרשת לגבש קונספט לקורס, לבחור תכנים ולנהל את תקציב הרכש, תוך דיון ושיתוף פעולה.\n\nבשלב ההכנה, הקבוצה מכינה תוצר ויזואלי המציג את לו״ז הקורס והדרישות התקציביות. בשלב זה ישולבו התלבטויות כדי לבדוק גמישות.\n\nבשלב ההצגה, נציג מהקבוצה יציג את התוכנית הסופית בפני הממ״ד תוך מתן דגש על רציונל הבחירות שלהם."
+                        },
+                        {
+                            id: "equipment",
+                            title: "ציוד נדרש",
+                            text: "טבלת מחירים בנספחים, דפי טיוטה, עטים, טושים, בריסטול גדול להצגה."
+                        },
+                        {
+                            id: "duration",
+                            title: "משך התרגיל",
+                            text: "כ־45 דקות."
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseVideoTable",
+                label: "תרגול 3",
+                navId: "part3Exercise3VideoTable",
+                navGroupId: "part3Exercise3",
+                showInNav: false,
+                props: {
+                    exerciseId: "groupExecution",
+                    title: "תרגול 3 - ביצוע קבוצתי",
+                    videoSrc: video3,
+                    posterSrc: ""
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגול 3",
+                navId: "part3Exercise3QuestionMichal",
+                navGroupId: "part3Exercise3",
+                showInNav: false,
+                props: {
+                    title: "העריכו את מיכל על פי מידת ההתאמה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitMichal,
+                    portraitAlt: "מיכל",
+                    portraitAlt: "מיכל",
+                    portraitPositionX: "10%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.6,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [6, 7]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגול 3",
+                navId: "part3Exercise3QuestionAdi",
+                navGroupId: "part3Exercise3",
+                showInNav: false,
+                props: {
+                    title: "העריכו את עדי על פי מידת ההתאמה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitAdi,
+                    portraitAlt: "עדי",
+                    portraitPositionX: "5%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.5,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [1, 2, 3]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [1, 2, 3]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "exerciseQuestion",
+                label: "תרגול 3",
+                navId: "part3Exercise3QuestionLibi",
+                navGroupId: "part3Exercise3",
+                showInNav: false,
+                props: {
+                    title: "העריכו את ליבי על פי מידת ההתאמה",
+                    instruction: "סמנו את מידת ההתאמה בכל אחד מהמדדים (כש-7 מייצג מידת התאמה גבוהה ו-1 מייצג התאמה נמוכה)",
+                    portraitSrc: portraitLibi,
+                    portraitAlt: "ליבי",
+                    portraitPositionX: "0%",
+                    portraitPositionY: "20%",
+                    portraitScale: 1.5,
+                    rows: [
+                        {
+                            id: "instruction",
+                            label: "יכולת הדרכה",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "thinking",
+                            label: "יכולת חשיבה ותכנון",
+                            correctValues: [6, 7]
+                        },
+                        {
+                            id: "leadership",
+                            label: "פיקוד ומנהיגות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "values",
+                            label: "ערכיות",
+                            correctValues: [4, 5]
+                        },
+                        {
+                            id: "interpersonal",
+                            label: "יכולות בין־אישיות",
+                            correctValues: [6, 7]
+                        }
+                    ]
+                }
+            },
+            {
+                type: "endSubjectPopup",
+                label: "סיום הלומדה",
+                navId: "part3EndSubjectPopup",
+                showInNav: false,
+                saveStep: false,
+                hideControls: true,
+                props: {
+                    title: "כל הכבוד!",
+                    subtitle: "סיימתם את החלק האחרון של הלומדה!",
+                    buttonText: "לסיום הלומדה ←"
                 }
             }
         ]
