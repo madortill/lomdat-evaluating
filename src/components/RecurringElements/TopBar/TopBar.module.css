@@ -1,11 +1,12 @@
 .topBar {
     position: absolute;
-    top: 1vw;
-    left: 1vw;
-    right: 1vw;
+    top: clamp(0.6rem, 1vw, 1rem);
+    left: clamp(0.8rem, 1.4vw, 1.4rem);
+    right: clamp(0.8rem, 1.4vw, 1.4rem);
     height: clamp(3.5rem, 5vw, 5rem);
     z-index: 200;
     direction: rtl;
+    font-family: "Fredoka", sans-serif;
 }
 
 .logosOnly {
@@ -15,25 +16,49 @@
 }
 
 .fullTopBar {
-    display: grid;
-    grid-template-columns: auto auto 1fr auto;
-    align-items: start;
-    gap: clamp(0.8rem, 1.5vw, 1.6rem);
+    display: block;
+}
+
+.rightGroup {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(0.1rem, 0.3vw, 1.3rem);
+    z-index: 230;
+    margin-right: 1rem;
 }
 
 .logos {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    justify-content: flex-start;
     gap: clamp(0.6rem, 1vw, 1rem);
+    z-index: 220;
 }
 
 .peer {
     height: clamp(2.5rem, 4.8vw, 4.8rem);
+    width: auto;
+    display: block;
+    pointer-events: none;
+    user-select: none;
 }
 
 .madorTil {
     height: clamp(2.4rem, 4.7vw, 4.7rem);
+    width: auto;
+    display: block;
+    pointer-events: none;
+    user-select: none;
 }
 
 .homeBtn {
@@ -43,26 +68,33 @@
     background: transparent;
     padding: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.18s ease, filter 0.18s ease;
+    margin-top: 0.7rem;
 }
 
 .homeBtn:hover {
     transform: scale(1.06);
-    filter: drop-shadow(0 0 0.3rem #bd813265) drop-shadow(0 0 0.6rem #d4882491);
+    filter:
+        drop-shadow(0 0 0.3rem #bd813265)
+        drop-shadow(0 0 0.6rem #d4882491);
 }
 
 .homeBtn img {
     width: 100%;
     height: 100%;
     display: block;
+    object-fit: contain;
 }
 
 .navWrapper {
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-width: clamp(8rem, 12vw, 13rem);
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(9rem, 14vw, 18rem);
     z-index: 250;
 }
 
@@ -99,36 +131,29 @@
 .partTitleText {
     position: relative;
     z-index: 2;
-    margin-top: clamp(0.45rem, 0.9vw, 0.9rem);
     color: #88563B;
     font-family: "Fredoka", sans-serif;
     font-size: clamp(0.85rem, 1.25vw, 1.45rem);
     font-weight: 700;
     line-height: 1;
+    margin-top: clamp(0.9rem, 1vw, 1rem);
 }
 
 .partTitle:hover {
-    /* transform: scale(1.03); */
     filter: brightness(1.04);
     transform: scale(1.06);
-    /* filter: drop-shadow(0 0 0.3rem #bd813265) drop-shadow(0 0 0.6rem #d4882491); */
 }
 
 .openPartTitle {
     filter: brightness(0.8);
 }
 
-.arrow {
-    font-size: clamp(0.85rem, 1vw, 1.1rem);
-    line-height: 1;
-    margin-top: 0.1rem;
-}
-
 .navMenu {
     position: absolute;
     top: calc(100% + 0.45rem);
-    right: 0;
-    width:80%;
+    right: 50%;
+    transform: translateX(50%);
+    width: 82%;
     display: flex;
     flex-direction: column;
     gap: clamp(0.35rem, 0.55vw, 0.55rem);
@@ -153,7 +178,10 @@
     cursor: pointer;
     white-space: nowrap;
     box-shadow: inset 0 -0.12rem 0 rgba(0, 0, 0, 0.09);
-    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease,
+        color 0.15s ease;
 }
 
 .navItem:hover {
@@ -168,15 +196,19 @@
 }
 
 .progressWrapper {
+    position: absolute;
+    top: clamp(0.1rem, 1vw, 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(12rem, 28vw, 27rem);
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 0;
-    padding-top: clamp(0.8rem, 1.2vw, 1.15rem);
+    z-index: 210;
 }
 
 .progressTrack {
-    width: clamp(12rem, 28vw, 27rem);
+    width: 100%;
     height: clamp(0.75rem, 1.25vw, 1.1rem);
     border-radius: 999rem;
     background-color: #FFE0C2;
@@ -198,14 +230,18 @@
     transition: width 0.25s ease;
 }
 
+.progressFill span {
+    line-height: 1;
+}
+
 @keyframes menuOpen {
     from {
         opacity: 0;
-        transform: translateY(-0.4rem);
+        transform: translateX(50%) translateY(-0.4rem);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(50%) translateY(0);
     }
 }

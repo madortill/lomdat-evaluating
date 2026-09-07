@@ -66,41 +66,51 @@
     font-weight: 700;
 }
 
+/* CHANGED: grid → flex, הוספת transition לtop ולwidth */
 .mainArea {
     position: absolute;
-    top: 40vh;
     left: 50%;
-    width: min(72rem, 86vw);
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
     transform: translateX(-50%);
-    transition: gap 0.45s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    direction: ltr;
+    transition: top 0.55s ease, width 0.55s ease;
 }
 
+/* CHANGED: מחשבון גדול ומרוכז בהתחלה */
 .mainAreaClosed {
+    top: 40vh;
+    width: min(36rem, 50vw);
+    justify-content: center;
+}
+
+/* CHANGED: כשנפתח — עולה למעלה ומתרחב */
+.mainAreaOpen {
+    top: 32vh;
+    width: min(65rem, 90vw);
+    justify-content: flex-start;
     gap: 0;
 }
 
-.mainAreaOpen {
-    gap: clamp(2rem, 5vw, 5rem);
-}
-
+/* CHANGED: הוספת transition לגודל */
 .calculatorWrapper {
     position: relative;
-    width: clamp(16rem, 24vw, 25rem);
-    transform: rotate(-11deg);
+    flex-shrink: 0;
+    transform: rotate(-8deg);
     z-index: 3;
-    transition: translate 0.45s ease;
+    transition: width 0.55s ease;
 }
 
+/* CHANGED: סגור = גדול יותר */
 .mainAreaClosed .calculatorWrapper {
-    translate: 0 0;
+    width: clamp(15rem, 22vw, 22rem);
 }
 
+/* CHANGED: פתוח = קטן יותר, זז שמאלה */
 .mainAreaOpen .calculatorWrapper {
-    translate: -1rem 0;
+    width: clamp(20rem, 25vw, 30rem);
+    margin-left: clamp(0rem, 1vw, 1rem);
 }
 
 .calculatorImg {
@@ -118,7 +128,7 @@
     border-radius: 0.5rem;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.9rem, 1.5vw, 1.55rem);
+    font-size: clamp(1rem, 1.4rem, 1.6rem);
     font-weight: 700;
     line-height: 1.2;
     display: flex;
@@ -147,7 +157,7 @@
     border: none;
     border-radius: 0.35rem;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.65rem, 1.3vw, 1.5rem);
+    font-size: clamp(1rem, 1.2rem, 1.35rem);
     font-weight: 500;
     color: #FFFFFF;
     cursor: pointer;
@@ -180,33 +190,287 @@
     pointer-events: none;
 }
 
-.contentCard {
-    width: min(33rem, 42vw);
-    min-height: 13rem;
-    background-color: #FFE0C2;
+.contentStage {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 min(48rem, 56vw);
+    min-width: min(48rem, 56vw);
+    min-height: min(22rem, 42vh);
+    background-color: #FFE6C4;
     border-radius: 1.2rem;
-    border: 0.08rem solid #D48824;
-    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: visible;
+    box-sizing: border-box;
+    opacity: 1;
+}
+
+.mainAreaOpen .contentStage {
+    position: relative;
+    left: -10rem;
+    top: clamp(-10rem, -5vh, -1rem);
+}
+
+.contentStage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -clamp(9rem, 13vw, 15rem);
+    width: clamp(9rem, 13vw, 15rem);
+    background-color: #FFE6C4;
+    border-radius: 1.2rem 0 0 1.2rem;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* NEW */
+@keyframes slideInFromCalc {
+    from {
+        opacity: 0;
+        transform: translateX(-7rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contentCard {
+    position: relative;
+    z-index: 2;
+    width: min(36rem, 76%);
+    min-height: min(18rem, 34vh);
+    margin-right: clamp(1rem, 2.4vw, 2.5rem);
+    margin-left: auto;
     box-sizing: border-box;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
+    direction: rtl;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.contentCard h2 {
-    font-size: clamp(1.2rem, 1.8vw, 2rem);
-    margin: 0 0 1rem;
+.amountCard,
+.populationCard,
+.teamCard,
+.flowchartCard {
+    padding: clamp(1rem, 1.8vw, 1.8rem);
 }
 
-.contentCard p {
-    font-size: clamp(0.85rem, 1.1vw, 1.15rem);
-    line-height: 1.55;
+.amountContent,
+.populationContent,
+.teamContent,
+.flowchartContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlightNote {
+    position: relative;
+    width: min(29rem, 92%);
+    min-height: clamp(2rem, 3.8vh, 2.8rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: clamp(0.55rem, 1.2vh, 1rem);
+}
+
+.orangeBG1 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.highlightNote p {
+    position: relative;
+    z-index: 2;
     margin: 0;
+    padding: 0 clamp(0.7rem, 1vw, 1rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
 }
 
-.note {
-    margin-top: 1.2rem;
-    padding-top: 1rem;
-    border-top: 0.08rem solid rgba(136, 86, 59, 0.25);
-    font-size: clamp(0.75rem, 1vw, 1rem);
-    font-weight: 600;
+.amountParagraphs {
+    width: min(30rem, 94%);
+}
+
+.amountParagraphs p {
+    margin: 0 0 clamp(0.25rem, 0.7vh, 0.45rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.peopleScale {
+    width: min(26rem, 86%);
+    height: auto;
+    display: block;
+    margin-top: clamp(0.7rem, 1.5vh, 1.1rem);
+    user-select: none;
+    pointer-events: none;
+}
+
+.populationIntro {
+    width: min(30rem, 92%);
+    margin: 0 0 clamp(1rem, 2vh, 1.4rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.populationCards {
+    width: min(31rem, 94%);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.7rem, 1.4vw, 1.2rem);
+}
+
+.populationCard {
+    position: relative;
+    min-height: clamp(6.5rem, 14vh, 8.4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.9rem, 1.5vw, 1.35rem);
+    box-sizing: border-box;
+}
+
+.orangeBG2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.populationCard p {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+.underlinedText {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08rem;
+    text-underline-offset: 0.16rem;
+    text-decoration-color: #62351F;
+    font-weight: 700;
+}
+
+.teamIntro {
+    width: min(32rem, 94%);
+    margin: 0 0 clamp(0.55rem, 1.2vh, 0.9rem);
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.25vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.teamList {
+    width: min(32rem, 94%);
+    margin: 0;
+    padding: 0;
+    padding-right: clamp(1.1rem, 2vw, 1.8rem);
+    list-style-position: outside;
+    color: #62351F;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.55;
+    text-align: right;
+    direction: rtl;
+}
+
+.teamList li {
+    margin-bottom: clamp(0.15rem, 0.35vh, 0.3rem);
+    text-align: right;
+    padding-right: 0.2rem;
+}
+
+.teamNote {
+    position: relative;
+    width: min(42rem, 100%);
+    min-height: clamp(3.8rem, 7.5vh, 5rem);
+    margin-top: clamp(0.9rem, 1.7vh, 1.25rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.teamNoteBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.teamNote p {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #62351F;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.flowchartContent {
+    width: 100%;
+    height: min(18rem, 36vh);
+    justify-content: center;
+}
+
+.flowchartImg {
+    width: min(34rem, 96%);
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.contentStageAnimated {
+    opacity: 0;
+    animation: slideInFromCalc 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
 }

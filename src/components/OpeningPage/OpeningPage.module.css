@@ -167,17 +167,21 @@
 .aboutBtn {
     position: absolute;
     top: 1.5rem;
-    right: 1.5rem;
+    right: 2rem;
     z-index: 10;
     background: #88563B;
-    color: #FFEDD5;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     padding: 0.5rem 1.2rem;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.8rem, 1.3vw, 1rem);
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
     cursor: pointer;
     transition: opacity 0.2s;
+}
+
+.aboutBtnOpen {
+    z-index: 230;
 }
 
 .aboutBtn:hover {
@@ -253,17 +257,126 @@
     width: 8vw;
 }
 
-/* .nextBtn {
+.aboutOverlay {
     position: absolute;
-    width: 8vw;
-    bottom: clamp(1rem, 5vh, 5rem);
-    left: 3.5vw;
-    z-index: 10;
-    font-family: "Fredoka", sans-serif;
-    cursor: pointer;
-    transition: transform 0.18s, box-shadow 0.18s;
+    inset: 0;
+    z-index: 200;
+    background-color: rgba(98, 53, 31, 0.18);
 }
 
-.nextBtn:hover {
-    transform: scale(1.05);
-} */
+.aboutPanel {
+    position: absolute;
+    top: clamp(4.2rem, 10vh, 6.5rem);
+    right: clamp(1.2rem, 3vw, 3rem);
+    width: clamp(12rem, 18vw, 16rem);
+    max-height: min(38rem, 78vh);
+    border: 0.12rem solid #D48824;
+    border-radius: 0.9rem;
+    background-color: #FFFCE9;
+    box-shadow: 0 0.25rem 0.7rem rgba(98, 53, 31, 0.22);
+    box-sizing: border-box;
+    padding: clamp(1.4rem, 2.4vw, 2rem) clamp(0.9rem, 1.4vw, 1.25rem) clamp(1rem, 1.8vw, 1.5rem);
+    font-family: "Fredoka", sans-serif;
+    color: #0086AD;
+    direction: rtl;
+    overflow: visible;
+    animation: aboutEnter 0.18s ease both;
+}
+
+.closeAboutBtn {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.45rem;
+    width: clamp(1.25rem, 1.8vw, 1.6rem);
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #88563B;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeAboutBtn:hover {
+    color: #D48824;
+}
+
+.aboutContent {
+    width: 100%;
+    max-height: min(32rem, 68vh);
+    overflow-y: auto;
+    padding-left: 0.25rem;
+    box-sizing: border-box;
+}
+
+.aboutContent::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.aboutContent::-webkit-scrollbar-track {
+    background-color: rgba(212, 136, 36, 0.18);
+    border-radius: 999rem;
+}
+
+.aboutContent::-webkit-scrollbar-thumb {
+    background-color: rgba(136, 86, 59, 0.45);
+    border-radius: 999rem;
+}
+
+.aboutSection {
+    margin-bottom: clamp(0.75rem, 1.6vh, 1.25rem);
+    text-align: center;
+}
+
+.aboutSection:last-child {
+    margin-bottom: 0;
+}
+
+.aboutSection h2 {
+    margin: 0 0 clamp(0.25rem, 0.7vh, 0.45rem);
+    color: #206B88;
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.95rem, 1.35vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.aboutSection p {
+    margin: 0;
+    color: rgb(80, 146, 172);
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.9rem, 1vw, 1.2rem);
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.aboutFooterText {
+    margin: clamp(0.9rem, 2vh, 1.4rem) 0 0;
+    padding-top: clamp(0.7rem, 1.5vh, 1rem);
+    border-top: 0.08rem solid rgba(212, 136, 36, 0.35);
+    color: #88563B;
+    font-family: "RinatZigdon", "Fredoka", sans-serif;
+    font-size: clamp(0.72rem, 0.95vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: center;
+    white-space: pre-line;
+}
+
+@keyframes aboutEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-0.35rem) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

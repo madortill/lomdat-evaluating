@@ -18,11 +18,52 @@ import butterfly from "../../assets/img/butterfly.svg";
 
 import peer from "../../assets/img/logos/peer.svg";
 import madorTil from "../../assets/img/logos/till.svg";
-// import nextBtn from "../../assets/img/nextBtn.svg";
+
+const aboutSections = [
+    {
+        title: "מפתחת ראשית:",
+        names: ["רב״ט צאלה בלמקר"]
+    },
+    {
+        title: "גרפיקה:",
+        names: ["רב״ט צאלה בלמקר",
+                "רב״ט דינה ליבשיץ"
+        ]
+    },
+    {
+        title: "מומחית תוכן:",
+        names: [
+            "סג״ן לוטם סימיאן",
+        ]
+    },
+    {
+        title: "רמ״ד טי״ל:",
+        names: ["סמ״ר קטיה מדבדב"]
+    },
+    {
+        title: "גרסה:",
+        names: ["ספטמבר 2026"]
+    }
+];
+
+const aboutFooterText = `הלומדה פותחה לזכרה של 
+רינת הודיה (ריני) זגדון ז”ל, 
+שנפלה בפסטיבל הנובה ברעים. 
+הגופן באדיבות פרויקט ההנצחה ״אות חיים״.`;
 
 const OpeningPage = () => {
     const navigate = useNavigate();
     const [showExplanation, setShowExplanation] = useState(false);
+    const [showAbout, setShowAbout] = useState(false);
+
+    const handleAboutClick = (event) => {
+        event.stopPropagation();
+        setShowAbout((prev) => !prev);
+    };
+
+    const closeAbout = () => {
+        setShowAbout(false);
+    };
 
     return (
         <div className={styles.page} dir="rtl">
@@ -34,7 +75,11 @@ const OpeningPage = () => {
                 <img src={madorTil} className="madorTil" alt="logo" />
             </div>
 
-            <button className={styles.aboutBtn}>
+            <button
+                type="button"
+                className={`${styles.aboutBtn} ${showAbout ? styles.aboutBtnOpen : ""}`}
+                onClick={handleAboutClick}
+            >
                 אודות
             </button>
 
@@ -43,7 +88,6 @@ const OpeningPage = () => {
                     <img src={whiteboard} alt="" className={styles.whiteboard} />
 
                     <div className={styles.boardContent}>
-
                         {!showExplanation && (
                             <>
                                 <p className={styles.welcomeText}>ברוכים הבאים ללומדת</p>
@@ -54,14 +98,18 @@ const OpeningPage = () => {
 
                                 <div className={styles.btnDiv}>
                                     <img src={line} alt="" className={styles.line} />
+
                                     <button
+                                        type="button"
                                         className={styles.startBtn}
                                         onClick={() => setShowExplanation(true)}
                                         aria-label="התחל"
                                     >
                                         <img src={pencil} alt="" />
                                     </button>
+
                                     <img src={line} alt="" className={styles.line} />
+
                                     <p className={styles.startHint}>לחצו על העיפרון כדי להתחיל</p>
                                 </div>
                             </>
@@ -85,13 +133,13 @@ const OpeningPage = () => {
 
                                 <div className={styles.noteBox}>
                                     <img src={bgNoteThin} alt="bg note" className={styles.bgNoteThin} />
+
                                     <p className={styles.noteText}>
                                         הלומדה מחולקת לשלושה חלקים, בין כל חלק תוכלו לבצע הפסקה
                                     </p>
                                 </div>
                             </>
                         )}
-
                     </div>
                 </div>
             </div>
@@ -102,6 +150,33 @@ const OpeningPage = () => {
                     showNext={true}
                     showBack={false}
                 />
+            )}
+
+            {showAbout && (
+                <div className={styles.aboutOverlay} onClick={closeAbout}>
+                    <aside
+                        className={styles.aboutPanel}
+                        onClick={(event) => event.stopPropagation()}
+                        aria-label="אודות הלומדה"
+                    >
+
+                        <div className={styles.aboutContent}>
+                            {aboutSections.map((section) => (
+                                <section key={section.title} className={styles.aboutSection}>
+                                    <h2>{section.title}</h2>
+
+                                    {section.names.map((name) => (
+                                        <p key={name}>{name}</p>
+                                    ))}
+                                </section>
+                            ))}
+
+                            <p className={styles.aboutFooterText}>
+                                {aboutFooterText}
+                            </p>
+                        </div>
+                    </aside>
+                </div>
             )}
 
             <img src={plant} alt="plant" className={styles.plant} />

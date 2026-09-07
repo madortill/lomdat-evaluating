@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ExerciseIntro.module.css";
 
 import cursorIcon from "../../../../assets/img/cursorIcon.svg";
@@ -42,11 +42,41 @@ const ExerciseIntro = ({
     cards = defaultCards
 }) => {
     const [openedCards, setOpenedCards] = useState([]);
+    const [scrollReadyCards, setScrollReadyCards] = useState([]);
+    const scrollTimeoutsRef = useRef({});
 
-    const toggleCard = (cardId) => {
+    useEffect(() => {
+        return () => {
+            Object.values(scrollTimeoutsRef.current).forEach((timeoutId) => {
+                clearTimeout(timeoutId);
+            });
+        };
+    }, []);
+
+    const toggleCard = (cardId, shouldScroll) => {
         setOpenedCards((prev) => {
-            if (prev.includes(cardId)) {
+            const isOpened = prev.includes(cardId);
+
+            clearTimeout(scrollTimeoutsRef.current[cardId]);
+
+            if (isOpened) {
+                setScrollReadyCards((readyPrev) =>
+                    readyPrev.filter((id) => id !== cardId)
+                );
+
                 return prev.filter((id) => id !== cardId);
+            }
+
+            if (shouldScroll) {
+                scrollTimeoutsRef.current[cardId] = setTimeout(() => {
+                    setScrollReadyCards((readyPrev) => {
+                        if (readyPrev.includes(cardId)) {
+                            return readyPrev;
+                        }
+
+                        return [...readyPrev, cardId];
+                    });
+                }, 380);
             }
 
             return [...prev, cardId];
@@ -70,13 +100,18 @@ const ExerciseIntro = ({
             <div className={styles.cardsGrid}>
                 {cardsToRender.map((card) => {
                     const isOpened = openedCards.includes(card.id);
+                    const isScrollable = Boolean(card.scroll);
+                    const isScrollReady = scrollReadyCards.includes(card.id);
 
                     return (
                         <button
                             key={card.id}
                             type="button"
-                            className={`${styles.card} ${isOpened ? styles.openedCard : ""}`}
-                            onClick={() => toggleCard(card.id)}
+                            className={`${styles.card} ${isOpened ? styles.openedCard : ""
+                                } ${isScrollable ? styles.scrollableCard : ""
+                                } ${isScrollable && isScrollReady ? styles.scrollReadyCard : ""
+                                }`}
+                            onClick={() => toggleCard(card.id, isScrollable)}
                             aria-expanded={isOpened}
                         >
                             <div className={styles.cardTop}>
@@ -91,7 +126,9 @@ const ExerciseIntro = ({
                             </div>
 
                             <div className={styles.cardReveal}>
-                                <p>{card.text}</p>
+                                <p>
+                                    <span>{card.text}</span>
+                                </p>
                             </div>
                         </button>
                     );

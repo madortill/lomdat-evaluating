@@ -77,11 +77,11 @@
     min-height: clamp(2.9rem, 4.5vw, 4.3rem);
     border: none;
     border-radius: 0.35rem;
-    background-color: #5FA9C8;
+    background-color: #206B88;
     color: white;
     font-family: "Fredoka", sans-serif;
     font-size: clamp(0.8rem, 1.08vw, 1.1rem);
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.35;
     cursor: pointer;
     padding: 0.55rem 1rem;

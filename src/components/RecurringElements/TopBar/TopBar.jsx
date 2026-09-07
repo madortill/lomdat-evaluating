@@ -23,12 +23,18 @@ const TopBar = ({
     };
 
     const handleNavigate = (stepIndex) => {
-        onNavigate(stepIndex);
+        if (typeof onNavigate === "function") {
+            onNavigate(stepIndex);
+        }
+
         setIsMenuOpen(false);
     };
 
     return (
-        <header className={`${styles.topBar} ${mode === "logos" ? styles.logosOnly : styles.fullTopBar}`}>
+        <header
+            className={`${styles.topBar} ${mode === "logos" ? styles.logosOnly : styles.fullTopBar
+                }`}
+        >
             {mode === "logos" && (
                 <div className={styles.logos}>
                     <img src={peer} className={styles.peer} alt="logo" />
@@ -38,45 +44,73 @@ const TopBar = ({
 
             {mode === "full" && (
                 <>
-                    <button className={styles.homeBtn} onClick={() => navigate("/home")} aria-label="חזרה לבית">
-                        <img src={homeBtn} alt="" />
-                    </button>
-
-                    <div className={styles.navWrapper}>
+                    <div className={styles.rightGroup}>
                         <button
                             type="button"
-                            className={`${styles.partTitle} ${isMenuOpen ? styles.openPartTitle : ""}`}
-                            onClick={handleTitleClick}
-                            aria-expanded={isMenuOpen}
+                            className={styles.homeBtn}
+                            onClick={() => navigate("/home")}
+                            aria-label="חזרה לבית"
                         >
-                            <img src={navbarClosed} alt="" className={styles.partTitleBg} />
-                            <span className={styles.partTitleText}>{partTitle}</span>
+                            <img src={homeBtn} alt="" />
                         </button>
 
-                        {isMenuOpen && (
-                            <nav className={styles.navMenu}>
-                                {navItems.map((item) => {
-                                    const itemGroupId = item.navGroupId || item.groupId || item.navId;
-                                    const isActive = currentGroupId === itemGroupId;
+                        <div className={styles.navWrapper}>
+                            <button
+                                type="button"
+                                className={`${styles.partTitle} ${isMenuOpen ? styles.openPartTitle : ""
+                                    }`}
+                                onClick={handleTitleClick}
+                                aria-expanded={isMenuOpen}
+                            >
+                                <img
+                                    src={navbarClosed}
+                                    alt=""
+                                    className={styles.partTitleBg}
+                                />
 
-                                    return (
-                                        <button
-                                            key={item.navId}
-                                            type="button"
-                                            className={`${styles.navItem} ${isActive ? styles.activeNavItem : ""}`}
-                                            onClick={() => handleNavigate(item.stepIndex)}
-                                        >
-                                            {item.label}
-                                        </button>
-                                    );
-                                })}
-                            </nav>
-                        )}
+                                <span className={styles.partTitleText}>
+                                    {partTitle}
+                                </span>
+                            </button>
+
+                            {isMenuOpen && (
+                                <nav className={styles.navMenu}>
+                                    {navItems.map((item) => {
+                                        const itemGroupId =
+                                            item.navGroupId ||
+                                            item.groupId ||
+                                            item.navId;
+
+                                        const isActive =
+                                            currentGroupId === itemGroupId;
+
+                                        return (
+                                            <button
+                                                key={item.navId}
+                                                type="button"
+                                                className={`${styles.navItem} ${isActive
+                                                        ? styles.activeNavItem
+                                                        : ""
+                                                    }`}
+                                                onClick={() =>
+                                                    handleNavigate(item.stepIndex)
+                                                }
+                                            >
+                                                {item.label}
+                                            </button>
+                                        );
+                                    })}
+                                </nav>
+                            )}
+                        </div>
                     </div>
 
                     <div className={styles.progressWrapper}>
                         <div className={styles.progressTrack}>
-                            <div className={styles.progressFill} style={{ width: `${progress}%` }}>
+                            <div
+                                className={styles.progressFill}
+                                style={{ width: `${progress}%` }}
+                            >
                                 <span>{progress}%</span>
                             </div>
                         </div>
