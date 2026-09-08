@@ -5,6 +5,12 @@ import clockImg from "../../../../assets/img/clock.svg";
 import bgFormBtn from "../../../../assets/img/bgFormBtn.svg";
 import smallArrow from "../../../../assets/img/smallArrow.svg";
 import cursorIcon from "../../../../assets/img/cursorIcon.svg";
+import formStageOne from "../../../../assets/img/formStageOne.png";
+import formStageTwo1 from "../../../../assets/img/formStageTwo1.png";
+import formStageTwo2 from "../../../../assets/img/formStageTwo2.png";
+import formStageTwo3 from "../../../../assets/img/formStageTwo3.png";
+import formStageThree1 from "../../../../assets/img/formStageThree1.png";
+import formStageThree2 from "../../../../assets/img/formStageThree2.png";
 
 const steps = [
     {
@@ -14,7 +20,7 @@ const steps = [
         formButtonText: "טופס הצהרה",
         hasForm: true,
         formTitle: "טופס הצהרה",
-        formText: "כאן תופיע תמונת טופס ההצהרה."
+        formImages: [formStageOne]
     },
     {
         title: "שאלון ביוגרפי",
@@ -23,7 +29,7 @@ const steps = [
         formButtonText: "טופס זיהוי",
         hasForm: true,
         formTitle: "טופס זיהוי",
-        formText: "כאן תופיע תמונת טופס הזיהוי."
+        formImages: [formStageTwo1, formStageTwo2, formStageTwo3]
     },
     {
         title: "תרגילי מצב",
@@ -32,7 +38,7 @@ const steps = [
         formButtonText: "",
         hasForm: false,
         formTitle: "",
-        formText: ""
+        formImages: []
     },
     {
         title: "ראיון אישי חצי מובנה",
@@ -41,7 +47,7 @@ const steps = [
         formButtonText: "טופס ראיון תעסוקתי",
         hasForm: true,
         formTitle: "טופס ראיון תעסוקתי",
-        formText: "כאן תופיע תמונת טופס הראיון התעסוקתי."
+        formImages: [formStageTwo1, formStageTwo2]
     }
 ];
 
@@ -49,6 +55,7 @@ const Clock = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [visitedSteps, setVisitedSteps] = useState([0]);
     const [popupStep, setPopupStep] = useState(null);
+    const [isFormExpanded, setIsFormExpanded] = useState(false);
 
     const activeStepData = steps[activeStep];
 
@@ -67,6 +74,20 @@ const Clock = () => {
         saveVisitedStep(index);
     };
 
+    const openFormPopup = (stepIndex) => {
+        setPopupStep(stepIndex);
+        setIsFormExpanded(false);
+    };
+
+    const closeFormPopup = () => {
+        setPopupStep(null);
+        setIsFormExpanded(false);
+    };
+
+    const toggleFormSize = () => {
+        setIsFormExpanded((prev) => !prev);
+    };
+
     const getStepButtonClassName = (index) => {
         const isActive = index === activeStep;
         const isVisited = visitedSteps.includes(index);
@@ -81,6 +102,9 @@ const Clock = () => {
 
         return `${styles.stepBtn} ${styles.openedStep}`;
     };
+
+    const popupData = popupStep !== null ? steps[popupStep] : null;
+    const popupImages = popupData?.formImages || [];
 
     return (
         <section className={styles.page} dir="rtl">
@@ -139,7 +163,7 @@ const Clock = () => {
                             <button
                                 type="button"
                                 className={styles.formBtn}
-                                onClick={() => setPopupStep(activeStep)}
+                                onClick={() => openFormPopup(activeStep)}
                             >
                                 <img src={bgFormBtn} alt="" className={styles.formBtnBg} />
                                 <span>{activeStepData.formButtonText}</span>
@@ -161,21 +185,50 @@ const Clock = () => {
                 ))}
             </div>
 
-            {popupStep !== null && (
+            {popupData && (
                 <div className={styles.popupOverlay}>
                     <div className={styles.popup}>
                         <button
                             type="button"
                             className={styles.closeBtn}
-                            onClick={() => setPopupStep(null)}
+                            onClick={closeFormPopup}
                         >
                             ×
                         </button>
 
-                        <h2>{steps[popupStep].formTitle}</h2>
+                        <h2>{popupData.formTitle}</h2>
 
-                        <div className={styles.formPlaceholder}>
-                            {steps[popupStep].formText}
+                        <p className={styles.popupHint}>
+                            {isFormExpanded
+                                ? "לחצו על הטופס כדי להקטין"
+                                : "לחצו על הטופס כדי להגדיל"}
+                        </p>
+
+                        <div
+                            className={`${styles.formsScroller} ${isFormExpanded ? styles.formsScrollerExpanded : ""
+                                }`}
+                        >
+                            {popupImages.map((imageSrc, index) => (
+                                <button
+                                    key={`${popupData.formTitle}-${index}`}
+                                    type="button"
+                                    className={styles.formImageBtn}
+                                    onClick={toggleFormSize}
+                                    aria-label="הגדלת או הקטנת הטופס"
+                                >
+                                    {popupImages.length > 1 && (
+                                        <span className={styles.formPageLabel}>
+                                            עמוד {index + 1}
+                                        </span>
+                                    )}
+
+                                    <img
+                                        src={imageSrc}
+                                        alt={`${popupData.formTitle} עמוד ${index + 1}`}
+                                        className={styles.formImage}
+                                    />
+                                </button>
+                            ))}
                         </div>
                     </div>
                 </div>

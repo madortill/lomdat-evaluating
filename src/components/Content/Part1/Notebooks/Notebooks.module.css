@@ -141,8 +141,9 @@
 
 .popup {
     position: relative;
-    width: min(62rem, 76vw);
-    aspect-ratio: 900 / 470;
+    aspect-ratio: unset;
+    width: min(64rem, 70vw);
+    height: clamp(32rem, 45rem, 55rem);
     box-sizing: border-box;
 }
 
@@ -160,7 +161,7 @@
 
 .popupContent {
     position: absolute;
-    inset: 12% 18% 9% 14%;
+    inset: 6% 10% 5% 8%;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -181,7 +182,7 @@
 }
 
 .bodyText {
-    width: min(40rem, 100%);
+    width: 100%;
     margin: 0;
     color: #62351F;
     font-family: "Fredoka", sans-serif;
@@ -194,7 +195,7 @@
 .markerNote {
     position: relative;
     margin-top: clamp(1.8rem, 3.2vh, 2.6rem);
-    width: min(40rem, 100%);
+    width: 100%;
     background-color: #FFD7B9;
     display: flex;
     align-items: center;

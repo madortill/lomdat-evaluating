@@ -94,8 +94,8 @@
     width: clamp(8rem, 15vw, 12.5rem);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    background-color: #FBE7D8;
-    color: #88563B;
+    background-color: #ffffff;
+    color: #623319;
     display: flex;
     flex-direction: column;
     align-items: center;

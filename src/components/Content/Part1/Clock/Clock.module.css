@@ -248,7 +248,7 @@
 .popup {
     position: relative;
     width: min(52rem, 78vw);
-    min-height: 30rem;
+    height: min(43rem, 86vh);
     background-color: #FFFCE9;
     border: 0.12rem solid #C5571C;
     border-radius: 1.4rem;
@@ -257,11 +257,22 @@
     color: #88563B;
     font-family: "Fredoka", sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .popup h2 {
-    margin: 0 0 1.5rem;
+    margin: 0 0 0.5rem;
     font-size: clamp(1.4rem, 2vw, 2.2rem);
+    flex-shrink: 0;
+}
+
+.popupHint {
+    margin: 0 0 1rem;
+    color: #7194B4;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    font-weight: 700;
+    flex-shrink: 0;
 }
 
 .closeBtn {
@@ -277,17 +288,78 @@
     font-size: 1.4rem;
     font-family: "Fredoka", sans-serif;
     cursor: pointer;
+    z-index: 5;
 }
 
-.formPlaceholder {
+.formsScroller {
+    flex: 1;
     width: 100%;
-    min-height: 22rem;
+    min-height: 0;
     border-radius: 1rem;
     background-color: #FFE0C2;
-    border: 0.1rem dashed #D48824;
+    border: 0.1rem dashed #88563b8f;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
+}
+
+.formImageBtn {
+    position: relative;
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: zoom-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formsScrollerExpanded .formImageBtn {
+    cursor: zoom-out;
+}
+
+.formPageLabel {
+    margin-bottom: 0.45rem;
     color: #88563B;
-    font-size: clamp(1rem, 1.4vw, 1.5rem);
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    font-weight: 700;
+}
+
+.formImage {
+    width: auto;
+    max-width: 100%;
+    height: min(31rem, 62vh);
+    object-fit: contain;
+    display: block;
+    border-radius: 0.45rem;
+    box-shadow: 0 0.18rem 0.65rem rgba(98, 53, 31, 0.22);
+    background-color: white;
+    transition: height 0.22s ease, max-width 0.22s ease;
+}
+
+.formsScrollerExpanded .formImage {
+    width: min(100%, 44rem);
+    height: auto;
+    max-width: 100%;
+}
+
+.formsScroller::-webkit-scrollbar {
+    width: 0.45rem;
+}
+
+.formsScroller::-webkit-scrollbar-track {
+    background: rgba(136, 86, 59, 0.14);
+    border-radius: 1rem;
+}
+
+.formsScroller::-webkit-scrollbar-thumb {
+    background: rgba(136, 86, 59, 0.55);
+    border-radius: 1rem;
 }
