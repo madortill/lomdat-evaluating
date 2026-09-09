@@ -1,6 +1,10 @@
 import { useState } from "react";
 import styles from "./Tabs.module.css";
 
+import iconHouse from "../../../../assets/img/iconHouse.svg";
+import iconName from "../../../../assets/img/iconName.svg";
+import iconWriting from "../../../../assets/img/iconWriting.svg";
+
 const tabsData = [
     {
         id: "groupOrganization",
@@ -9,16 +13,16 @@ const tabsData = [
         layout: "organization",
         items: [
             {
-                icon: "⌂",
-                text: "יש לבצע את סידור החדר בצורה שתאפשר תנועה נוחה בחלל לכל אחד מהמתמיינים במיון."
+                icon: iconHouse,
+                text: "יש לבצע את סידור החדר בצורה שתאפשר מעבר נוח אחרי כל אחד מהנבחנים במיון."
             },
             {
-                icon: "▣",
-                text: "יש להציב מדבקה או תג עם שם לכל אחד מהמתמודדים."
+                icon: iconName,
+                text: "יש להצמיד מדבקה או תג עם שם לכל אחד מהמתמיינים."
             },
             {
-                icon: "✎",
-                text: "יש להכיר חברים הניגשים עם ציוד וכלי כתיבה שיסייעו לנו לכתוב הערכות לכל המדריכים."
+                icon: iconWriting,
+                text: "יש להניח במקום נגיש דפי טיוטה וכלי כתיבה שיספיקו לכל המתמיינים לכל התרגילים."
             }
         ]
     },
@@ -26,33 +30,28 @@ const tabsData = [
         id: "atmosphere",
         label: "אווירה ביום המיון",
         title: "אווירה ביום המיון",
-        layout: "atmosphere",
-        intro: "על המעריך ליצור לחץ אפקטיבי במהלך היום. על מנת ליצור זאת יש:",
+        layout: "cards",
+        intro: "על המעריך ליצור לחץ אפקטיבי במהלך היום, על מנת ליצור זאת יש:",
         items: [
-            "להקפיד על סדר ומנהיגות, לשמור על קשר עקבי עם המועמדים.",
-            "להימנע ממתן משוב כלשהו למועמדים במהלך היום.",
-            "לבצע מעקב מתמיד על התנהגות של המועמד.",
-            "לשמור על רמת אנרגיה גבוהה והשתתפות המועמדים בתהליך."
+            "להקפיד על סדר ומשמעת, לשמור על קשר ענייני עם המועמדים.",
+            "להימנע ממתן כל משוב שהוא למועמדים, מילולי או שפת גוף, במהלך היום.",
+            "לבצע מעקב מתמיד על התנהגותו של המועמד.",
+            "לשמור על רמת האנרגיה בקבוצה: השתתפות אקטיבית, נוכחות, עשייה וכדומה."
         ]
     },
     {
         id: "observation",
         label: "תצפית",
         title: "תצפית",
-        layout: "observation",
-        sections: [
-            {
-                title: "מה נדרש מהמעריך?",
-                text: "במהלך התצפית יש לשים לב להתנהגויות חוזרות, לאופן שבו המועמד פועל בתוך הקבוצה ולדרך שבה הוא מתמודד עם המשימה."
-            },
-            {
-                title: "על מה חשוב להקפיד?",
-                text: "יש לתעד התנהגות נצפית בלבד, להימנע מפרשנות מוקדמת ולבסס את ההערכה על דוגמאות ברורות מתוך המיון."
-            },
-            {
-                title: "דגש חשוב",
-                text: "ככל שהתיעוד יהיה מדויק יותר, כך ההערכה תהיה מקצועית, הוגנת וברורה יותר בהמשך התהליך."
-            }
+        layout: "text",
+        intro: "תצפית והערכה - קווים מנחים:",
+        items: [
+            "שני מעריכים מעבירים את תרגילי המצב ורושמים דפי תצפית במהלך כל התרגילים.",
+            "יש להסתובב ולא לשבת במקום כדי לקבל התרשמות מייצגת על כלל המשתתפים.",
+            "לרשום כמה שיותר התנהגויות נצפות ולא רק מסקנות כוללות. למשל: ״דוד קם פעמיים ממקומו למרות שניתנה הוראה לא לקום״ במקום ״קושי בשליטה עצמית וקבלת מרות״.",
+            "יש לקחת מספר טפסי תצפית ולעבור לדף נוסף במידת הצורך. לא לחסוך בכתיבה - המטרה של המשבצות היא לאפשר כתיבה על כל ה־10 בדף אחד.",
+            "חוות הדעת היא בלתי תלויה, כלומר כל מעריך ממלא לבד ואין להתייעץ או להחליף רשמים אלא לאחר המילוי.",
+            "יש לכתוב את המידע הרלוונטי בזמן אמת, אחרת מידע חשוב ורלוונטי יכול ללכת לאיבוד."
         ]
     }
 ];
@@ -85,20 +84,25 @@ const Tabs = () => {
                         <div className={styles.organizationLayout}>
                             {activeTab.items.map((item, index) => (
                                 <div key={index} className={styles.organizationCircle}>
-                                    <span className={styles.organizationIcon}>{item.icon}</span>
+                                    <img
+                                        src={item.icon}
+                                        alt=""
+                                        className={styles.organizationIconImg}
+                                    />
+
                                     <p>{item.text}</p>
                                 </div>
                             ))}
                         </div>
                     )}
 
-                    {activeTab.layout === "atmosphere" && (
-                        <div className={styles.atmosphereLayout}>
+                    {activeTab.layout === "cards" && (
+                        <div className={styles.cardsLayout}>
                             <p className={styles.introText}>{activeTab.intro}</p>
 
-                            <div className={styles.atmosphereCircles}>
+                            <div className={styles.infoCardsGrid}>
                                 {activeTab.items.map((item, index) => (
-                                    <div key={index} className={styles.atmosphereCircle}>
+                                    <div key={index} className={styles.infoCard}>
                                         <p>{item}</p>
                                     </div>
                                 ))}
@@ -106,14 +110,15 @@ const Tabs = () => {
                         </div>
                     )}
 
-                    {activeTab.layout === "observation" && (
-                        <div className={styles.observationLayout}>
-                            {activeTab.sections.map((section, index) => (
-                                <div key={index} className={styles.observationCard}>
-                                    <h2>{section.title}</h2>
-                                    <p>{section.text}</p>
-                                </div>
-                            ))}
+                    {activeTab.layout === "text" && (
+                        <div className={styles.textLayout}>
+                            <p className={styles.introText}>{activeTab.intro}</p>
+
+                            <ul className={styles.bulletsList}>
+                                {activeTab.items.map((item, index) => (
+                                    <li key={index}>{item}</li>
+                                ))}
+                            </ul>
                         </div>
                     )}
                 </div>
