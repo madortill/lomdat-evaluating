@@ -617,6 +617,14 @@ export const parts = {
         title: "תרגילי מצב",
         pages: [
             {
+                type: "schedule",
+                label: "לוח זמנים",
+                navId: "part3Schedule",
+                props: {
+                    title: "לוח זמנים מומלץ ליום המיון"
+                }
+            },
+            {
                 type: "openingNote",
                 label: "פתיחה",
                 navId: "part3OpeningNote",
@@ -626,14 +634,6 @@ export const parts = {
                         "בחלק הבא אתם תתנסו בלהיות מעריכים ביום מיון. תצפו בשלושה תרגילים שהמתמיינים ביצעו ולאחר מכן יהיה עליכם להעריך אותם על פי ביצועיהם בתרגיל."
                     ],
                     noteText: "שימו לב - בצד המסך יופיעו סימניות עם מחוונים המתאימים לכל תרגיל - העיזרו בהן."
-                }
-            },
-            {
-                type: "schedule",
-                label: "לוח זמנים",
-                navId: "part3Schedule",
-                props: {
-                    title: "לוח זמנים מומלץ ליום המיון"
                 }
             },
             {
@@ -734,7 +734,7 @@ export const parts = {
                         {
                             id: "values",
                             label: "ערכיות",
-                            correctValues: [4, 5]
+                            correctValues: [5, 6]
                         },
                         {
                             id: "interpersonal",
@@ -772,17 +772,17 @@ export const parts = {
                         {
                             id: "leadership",
                             label: "פיקוד ומנהיגות",
-                            correctValues: [4, 5]
+                            correctValues: [4, 3]
                         },
                         {
                             id: "values",
                             label: "ערכיות",
-                            correctValues: [4, 5]
+                            correctValues: [4, 3]
                         },
                         {
                             id: "interpersonal",
                             label: "יכולות בין־אישיות",
-                            correctValues: [1, 2, 3]
+                            correctValues: [5, 6, 7]
                         }
                     ]
                 }
@@ -814,7 +814,7 @@ export const parts = {
                         {
                             id: "duration",
                             title: "משך התרגיל",
-                            text: "שבע דקות הכנה ועוד חמש דקות כל מועמד מציג בפני הקבוצה. משכו של כלל התרגיל כשעה."
+                            text: "עשר דקות הכנה ועוד חמש דקות כל מועמד מציג בפני הקבוצה. משכו של כלל התרגיל כשעה."
                         }
                     ]
                 }
@@ -930,14 +930,13 @@ export const parts = {
                         {
                             id: "goal",
                             title: "המטרה",
-                            scroll: true,
-                            text: "בחינת סגנון הביצוע, יכולות החשיבה והתכנון, וההשתלבות בצוות של המועמדים – כיצד כל אחד בוחר להתנהל במשימה, עד כמה מאפשר ונותן מקום לאחרים בקבוצה וכד׳.\n\nמשימה זו נועדה לבחון את יכולת העבודה בצוות, קבלת החלטות תחת אילוצים תקציב וזמן, ותהליכי תכנון והוצאה לפועל."
+                            text: "בחינת סגנון הביצוע, יכולות החשיבה והתכנון, וההשתלבות בצוות של המועמדים."
                         },
                         {
                             id: "rationale",
                             title: "הרציונל",
                             scroll: true,
-                            text: "על הקבוצה מוטלת אחריות לתכנן אירוע תוך שמירה על שיח שיתופי והסכמה רחבה.\n\nבשלב התכנון, הקבוצה נדרשת לגבש קונספט, לבחור תכנים ולנהל את התקבציה הנדרש.\n\nבשלב ההכנה, הקבוצה תגיד תוצר וויזואלי המציג את הלו״ז והדרישות התקציביות.\n"
+                            text: "על הקבוצה מוטלת אחריות לתכנן אירוע תוך שמירה על שיח שיתופי והסכמה רחבה.\n\n הקבוצה נדרשת לגבש קונספט, לבחור תכנים, לנהל את התקציב הנדרש ולהציג את התוצר."
                         },
                         {
                             id: "equipment",
@@ -984,22 +983,22 @@ export const parts = {
                         {
                             id: "instruction",
                             label: "יכולת הדרכה",
-                            correctValues: [4, 5]
+                            correctValues: [6, 5]
                         },
                         {
                             id: "thinking",
                             label: "יכולת חשיבה ותכנון",
-                            correctValues: [6, 7]
+                            correctValues: [5, 6, 7]
                         },
                         {
                             id: "leadership",
                             label: "פיקוד ומנהיגות",
-                            correctValues: [4, 5]
+                            correctValues: [4, 5, 6]
                         },
                         {
                             id: "values",
                             label: "ערכיות",
-                            correctValues: [6, 7]
+                            correctValues: [5, 6, 7]
                         },
                         {
                             id: "interpersonal",
@@ -1027,7 +1026,7 @@ export const parts = {
                         {
                             id: "instruction",
                             label: "יכולת הדרכה",
-                            correctValues: [4, 5]
+                            correctValues: [4, 3]
                         },
                         {
                             id: "thinking",
@@ -1042,7 +1041,7 @@ export const parts = {
                         {
                             id: "values",
                             label: "ערכיות",
-                            correctValues: [4, 5]
+                            correctValues: [4, 3]
                         },
                         {
                             id: "interpersonal",
@@ -1070,7 +1069,7 @@ export const parts = {
                         {
                             id: "instruction",
                             label: "יכולת הדרכה",
-                            correctValues: [6, 7]
+                            correctValues: [4, 5]
                         },
                         {
                             id: "thinking",

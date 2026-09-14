@@ -40,7 +40,7 @@ const scheduleItems = [
     {
         id: "interviews",
         time: "13:00-16:00",
-        text: "ראיונות אישיים."
+        text: "סימולציה + ראיונות אישיים."
     }
 ];
 

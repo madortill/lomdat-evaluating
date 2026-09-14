@@ -39,7 +39,7 @@ const Ruler = () => {
                     <img src={textBubbleRuler} alt="" className={styles.textBubbleImg} />
                     <p>
                         ניתן להגיש בקשה<br />
-                        לערך ציון רק אם<br />
+                        לערור ציון רק אם<br />
                         הוא מעל 3.1
                     </p>
                 </div>
@@ -47,7 +47,7 @@ const Ruler = () => {
                 <div className={styles.textBox}>
                     <img src={textBoxRuler} alt="" className={styles.textBoxImg} />
                     <p>
-                        ציון גבוה הינו 4 ומעלה. עם זאת, יש לזכור כי המיון<br />
+                        ציון עובר הינו 4 ומעלה. עם זאת, יש לזכור כי המיון<br />
                         הינו כלי תומך החלטה והשאיפה הינה להוציא את<br />
                         המתאימים ביותר להדרכה.
                     </p>

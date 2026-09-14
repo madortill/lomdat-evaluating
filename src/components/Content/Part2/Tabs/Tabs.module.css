@@ -54,10 +54,6 @@
     transition: background-color 0.16s ease, color 0.16s ease, filter 0.16s ease;
 }
 
-.tabBtn:first-child {
-    border-left: none;
-}
-
 .tabBtn:hover {
     background-color: #FFD8B4;
     filter: brightness(1.02);
@@ -143,6 +139,7 @@
     font-weight: 600;
     line-height: 1.45;
     text-align: center;
+    white-space: pre-line;
 }
 
 .infoCardsGrid {

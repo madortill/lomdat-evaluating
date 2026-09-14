@@ -47,7 +47,7 @@ const steps = [
         formButtonText: "טופס ראיון תעסוקתי",
         hasForm: true,
         formTitle: "טופס ראיון תעסוקתי",
-        formImages: [formStageTwo1, formStageTwo2]
+        formImages: [formStageThree1, formStageThree2]
     }
 ];
 
