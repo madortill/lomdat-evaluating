@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./TopBar.module.css";
 
@@ -17,6 +17,28 @@ const TopBar = ({
 }) => {
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navWrapperRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!isMenuOpen) {
+                return;
+            }
+
+            if (
+                navWrapperRef.current &&
+                !navWrapperRef.current.contains(event.target)
+            ) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isMenuOpen]);
 
     const handleTitleClick = () => {
         setIsMenuOpen((prev) => !prev);
@@ -54,7 +76,7 @@ const TopBar = ({
                             <img src={homeBtn} alt="" />
                         </button>
 
-                        <div className={styles.navWrapper}>
+                        <div className={styles.navWrapper} ref={navWrapperRef}>
                             <button
                                 type="button"
                                 className={`${styles.partTitle} ${isMenuOpen ? styles.openPartTitle : ""

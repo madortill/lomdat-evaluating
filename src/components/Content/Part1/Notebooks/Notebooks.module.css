@@ -95,7 +95,7 @@
 
 .notebookTitle {
     position: absolute;
-    inset: 13% 10% 12% 15%;
+    inset: 13% 18% 12% 15%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,7 +208,7 @@
     margin: 0;
     color: #62351F;
     font-family: "RinatZigdon", "Fredoka", sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 1.5rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.6rem);
     font-weight: 600;
     line-height: 1.4;
     text-align: center;

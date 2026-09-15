@@ -27,12 +27,12 @@ const Ruler = () => {
             <div className={styles.rulerArea}>
                 <div className={`${styles.circleBox} ${styles.leftCircle}`}>
                     <img src={rulerCircle} alt="" className={styles.circleImg} />
-                    <p>התרשמות<br />גבוהה מאוד</p>
+                    <p>התרשמות<br />נמוכה מאוד</p>
                 </div>
 
                 <div className={`${styles.circleBox} ${styles.rightCircle}`}>
                     <img src={rulerCircle} alt="" className={styles.circleImg} />
-                    <p>התרשמות<br />נמוכה מאוד</p>
+                    <p>התרשמות<br />גבוהה מאוד</p>
                 </div>
 
                 <div className={styles.bubbleBox}>

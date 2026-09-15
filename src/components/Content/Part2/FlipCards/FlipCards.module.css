@@ -47,14 +47,14 @@
 
 .cardsGrid {
     position: absolute;
-    top: 38vh;
+    top: 34vh;
     left: 50%;
     transform: translateX(-50%);
-    width: min(48rem, 72vw);
+    width: min(70rem, 88vw);
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(1.1rem, 15vw, 15rem);
-    align-items: center;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(10rem, 1.4vw, 1.4rem);
+    align-items: stretch;
     justify-items: center;
 }
 

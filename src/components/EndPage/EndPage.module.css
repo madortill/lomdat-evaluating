@@ -7,6 +7,143 @@
     direction: rtl;
 }
 
+.confettiContainer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
+    animation: confettiContainerHide 3.2s ease forwards;
+}
+
+.confettiPiece {
+    position: absolute;
+    top: -10%;
+    width: 0.7rem;
+    height: 1.2rem;
+    border-radius: 0.12rem;
+    opacity: 0;
+    animation: confettiFall 2.4s ease-out forwards;
+}
+
+.confettiPiece:nth-child(3n) {
+    background-color: #D48824;
+}
+
+.confettiPiece:nth-child(3n + 1) {
+    background-color: #8CB369;
+}
+
+.confettiPiece:nth-child(3n + 2) {
+    background-color: #206B88;
+}
+
+.confettiPiece:nth-child(4n) {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background-color: #C15B5B;
+}
+
+.confettiPiece:nth-child(5n) {
+    width: 0.9rem;
+    height: 0.25rem;
+    border-radius: 999rem;
+    background-color: #FFD0A1;
+}
+
+@keyframes confettiFall {
+    0% {
+        top: -10%;
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+
+    20% {
+        opacity: 1;
+        transform: rotate(120deg) scale(1.08);
+    }
+
+    55% {
+        opacity: 1;
+        transform: rotate(280deg) scale(1);
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: rotate(520deg) scale(0.9);
+    }
+}
+
+@keyframes confettiContainerHide {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    88% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.piece0 { left: 4%; animation-delay: 0s; }
+.piece1 { left: 8%; animation-delay: 0.08s; }
+.piece2 { left: 12%; animation-delay: 0.16s; }
+.piece3 { left: 16%; animation-delay: 0.03s; }
+.piece4 { left: 20%; animation-delay: 0.22s; }
+.piece5 { left: 24%; animation-delay: 0.1s; }
+.piece6 { left: 28%; animation-delay: 0.28s; }
+.piece7 { left: 32%; animation-delay: 0.06s; }
+.piece8 { left: 36%; animation-delay: 0.18s; }
+.piece9 { left: 40%; animation-delay: 0.12s; }
+.piece10 { left: 44%; animation-delay: 0.3s; }
+.piece11 { left: 48%; animation-delay: 0.04s; }
+.piece12 { left: 52%; animation-delay: 0.2s; }
+.piece13 { left: 56%; animation-delay: 0.14s; }
+.piece14 { left: 60%; animation-delay: 0.32s; }
+.piece15 { left: 64%; animation-delay: 0.07s; }
+.piece16 { left: 68%; animation-delay: 0.24s; }
+.piece17 { left: 72%; animation-delay: 0.11s; }
+.piece18 { left: 76%; animation-delay: 0.34s; }
+.piece19 { left: 80%; animation-delay: 0.05s; }
+.piece20 { left: 84%; animation-delay: 0.26s; }
+.piece21 { left: 88%; animation-delay: 0.15s; }
+.piece22 { left: 92%; animation-delay: 0.36s; }
+.piece23 { left: 96%; animation-delay: 0.09s; }
+.piece24 { left: 6%; animation-delay: 0.4s; }
+.piece25 { left: 14%; animation-delay: 0.46s; }
+.piece26 { left: 22%; animation-delay: 0.38s; }
+.piece27 { left: 30%; animation-delay: 0.52s; }
+.piece28 { left: 38%; animation-delay: 0.44s; }
+.piece29 { left: 46%; animation-delay: 0.56s; }
+.piece30 { left: 54%; animation-delay: 0.42s; }
+.piece31 { left: 62%; animation-delay: 0.5s; }
+.piece32 { left: 70%; animation-delay: 0.48s; }
+.piece33 { left: 78%; animation-delay: 0.58s; }
+.piece34 { left: 86%; animation-delay: 0.41s; }
+.piece35 { left: 94%; animation-delay: 0.54s; }
+.piece36 { left: 10%; animation-delay: 0.68s; }
+.piece37 { left: 18%; animation-delay: 0.62s; }
+.piece38 { left: 26%; animation-delay: 0.74s; }
+.piece39 { left: 34%; animation-delay: 0.66s; }
+.piece40 { left: 42%; animation-delay: 0.78s; }
+.piece41 { left: 50%; animation-delay: 0.6s; }
+.piece42 { left: 58%; animation-delay: 0.72s; }
+.piece43 { left: 66%; animation-delay: 0.64s; }
+.piece44 { left: 74%; animation-delay: 0.8s; }
+.piece45 { left: 82%; animation-delay: 0.7s; }
+.piece46 { left: 90%; animation-delay: 0.76s; }
+.piece47 { left: 98%; animation-delay: 0.61s; }
+.piece48 { left: 2%; animation-delay: 0.84s; }
+.piece49 { left: 50%; animation-delay: 0.88s; }
+
 .boardArea {
     position: absolute;
     left: 50%;
@@ -78,19 +215,6 @@
     top: 75%;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(34rem, 60vw, 62rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(2rem, 6vw, 6rem);
-    z-index: 5;
-}
-
-.buttonsArea {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translateX(-50%);
     width: clamp(28rem, 48vw, 50rem);
     display: flex;
     align-items: center;
@@ -127,6 +251,7 @@
     user-select: none;
 }
 
+.endBtnText,
 .endBtn span {
     position: relative;
     z-index: 2;

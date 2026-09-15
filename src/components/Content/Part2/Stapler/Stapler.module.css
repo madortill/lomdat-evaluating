@@ -37,10 +37,10 @@
     top: 30vh;
     left: 50%;
     transform: translateX(-50%);
-    width: min(76rem, 92vw);
+    width: min(78rem, 94vw);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1rem, 1.8vw, 1.8rem);
+    gap: clamp(0.15rem, 0.45vw, 0.55rem);
     align-items: start;
 }
 
@@ -52,11 +52,12 @@
     background: transparent;
     padding: 0;
     cursor: none;
+    overflow: visible;
     transition: transform 0.18s ease, filter 0.18s ease;
 }
 
 .paperBtn:hover {
-    transform: translateY(-0.2rem) scale(1.02);
+    transform: translateY(-0.2rem) scale(1.01);
     filter: drop-shadow(0 0.25rem 0.3rem rgba(98, 53, 31, 0.15));
 }
 
@@ -81,17 +82,19 @@
     display: block;
     pointer-events: none;
     user-select: none;
+    transform: scaleX(1.1);
+    transform-origin: center center;
 }
 
 .closedTitle {
     position: absolute;
     top: 19%;
-    right: 7%;
-    left: 7%;
+    right: 2%;
+    left: 2%;
     z-index: 2;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(1.05rem, 1.4vw, 1.5rem);
+    font-size: clamp(1.12rem, 1.55vw, 1.7rem);
     font-weight: 700;
     line-height: 1.1;
     display: flex;
@@ -104,15 +107,15 @@
 .openTitle {
     position: absolute;
     top: 4.9%;
-    right: 9%;
-    left: 9%;
+    right: 5%;
+    left: 5%;
     z-index: 3;
     margin: 0;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(1.05rem, 1.45vw, 1.55rem);
+    font-size: clamp(1.08rem, 1.55vw, 1.7rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.08;
     text-align: center;
     pointer-events: none;
 }
@@ -121,8 +124,8 @@
     position: absolute;
     z-index: 2;
     top: 22%;
-    right: 13%;
-    left: 13%;
+    right: 8%;
+    left: 8%;
     bottom: 8%;
     display: flex;
     flex-direction: column;
@@ -166,9 +169,9 @@
     width: 100%;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.78rem, 1.02vw, 1.05rem);
+    font-size: clamp(1rem, 1.28vw, 1.32rem);
     font-weight: 400;
-    line-height: 1.55;
+    line-height: 1.5;
     text-align: right;
 }
 
@@ -187,9 +190,9 @@
     margin: 0 0 clamp(0.5rem, 1vh, 0.7rem);
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.82rem, 1.08vw, 1.1rem);
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.22;
     text-align: center;
 }
 
@@ -197,19 +200,19 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(0.4rem, 0.65vw, 0.55rem);
+    gap: clamp(0.35rem, 0.55vw, 0.5rem);
 }
 
 .infoCard {
-    min-height: clamp(4.2rem, 7vw, 5.9rem);
+    min-height: clamp(4.1rem, 6.7vw, 5.7rem);
     padding: clamp(0.5rem, 0.78vw, 0.7rem);
     border-radius: 0.35rem;
     background-color: #FDEDE2;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.66rem, 0.9vw, 1rem);
+    font-size: clamp(0.9rem, 1.05vw, 1.2rem);
     font-weight: 400;
-    line-height: 1.35;
+    line-height: 1.32;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,9 +224,9 @@
     margin: clamp(0.55rem, 1.1vh, 0.8rem) 0 0;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.78rem, 1vw, 1rem);
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.22;
     text-align: center;
 }
 

@@ -19,11 +19,10 @@ const DragQuestion = ({
     correctOrder = defaultCorrectOrder,
     checkText = "בדיקה",
     tryAgainText = "לניסיון נוסף",
-    // successText = "לתשובתך נכון",
     resetText = "איפוס השאלה"
 }) => {
     const [slots, setSlots] = useState(() => Array(correctOrder.length).fill(null));
-    const [draggedItemId, setDraggedItemId] = useState(null);
+    const [draggedItem, setDraggedItem] = useState(null);
     const [selectedItemId, setSelectedItemId] = useState(null);
     const [checked, setChecked] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -31,14 +30,34 @@ const DragQuestion = ({
     const placedIds = slots.filter(Boolean);
     const availableItems = items.filter((item) => !placedIds.includes(item.id));
 
-    const placeItemInSlot = (itemId, slotIndex) => {
+    const getItemById = (id) => {
+        return items.find((item) => item.id === id);
+    };
+
+    const placeItemInSlot = (itemId, targetSlotIndex, sourceSlotIndex = null) => {
         if (!itemId || checked) {
             return;
         }
 
         setSlots((prevSlots) => {
-            const cleanedSlots = prevSlots.map((slot) => (slot === itemId ? null : slot));
-            cleanedSlots[slotIndex] = itemId;
+            const updatedSlots = [...prevSlots];
+            const targetItemId = updatedSlots[targetSlotIndex];
+
+            if (sourceSlotIndex !== null) {
+                updatedSlots[sourceSlotIndex] = targetItemId || null;
+                updatedSlots[targetSlotIndex] = itemId;
+                return updatedSlots;
+            }
+
+            const cleanedSlots = updatedSlots.map((slot) => {
+                if (slot === itemId) {
+                    return null;
+                }
+
+                return slot;
+            });
+
+            cleanedSlots[targetSlotIndex] = itemId;
             return cleanedSlots;
         });
 
@@ -57,20 +76,65 @@ const DragQuestion = ({
         });
     };
 
-    const handleDragStart = (itemId) => {
+    const handleAvailableDragStart = (event, itemId) => {
         if (checked) {
             return;
         }
 
-        setDraggedItemId(itemId);
+        event.dataTransfer.setData("text/plain", itemId);
+
+        setDraggedItem({
+            itemId,
+            sourceSlotIndex: null
+        });
     };
 
-    const handleDrop = (slotIndex) => {
-        placeItemInSlot(draggedItemId, slotIndex);
-        setDraggedItemId(null);
+    const handleSlotDragStart = (event, itemId, sourceSlotIndex) => {
+        if (checked || !itemId) {
+            return;
+        }
+
+        event.dataTransfer.setData("text/plain", itemId);
+
+        setDraggedItem({
+            itemId,
+            sourceSlotIndex
+        });
+    };
+
+    const handleDragEnd = () => {
+        setDraggedItem(null);
+    };
+
+    const handleDropOnSlot = (targetSlotIndex) => {
+        if (!draggedItem) {
+            return;
+        }
+
+        placeItemInSlot(
+            draggedItem.itemId,
+            targetSlotIndex,
+            draggedItem.sourceSlotIndex
+        );
+
+        setDraggedItem(null);
+    };
+
+    const handleDropBackToItems = () => {
+        if (!draggedItem || draggedItem.sourceSlotIndex === null || checked) {
+            setDraggedItem(null);
+            return;
+        }
+
+        removeFromSlot(draggedItem.sourceSlotIndex);
+        setDraggedItem(null);
     };
 
     const handleSlotClick = (slotIndex) => {
+        if (checked) {
+            return;
+        }
+
         if (slots[slotIndex]) {
             removeFromSlot(slotIndex);
             return;
@@ -89,8 +153,11 @@ const DragQuestion = ({
         }
 
         const result = slots.every((slotId, index) => slotId === correctOrder[index]);
+
         setIsCorrect(result);
         setChecked(true);
+        setDraggedItem(null);
+        setSelectedItemId(null);
     };
 
     const handleTryAgain = () => {
@@ -101,25 +168,23 @@ const DragQuestion = ({
     const handleReset = () => {
         setSlots(Array(correctOrder.length).fill(null));
         setSelectedItemId(null);
-        setDraggedItemId(null);
+        setDraggedItem(null);
         setChecked(false);
         setIsCorrect(false);
     };
 
-    const getItemById = (id) => {
-        return items.find((item) => item.id === id);
-    };
-
     const getSlotClassName = (slotId, index) => {
+        const baseClassName = `${styles.dropSlot} ${slotId ? styles.filledSlot : ""}`;
+
         if (!checked || !slotId) {
-            return styles.dropSlot;
+            return baseClassName;
         }
 
         if (slotId === correctOrder[index]) {
-            return `${styles.dropSlot} ${styles.correctSlot}`;
+            return `${baseClassName} ${styles.correctSlot}`;
         }
 
-        return `${styles.dropSlot} ${styles.wrongSlot}`;
+        return `${baseClassName} ${styles.wrongSlot}`;
     };
 
     const checkDisabled = checked || slots.some((slot) => !slot);
@@ -142,9 +207,14 @@ const DragQuestion = ({
                                 <button
                                     key={index}
                                     type="button"
+                                    draggable={Boolean(slotId) && !checked}
                                     className={getSlotClassName(slotId, index)}
+                                    onDragStart={(event) =>
+                                        handleSlotDragStart(event, slotId, index)
+                                    }
+                                    onDragEnd={handleDragEnd}
                                     onDragOver={(event) => event.preventDefault()}
-                                    onDrop={() => handleDrop(index)}
+                                    onDrop={() => handleDropOnSlot(index)}
                                     onClick={() => handleSlotClick(index)}
                                 >
                                     {item && <span>{item.text}</span>}
@@ -157,16 +227,22 @@ const DragQuestion = ({
                         })}
                     </div>
 
-                    <div className={styles.itemsArea}>
+                    <div
+                        className={styles.itemsArea}
+                        onDragOver={(event) => event.preventDefault()}
+                        onDrop={handleDropBackToItems}
+                    >
                         {availableItems.map((item) => (
                             <button
                                 key={item.id}
                                 type="button"
                                 draggable={!checked}
-                                className={`${styles.dragItem} ${
-                                    selectedItemId === item.id ? styles.selectedItem : ""
-                                }`}
-                                onDragStart={() => handleDragStart(item.id)}
+                                className={`${styles.dragItem} ${selectedItemId === item.id ? styles.selectedItem : ""
+                                    }`}
+                                onDragStart={(event) =>
+                                    handleAvailableDragStart(event, item.id)
+                                }
+                                onDragEnd={handleDragEnd}
                                 onClick={() => !checked && setSelectedItemId(item.id)}
                             >
                                 {item.text}
@@ -177,7 +253,8 @@ const DragQuestion = ({
                     {!checked && (
                         <button
                             type="button"
-                            className={`${styles.checkBtn} ${checkDisabled ? styles.disabledBtn : ""}`}
+                            className={`${styles.checkBtn} ${checkDisabled ? styles.disabledBtn : ""
+                                }`}
                             onClick={handleCheck}
                             disabled={checkDisabled}
                         >
@@ -186,18 +263,30 @@ const DragQuestion = ({
                     )}
 
                     {checked && !isCorrect && (
-                        <button type="button" className={styles.checkBtn} onClick={handleTryAgain}>
+                        <button
+                            type="button"
+                            className={styles.checkBtn}
+                            onClick={handleTryAgain}
+                        >
                             {tryAgainText}
                         </button>
                     )}
 
                     {checked && isCorrect && (
-                        <button type="button" className={`${styles.checkBtn} ${styles.disabledBtn}`} onClick={handleReset}>
+                        <button
+                            type="button"
+                            className={`${styles.checkBtn} ${styles.disabledBtn}`}
+                            onClick={handleReset}
+                        >
                             {checkText}
                         </button>
                     )}
 
-                    <button type="button" className={styles.resetBtn} onClick={handleReset}>
+                    <button
+                        type="button"
+                        className={styles.resetBtn}
+                        onClick={handleReset}
+                    >
                         ↻ {resetText}
                     </button>
                 </div>

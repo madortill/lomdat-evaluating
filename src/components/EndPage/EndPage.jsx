@@ -12,6 +12,8 @@ import endPopupBgBtn from "../../assets/img/endPopupBgBtn.svg";
 import peer from "../../assets/img/logos/peer.svg";
 import madorTil from "../../assets/img/logos/till.svg";
 
+const confettiPieces = Array.from({ length: 50 }, (_, index) => index);
+
 const EndPage = () => {
     const navigate = useNavigate();
 
@@ -26,6 +28,15 @@ const EndPage = () => {
 
     return (
         <div className={styles.page} dir="rtl">
+            <div className={styles.confettiContainer} aria-hidden="true">
+                {confettiPieces.map((piece) => (
+                    <div
+                        key={piece}
+                        className={`${styles.confettiPiece} ${styles[`piece${piece}`]}`}
+                    />
+                ))}
+            </div>
+
             <img
                 src={washiOrange}
                 alt=""
@@ -70,15 +81,15 @@ const EndPage = () => {
                                 onClick={handleRestart}
                             >
                                 <img src={endPopupBgBtn} alt="" className={styles.endBtnBg} />
-                                <span>להתחיל מחדש ←</span>
+                                <span className={styles.endBtnText}>להתחיל מחדש ←</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <img src={plant} alt="plant" className={styles.plant} />
-            <img src={smallTable} alt="table" className={styles.table} />
+            <img src={plant} alt="" className={styles.plant} />
+            <img src={smallTable} alt="" className={styles.table} />
         </div>
     );
 };

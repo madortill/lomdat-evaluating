@@ -47,7 +47,7 @@
 .subtitle {
     color: #965A39;
     font-family: "RinatZigdon", "Fredoka", sans-serif;
-    font-size: clamp(0.85rem, 1.2vw, 1.2rem);
+    font-size: clamp(0.9rem, 1.3vw, 1.35rem);
     font-weight: 600;
     line-height: 1.25;
     text-align: center;
@@ -89,13 +89,13 @@
 .optionBtn {
     position: relative;
     width: 100%;
-    min-height: clamp(2.35rem, 4.2vh, 3.3rem);
+    min-height: clamp(2.35rem, 7vh, 4rem);
     border: 0.1rem solid #E2B59A;
     border-radius: 0.35rem;
     background-color: #FCE6D8;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.65rem, 0.9vw, 0.95rem);
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
     font-weight: 500;
     line-height: 1.35;
     text-align: right;
@@ -174,13 +174,13 @@
 }
 
 .missedCorrectOption {
-    background-color: #F0F6E8;
-    border-color: #B6D99B;
+    background-color: #f0f6e883;
+    border-color: #b6d99b9d;
 }
 
 .missedCorrectOption .optionMark {
-    background-color: #B6D99B;
-    border-color: #B6D99B;
+    background-color: #b6d99b91;
+    border-color: #b6d99b91;
     color: white;
 }
 

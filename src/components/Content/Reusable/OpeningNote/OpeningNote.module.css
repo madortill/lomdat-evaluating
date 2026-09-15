@@ -133,7 +133,7 @@
     width: 100%;
     color: #62351F;
     font-family: "RinatZigdon", "Fredoka", sans-serif;
-    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
+    font-size: clamp(1rem, 15vw, 1.5rem);
     font-weight: 600;
     line-height: 1.35;
     text-align: center;
@@ -254,12 +254,12 @@
 
 .thinInnerNote .innerNoteTextArea {
     top: 35%;
-    right: 18%;
-    left: 16%;
+    right: 24%;
+    left: 20%;
     bottom: 17%;
 }
 
 .thinInnerNote .innerNoteTextArea p {
-    font-size: clamp(0.72rem, 1.15vw, 1.4rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.6rem);
     line-height: 1.25;
 }

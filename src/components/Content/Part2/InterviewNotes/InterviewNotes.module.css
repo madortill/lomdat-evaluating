@@ -75,7 +75,7 @@
     z-index: 2;
     color: white;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.72rem, 1vw, 1.08rem);
+    font-size: clamp(1rem, 1.3vw, 1.3rem);
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
@@ -114,7 +114,7 @@
     margin: 0;
     color: #5FA9C8;
     font-family: "RinatZigdon", "Fredoka", sans-serif;
-    font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.6rem);
     font-weight: 600;
     text-align: center;
 }
@@ -202,7 +202,7 @@
     margin: 0 0 clamp(0.55rem, 1.1vh, 0.85rem);
     color: #62351F;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.82rem, 1.05vw, 1.05rem);
+    font-size: clamp(0.9rem, 1.12vw, 1.2rem);
     font-weight: 400;
     line-height: 1.6;
     text-align: center;
@@ -214,7 +214,7 @@
     padding-right: 1rem;
     color: #62351F;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.78rem, 1vw, 1rem);
+    font-size: clamp(0.9rem, 1.05vw, 1.2rem);
     font-weight: 400;
     line-height: 1.55;
     text-align: right;
@@ -254,7 +254,7 @@
     background-color: #FCE6D8;
     color: #62351F;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
     font-weight: 500;
     line-height: 1.35;
     display: flex;
@@ -284,7 +284,7 @@
 .rightExample {
     margin: 0;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.72rem, 0.95vw, 0.95rem);
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem);
     font-weight: 700;
     line-height: 1.35;
     text-align: center;
@@ -302,7 +302,7 @@
     margin: clamp(0.45rem, 0.9vh, 0.65rem) 0 0;
     color: #62351F;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
     font-weight: 500;
     line-height: 1.35;
     text-align: center;

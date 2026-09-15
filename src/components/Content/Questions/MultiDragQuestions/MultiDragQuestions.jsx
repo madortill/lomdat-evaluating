@@ -151,7 +151,8 @@ const MultiDragQuestions = ({
     items,
     largeCategoryItemsMargin = false,
     checkText = "בדיקה",
-    tryAgainText = "לניסיון נוסף",
+    revealText = "לחשיפת התשובות",
+    userAnswersText = "לצפייה בתשובות שלי",
     resetText = "איפוס השאלה"
 }) => {
     const resolvedQuestion = question || title || "מדדי הערכה";
@@ -165,10 +166,11 @@ const MultiDragQuestions = ({
     }, [items]);
 
     const [answers, setAnswers] = useState(() => createEmptyAnswers(normalizedCategories));
-    const [draggedItemId, setDraggedItemId] = useState(null);
+    const [draggedItem, setDraggedItem] = useState(null);
     const [selectedItemId, setSelectedItemId] = useState(null);
     const [checked, setChecked] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
+    const [answerViewMode, setAnswerViewMode] = useState("user");
 
     const placedIds = Object.values(answers).flat();
     const currentItem = normalizedItems.find((item) => !placedIds.includes(item.id));
@@ -203,7 +205,7 @@ const MultiDragQuestions = ({
         });
 
         setSelectedItemId(null);
-        setDraggedItemId(null);
+        setDraggedItem(null);
     };
 
     const removeItemFromCategory = (itemId, categoryId) => {
@@ -217,19 +219,66 @@ const MultiDragQuestions = ({
         }));
 
         setSelectedItemId(null);
-        setDraggedItemId(null);
+        setDraggedItem(null);
     };
 
-    const handleDragStart = (itemId) => {
+    const getCategoryItemsForView = (categoryId) => {
+        if (checked && !isCorrect && answerViewMode === "correct") {
+            return normalizedItems.filter((item) => item.correctCategoryId === categoryId);
+        }
+
+        return answers[categoryId]
+            .map((itemId) => getItemById(itemId))
+            .filter(Boolean);
+    };
+
+    const handleAvailableDragStart = (event, itemId) => {
         if (checked) {
             return;
         }
 
-        setDraggedItemId(itemId);
+        event.dataTransfer.setData("text/plain", itemId);
+
+        setDraggedItem({
+            itemId,
+            sourceCategoryId: null
+        });
+    };
+
+    const handlePlacedDragStart = (event, itemId, sourceCategoryId) => {
+        if (checked) {
+            return;
+        }
+
+        event.stopPropagation();
+        event.dataTransfer.setData("text/plain", itemId);
+
+        setDraggedItem({
+            itemId,
+            sourceCategoryId
+        });
+    };
+
+    const handleDragEnd = () => {
+        setDraggedItem(null);
     };
 
     const handleDrop = (categoryId) => {
-        placeItemInCategory(draggedItemId, categoryId);
+        if (!draggedItem || checked) {
+            return;
+        }
+
+        placeItemInCategory(draggedItem.itemId, categoryId);
+    };
+
+    const handleDropBackToItems = () => {
+        if (!draggedItem || !draggedItem.sourceCategoryId || checked) {
+            setDraggedItem(null);
+            return;
+        }
+
+        removeItemFromCategory(draggedItem.itemId, draggedItem.sourceCategoryId);
+        setDraggedItem(null);
     };
 
     const handleCategoryClick = (categoryId) => {
@@ -257,22 +306,29 @@ const MultiDragQuestions = ({
 
         setIsCorrect(result);
         setChecked(true);
+        setSelectedItemId(null);
+        setDraggedItem(null);
+        setAnswerViewMode("user");
     };
 
-    const handleTryAgain = () => {
-        setChecked(false);
-        setIsCorrect(false);
+    const handleToggleAnswersView = () => {
+        setAnswerViewMode((prev) => (prev === "user" ? "correct" : "user"));
     };
 
     const handleReset = () => {
         setAnswers(createEmptyAnswers(normalizedCategories));
-        setDraggedItemId(null);
+        setDraggedItem(null);
         setSelectedItemId(null);
         setChecked(false);
         setIsCorrect(false);
+        setAnswerViewMode("user");
     };
 
     const getPlacedItemClassName = (item, categoryId) => {
+        if (checked && !isCorrect && answerViewMode === "correct") {
+            return `${styles.placedItem} ${styles.correctItem}`;
+        }
+
         if (!checked) {
             return styles.placedItem;
         }
@@ -285,6 +341,9 @@ const MultiDragQuestions = ({
     };
 
     const checkDisabled = checked || !isComplete;
+
+    const toggleAnswersButtonText =
+        answerViewMode === "user" ? revealText : userAnswersText;
 
     return (
         <section className={styles.page} dir="rtl">
@@ -315,49 +374,71 @@ const MultiDragQuestions = ({
                                 )}
 
                                 <div
-                                    className={`${styles.categoryItems} ${largeCategoryItemsMargin ? styles.largeCategoryItemsMargin : ""
+                                    className={`${styles.categoryItems} ${largeCategoryItemsMargin
+                                        ? styles.largeCategoryItemsMargin
+                                        : ""
                                         }`}
                                 >
-                                    {answers[category.id].map((itemId) => {
-                                        const item = getItemById(itemId);
+                                    {getCategoryItemsForView(category.id).map((item) => (
+                                        <span
+                                            key={item.id}
+                                            draggable={!checked}
+                                            className={getPlacedItemClassName(item, category.id)}
+                                            onDragStart={(event) =>
+                                                handlePlacedDragStart(
+                                                    event,
+                                                    item.id,
+                                                    category.id
+                                                )
+                                            }
+                                            onDragEnd={handleDragEnd}
+                                            onClick={(event) => {
+                                                event.stopPropagation();
 
-                                        if (!item) {
-                                            return null;
-                                        }
-
-                                        return (
-                                            <span
-                                                key={item.id}
-                                                className={getPlacedItemClassName(item, category.id)}
-                                                onClick={(event) => {
-                                                    event.stopPropagation();
+                                                if (!checked) {
                                                     removeItemFromCategory(item.id, category.id);
-                                                }}
-                                            >
-                                                {item.text}
+                                                }
+                                            }}
+                                        >
+                                            {item.text}
 
-                                                {checked && item.correctCategoryId !== category.id && (
+                                            {checked &&
+                                                answerViewMode === "user" &&
+                                                item.correctCategoryId !== category.id && (
                                                     <span className={styles.errorMark}>×</span>
                                                 )}
-                                            </span>
-                                        );
-                                    })}
+                                        </span>
+                                    ))}
                                 </div>
                             </button>
                         ))}
                     </div>
 
-                    <div className={styles.itemsArea}>
+                    <div
+                        className={styles.itemsArea}
+                        onDragOver={(event) => event.preventDefault()}
+                        onDrop={handleDropBackToItems}
+                    >
                         {currentItem && !checked && (
                             <button
                                 key={currentItem.id}
                                 type="button"
                                 draggable
-                                className={`${styles.dragItem} ${selectedItemId === currentItem.id ? styles.selectedItem : ""}`}
-                                onDragStart={() => handleDragStart(currentItem.id)}
+                                className={`${styles.dragItem} ${selectedItemId === currentItem.id
+                                    ? styles.selectedItem
+                                    : ""
+                                    }`}
+                                onDragStart={(event) =>
+                                    handleAvailableDragStart(event, currentItem.id)
+                                }
+                                onDragEnd={handleDragEnd}
                                 onClick={() => handleItemClick(currentItem.id)}
                             >
                                 {currentItem.text}
+
+                                {currentItem.description && (
+                                    <small>{currentItem.description}</small>
+                                )}
                             </button>
                         )}
 
@@ -369,7 +450,8 @@ const MultiDragQuestions = ({
                     {!checked && (
                         <button
                             type="button"
-                            className={`${styles.checkBtn} ${checkDisabled ? styles.disabledBtn : ""}`}
+                            className={`${styles.checkBtn} ${checkDisabled ? styles.disabledBtn : ""
+                                }`}
                             onClick={handleCheck}
                             disabled={checkDisabled}
                         >
@@ -378,8 +460,12 @@ const MultiDragQuestions = ({
                     )}
 
                     {checked && !isCorrect && (
-                        <button type="button" className={styles.checkBtn} onClick={handleTryAgain}>
-                            {tryAgainText}
+                        <button
+                            type="button"
+                            className={`${styles.checkBtn} ${styles.wideCheckBtn}`}
+                            onClick={handleToggleAnswersView}
+                        >
+                            {toggleAnswersButtonText}
                         </button>
                     )}
 
@@ -393,7 +479,11 @@ const MultiDragQuestions = ({
                         </button>
                     )}
 
-                    <button type="button" className={styles.resetBtn} onClick={handleReset}>
+                    <button
+                        type="button"
+                        className={styles.resetBtn}
+                        onClick={handleReset}
+                    >
                         ↻ {resetText}
                     </button>
                 </div>

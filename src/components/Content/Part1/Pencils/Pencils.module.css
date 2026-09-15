@@ -103,7 +103,7 @@
     margin: 0;
     color: #88563B;
     font-family: "Fredoka", sans-serif;
-    font-size: clamp(0.9rem, 1.25vw, 1.25rem);
+    font-size: clamp(0.9rem, 1.35vw, 1.4rem);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -136,7 +136,7 @@
     margin: 0;
     color: #62351F;
     font-family: "RinatZigdon", "Fredoka", sans-serif;
-    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
     font-weight: 600;
     line-height: 1.45;
     text-align: center;
